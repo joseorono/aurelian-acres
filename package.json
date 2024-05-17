@@ -25,9 +25,16 @@
         "build": "vite build --config vite/config.prod.mjs"
     },
     "dependencies": {
+        "@pixi/react": "^7.1.2",
+        "@react-spring/web": "^9.7.3",
+        "@use-gesture/react": "^10.3.1",
+        "howler": "^2.2.4",
+        "localforage": "^1.10.0",
         "phaser": "^3.80.1",
+        "pixi.js": "^8.1.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-router-dom": "^6.23.1",
         "simple-zustand-devtools": "^1.1.0",
         "zustand": "^4.5.2"
     },
@@ -38,6 +45,7 @@
         "@typescript-eslint/parser": "^7.1.0",
         "@vitejs/plugin-react": "^4.2.1",
         "autoprefixer": "^10.4.19",
+        "daisyui": "^4.11.1",
         "eslint": "^8.57.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
