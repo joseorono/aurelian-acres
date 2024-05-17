@@ -1,0 +1,16 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 16px; /* Prevent zooming on iOS */
+}
+
+body {
+  background-color: #282c34;
+  color: white;
+  font-family: Arial;
+}
+
+
