@@ -1,4 +1,5 @@
 type buildingData = {
+  id: number;
   name: string;
   description: string;
   costGold: number;
@@ -12,6 +13,7 @@ type buildingData = {
 
 const buildings: buildingData[] = [
   {
+    id: 1,
     name: 'Fields',
     description: 'Wheat, barley, and millet. Everything a roman citizen (and the rest) needs. ',
     costGold: 10,
@@ -22,6 +24,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 0,
   },
   {
+    id: 2,
     name: 'Quarry',
     description: 'Procure stone for your province',
     costGold: 10,
@@ -32,6 +35,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 15,
   },
   {
+    id: 3,
     name: 'Bakery',
     description: 'Bread is an essential part of the roman diet.',
     costGold: 50,
@@ -42,6 +46,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 0,
   },
   {
+    id: 4,
     name: 'Forum',
     description: 'Commerce, politics and a social space. The center of day-to-day roman life.',
     costGold: 2500,
@@ -52,6 +57,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 50,
   },
   {
+    id: 5,
     name: 'Smithy',
     description: 'From household goods to weapons and war machinery, roman smithies are the best in the world.',
     costGold: 10000,
@@ -62,6 +68,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 75,
   },
   {
+    id: 6,
     name: 'Castra',
     description: 'The barracks, a place to safely house your troops before any campaign.',
     costGold: 35000,
@@ -72,6 +79,7 @@ const buildings: buildingData[] = [
     stonePerSecond: 150,
   },
   {
+    id: 7,
     name: 'Temple',
     description: 'Place of worship for a deity of choice. Pray, make an offering. Perhaps the gods will answer.',
     costGold: 150000,

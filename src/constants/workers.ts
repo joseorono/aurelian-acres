@@ -1,4 +1,5 @@
 type workersData = {
+  id: number;
   name: string;
   description: string;
   costGold: number;
@@ -11,6 +12,7 @@ type workersData = {
 
 const workers: workersData[] = [
   {
+    id: 1,
     name: 'Slave',
     description: "Multipurpose worker and someone's property. May be granted citizenship one day",
     costGold: 1,
@@ -21,6 +23,7 @@ const workers: workersData[] = [
     stonePerClick: 1,
   },
   {
+    id: 2,
     name: 'Farmer',
     description: 'People dedicated to the craft of the land. Actually mostly slaves. ',
     costGold: 5,
@@ -31,6 +34,7 @@ const workers: workersData[] = [
     stonePerClick: 0,
   },
   {
+    id: 3,
     name: 'Miner',
     description: 'Workers for the mines. Ill-fated people, likely to face death. Good for the economy, though.',
     costGold: 5,
@@ -41,6 +45,7 @@ const workers: workersData[] = [
     stonePerClick: 3,
   },
   {
+    id: 4,
     name: 'Baker',
     description: 'Keeps the people fed. Makes some good bread.',
     costGold: 30,
@@ -51,6 +56,7 @@ const workers: workersData[] = [
     stonePerClick: 0,
   },
   {
+    id: 5,
     name: 'Mercatores',
     description: 'Sells goods. Buys goods. Makes the markets lively.',
     costGold: 1500,
@@ -61,6 +67,7 @@ const workers: workersData[] = [
     stonePerClick: 10,
   },
   {
+    id: 6,
     name: 'Blacksmith',
     description: 'Skilled worker, covers a wide array of needs of the roman people.',
     costGold: 2500,
@@ -71,6 +78,7 @@ const workers: workersData[] = [
     stonePerClick: 0,
   },
   {
+    id: 7,
     name: 'Legionary',
     description: 'Soldiers, security and even builders. Legionaries are really versatile.',
     costGold: 10000,
@@ -81,6 +89,7 @@ const workers: workersData[] = [
     stonePerClick: 0,
   },
   {
+    id: 8,
     name: 'Priest',
     description: 'Tends to the temples, holds rituals and receives offerings',
     costGold: 20000,
