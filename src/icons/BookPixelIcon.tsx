@@ -4,7 +4,7 @@
 const BookPixelIcon: React.FC<IPixelIconProps> = ({ size = 24, className = '', fill = '#fff' }) => {
   return (
     <svg
-      fill={fill}
+      color={fill}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width={size}
