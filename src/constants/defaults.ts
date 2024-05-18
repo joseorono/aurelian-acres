@@ -1,4 +1,3 @@
-
 // Aca ponemos los valores por defecto de las variables que vamos a usar en la aplicacion
 /*
 

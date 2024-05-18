@@ -3,22 +3,18 @@ import CounterExample from './components/counter-example';
 
 import './index.css';
 
-function App()
-{
+function App() {
+  return (
+    <>
+      <div className="p-8">
+        <CounterExample />
+      </div>
 
-    return (
-        <>
-        
-            <div className='p-8'>
-                <CounterExample />
-            </div>
-            
-            <div id="app">
-                <h1>Game Template</h1>
-            </div>
-
-        </>
-    )
+      <div id="app">
+        <h1>Game Template</h1>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;

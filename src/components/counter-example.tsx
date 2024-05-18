@@ -1,36 +1,34 @@
-
-import HeadingTest  from '~/components/heading-test';
+import HeadingTest from '~/components/heading-test';
 
 import { useCounterStore } from '~/store/useCounterStore';
 
-
 function CounterExample() {
-    const counterStore = useCounterStore();
+  const counterStore = useCounterStore();
 
-    return (
-    
-    <div className='text-center mx-auto w-1/2'>
-        <HeadingTest />
+  return (
+    <div className="mx-auto w-1/2 text-center">
+      <HeadingTest />
       <div className="my-3 p-2 text-center text-2xl">
         Count is
         <div className="text-center text-5xl">{counterStore.count}</div>
       </div>
 
       <p className="text-center">
-        <button  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'  onClick={() => counterStore.increase()}>
+        <button
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+          onClick={() => counterStore.increase()}
+        >
           +
         </button>
-        <button  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'  onClick={() => counterStore.decrease()}>
+        <button
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+          onClick={() => counterStore.decrease()}
+        >
           -
         </button>
       </p>
-
     </div>
-  )
+  );
 }
 
-
-export default CounterExample
-
-
-
+export default CounterExample;
