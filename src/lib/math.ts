@@ -11,7 +11,8 @@ export function randFloatInRange(min: number, max: number) {
 }
 
 export function getRandomlyVariedValue(baseValue: number, variance: number) {
-  return baseValue + randFloatInRange(variance * -1, variance);
+  // Only varies the number downwards
+  return baseValue - variance + randFloatInRange(0, variance);
 }
 
 // Generate range (array)
