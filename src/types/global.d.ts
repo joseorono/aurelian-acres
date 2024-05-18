@@ -5,3 +5,5 @@ interface IPixelIconProps {
   size?: number;
   fill?: string;
 }
+
+type Nullable<T> = T | null;
