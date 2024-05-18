@@ -11,9 +11,8 @@ type buildingData = {
 
 };
 
-export buildings: buildingData = {
-
-    'farm': {
+const buildings: buildingData[] = {
+    {
         name: 'Farm',
         description: 'Produces grain',
         costGold: 0,
@@ -23,7 +22,7 @@ export buildings: buildingData = {
         incomeGrain: 10,
         incomeStone: 0,
     },
-    'mine': {
+    {
         name: 'Mine',
         description: 'Produces stone',
         costGold: 0,
