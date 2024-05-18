@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Minimal3x5';
+  src: url('/fonts/Minimal3x5.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Minimal5x5Monospaced';
+  src: url('/fonts/Minimal5x5Monospaced.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Minimal5x7';
+  src: url('/fonts/Minimal5x7.ttf') format('truetype');
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,11 +89,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    line-height: 1;
+  }
 }
 
 html {
   font-size: 16px;
-  /* Prevent zooming on iOS */
+  letter-spacing: 1px; /* Set them apart a bit */
+  /*
+  @screen xl {
+    font-size: 16px;
+  }
+  */
 }
 
 body {

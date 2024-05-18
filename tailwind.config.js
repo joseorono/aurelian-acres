@@ -4,6 +4,22 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   prefix: '',
   theme: {
+    fontFamily: {
+      body: ['Minimal5x7', 'Minimal5x7', 'sans-serif'],
+      display: ['Minimal5x7', 'Minimal3x5', 'sans-serif'],
+      '5x7': ['Minimal5x7', 'sans-serif'],
+      '3x5': ['Minimal5x7', 'sans-serif'],
+      '5x5mono': ['Minimal5x5Monospaced', 'sans-serif'],
+    },
+    fontSize: {
+      sm: '1rem',
+      base: '2rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+    },
     container: {
       center: true,
       padding: '2rem',
