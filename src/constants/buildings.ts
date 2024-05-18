@@ -1,117 +1,91 @@
-
 type buildingData = {
     name: string;
     description: string;
     costGold: number;
     costGrain: number;
     costStone: number;
-    incomeGold: number;
-    incomeGrain: number;
-    incomeStone: number;
-
+    goldPerSecond: number;
+    grainPerSecond: number;
+    stonePerSecond: number;
+    //TODO: unlock requirements?
 };
 
-const buildings: buildingData[] = {
+const buildings: buildingData[] = [
     {
-        name: 'Farm',
-        description: 'Produces grain',
-        costGold: 0,
+        name: "Fields",
+        description:
+            "Wheat, barley, and millet. Everything a roman citizen (and the rest) needs. ",
+        costGold: 10,
         costGrain: 0,
         costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 10,
-        incomeStone: 0,
+        goldPerSecond: 0,
+        grainPerSecond: 15,
+        stonePerSecond: 0,
     },
     {
-        name: 'Mine',
-        description: 'Produces stone',
-        costGold: 0,
+        name: "Quarry",
+        description: "Procure stone for your province",
+        costGold: 10,
         costGrain: 0,
         costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 10,
+        goldPerSecond: 0,
+        grainPerSecond: 0,
+        stonePerSecond: 15,
     },
-    'market': {
-        name: 'Market',
-        description: 'Produces gold',
-        costGold: 0,
+    {
+        name: "Bakery",
+        description: "Bread is an essential part of the roman diet.",
+        costGold: 50,
+        costGrain: 300,
+        costStone: 750,
+        goldPerSecond: 30,
+        grainPerSecond: 0,
+        stonePerSecond: 0,
+    },
+    {
+        name: "Forum",
+        description:
+            "Commerce, politics and a social space. The center of day-to-day roman life.",
+        costGold: 2500,
         costGrain: 0,
-        costStone: 0,
-        incomeGold: 10,
-        incomeGrain: 0,
-        incomeStone: 0,
+        costStone: 3500,
+        goldPerSecond: 75,
+        grainPerSecond: 30,
+        stonePerSecond: 50,
     },
-    'castle': {
-        name: 'Castle',
-        description: 'Produces gold, grain and stone',
-        costGold: 0,
+    {
+        name: "Smithy",
+        description:
+            "From household goods to weapons and war machinery, roman smithies are the best in the world.",
+        costGold: 10000,
         costGrain: 0,
-        costStone: 0,
-        incomeGold: 10,
-        incomeGrain: 10,
-        incomeStone: 10,
+        costStone: 8000,
+        goldPerSecond: 200,
+        grainPerSecond: 0,
+        stonePerSecond: 75,
     },
-    'barracks': {
-        name: 'Barracks',
-        description: 'Produces soldiers',
-        costGold: 0,
+    {
+        name: "Castra",
+        description:
+            "The barracks, a place to safely house your troops before any campaign.",
+        costGold: 35000,
         costGrain: 0,
-        costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
+        costStone: 15000,
+        goldPerSecond: 700,
+        grainPerSecond: 0,
+        stonePerSecond: 150,
     },
-    'church': {
-        name: 'Church',
-        description: 'Produces priests',
-        costGold: 0,
-        costGrain: 0,
+    {
+        name: "Temple",
+        description:
+            "Place of worship for a deity of choice. Pray, make an offering. Perhaps the gods will answer.",
+        costGold: 150000,
+        costGrain: 30000,
         costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
+        goldPerSecond: 2200,
+        grainPerSecond: 100,
+        stonePerSecond: 250,
     },
-    'blacksmith': {
-        name: 'Blacksmith',
-        description: 'Produces weapons',
-        costGold: 0,
-        costGrain: 0,
-        costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
-    },
-    'tavern': {
-        name: 'Tavern',
-        description: 'Produces alcohol',
-        costGold: 0,
-        costGrain: 0,
-        costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
-    },
-    'library': {
-        name: 'Library',
-        description: 'Produces knowledge',
-        costGold: 0,
-        costGrain: 0,
-        costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
-    },
-    'lumbermill': {
-        name: 'Lumbermill',
-        description: 'Produces wood',
-        costGold: 0,
-        costGrain: 0,
-        costStone: 0,
-        incomeGold: 0,
-        incomeGrain: 0,
-        incomeStone: 0,
-    },
-    
+];
 
-} 
+export default buildings;
