@@ -1,29 +1,34 @@
+import HeadingTest from '~/components/heading-test';
 
-import { useStore } from '~/store/useStore';
-import HeadingTest  from '~/components/heading-test';
-import { increaseFromOutsideReact } from '~/store/useStore';
-//import { increaseFromOutsideReact } from '~/store/useStore';
+import { useCounterStore } from '~/store/useCounterStore';
 
 function CounterExample() {
-  const { count, inc } = useStore()
+  const counterStore = useCounterStore();
+
   return (
-    
-    <div className='text-center mx-auto w-1/2'>
-        <HeadingTest />
-        <span>{count}</span>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={inc}>
-            +
-            </button>
-        <button 
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' 
-            onClick={increaseFromOutsideReact}
+    <div className="mx-auto w-1/2 text-center">
+      <HeadingTest />
+      <div className="my-3 p-2 text-center text-2xl">
+        Count is
+        <div className="text-center text-5xl">{counterStore.count}</div>
+      </div>
+
+      <p className="text-center">
+        <button
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+          onClick={() => counterStore.increase()}
         >
-            + from outside React
+          +
         </button>
+        <button
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+          onClick={() => counterStore.decrease()}
+        >
+          -
+        </button>
+      </p>
     </div>
-  )
+  );
 }
 
-
-export default CounterExample
-
+export default CounterExample;

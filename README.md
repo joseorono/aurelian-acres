@@ -6,9 +6,9 @@ This is a project template that uses the React framework and Vite for bundling. 
 
 This template has been updated for:
 
--   [React 18.2.0](https://github.com/facebook/react)
--   [Vite 5.1.4](https://github.com/vitejs/vite)
--   [TypeScript 5.3.3](https://github.com/microsoft/TypeScript)
+- [React 18.2.0](https://github.com/facebook/react)
+- [Vite 5.1.4](https://github.com/vitejs/vite)
+- [TypeScript 5.3.3](https://github.com/microsoft/TypeScript)
 
 ![screenshot](screenshot.png)
 
@@ -36,13 +36,13 @@ Once the server is running you can edit any of the files in the `src` folder. Vi
 
 We have provided a default project structure to get you started. This is as follows:
 
--   `index.html` - A basic HTML page to contain the game.
--   `src` - Contains the React client source code.
--   `src/main.tsx` - The main **React** entry point. This bootstraps the React application.
--   `src/types` - Global TypeScript declarations, provide types information.
--   `src/App.tsx` - The main React component.
--   `public/style.css` - Some simple CSS rules to help with page layout.
--   `public/assets` - Contains the static assets used by the game.
+- `index.html` - A basic HTML page to contain the game.
+- `src` - Contains the React client source code.
+- `src/main.tsx` - The main **React** entry point. This bootstraps the React application.
+- `src/types` - Global TypeScript declarations, provide types information.
+- `src/App.tsx` - The main React component.
+- `public/style.css` - Some simple CSS rules to help with page layout.
+- `public/assets` - Contains the static assets used by the game.
 
 ### React Component Example
 
@@ -80,7 +80,7 @@ Vite supports loading assets via JavaScript module `import` statements.
 This template provides support for both embedding assets and also loading them from a static folder. To embed an asset, you can import it at the top of the JavaScript file you are using it in:
 
 ```js
-import logoImg from "./assets/logo.png";
+import logoImg from './assets/logo.png';
 ```
 
 To load static files such as audio files, videos, etc place them into the `public/assets` folder. Then you can use this path in the Loader calls within Phaser:
@@ -88,13 +88,13 @@ To load static files such as audio files, videos, etc place them into the `publi
 ```js
 preload();
 {
-    //  This is an example of an imported bundled image.
-    //  Remember to import it at the top of this file
-    this.load.image("logo", logoImg);
+  //  This is an example of an imported bundled image.
+  //  Remember to import it at the top of this file
+  this.load.image('logo', logoImg);
 
-    //  This is an example of loading a static image
-    //  from the public/assets folder:
-    this.load.image("background", "assets/bg.png");
+  //  This is an example of loading a static image
+  //  from the public/assets folder:
+  this.load.image('background', 'assets/bg.png');
 }
 ```
 
