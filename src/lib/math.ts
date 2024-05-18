@@ -6,8 +6,12 @@ export function randIntInRange(min: Integer, max: Integer) {
 }
 
 // random float in range
-export function randFloatInRange(min: Integer, max: Integer) {
+export function randFloatInRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
+}
+
+export function getRandomlyVariedValue(baseValue: number, variance: number) {
+  return baseValue + randFloatInRange(variance * -1, variance);
 }
 
 // Generate range (array)
