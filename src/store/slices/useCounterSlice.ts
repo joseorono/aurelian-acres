@@ -1,5 +1,4 @@
-import { StateCreator, create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { StateCreator } from 'zustand';
 
 interface CounterState {
   countValue: number;
