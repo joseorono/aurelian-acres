@@ -28,3 +28,10 @@ type workersData = {
   grainPerClick: number;
   stonePerClick: number;
 } & priceData;
+
+interface clickerVisualModifiers {
+  rainingCoins: boolean;
+  isNight: boolean;
+  goldenOverlay: boolean;
+  isFlood: boolean;
+}
