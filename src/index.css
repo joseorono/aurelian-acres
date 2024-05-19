@@ -1,3 +1,5 @@
+@import 'css/pixelated-utils.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +98,7 @@
 
 html {
   font-size: 16px;
+  font-weight: 700;
   letter-spacing: 1px; /* Set them apart a bit for legibility */
   /*
   @screen xl {
@@ -130,4 +133,14 @@ body {
 
 .loopFakeProgressBar {
   animation: progress-bar-width-growth 1s linear infinite;
+}
+
+/*
+==========================================
+    * DaisyUI Customizations
+==========================================
+*/
+
+.btn {
+  @apply pixel-rounded mx-1 my-3 h-10 min-h-10 text-base font-bold;
 }
