@@ -2,26 +2,18 @@
 import { sound } from '@pixi/sound';
 import { betweenZeroAndOne, getRandomlyVariedValue } from '~/lib/math';
 
-export enum SoundsList {
+export enum SoundNames {
   backgroundMusic = 'backgroundMusic',
   coinClick = 'coinClick',
 }
 
-const availableSounds = Object.values(SoundsList);
-type SoundFile = `${SoundsList}`; // This is a template literal type with all the available sounds
+const soundFiles = {
+  [SoundNames.backgroundMusic]: 'assets/audio/halo.mp3',
+  [SoundNames.coinClick]: 'assets/audio/coin.mp3',
+};
 
-/*
-function test(sound: SoundFile) {
-  console.log(sound);
-}
-
-test('backgroundMus');
-test('backgroundMusic');
-*/
 class SoundService {
   private static instance: SoundService;
-
-  public static availableSounds: SoundFile[] = availableSounds;
 
   // We should probably expose the pixi sound object to the rest of the app as an attribute of this class
   // In JavaScript, objects and arrays are passed by reference, so this will not create a new object
@@ -53,20 +45,18 @@ class SoundService {
       }
       try {
         this.isPreloading = true;
-        sound.add(
-          {
-            [SoundsList.backgroundMusic]: 'assets/audio/halo.mp3',
-            [SoundsList.coinClick]: 'assets/audio/coin.mp3',
+        let soundsList: Record<string, string> = {};
+        for (const [key, val] of Object.entries(soundFiles)) {
+          soundsList[key] = val;
+        }
+        sound.add(soundsList, {
+          preload: true,
+          loaded: (_) => {
+            this.audioLoaded = true;
+            console.log('sound service loaded successfully');
+            return resolve(true);
           },
-          {
-            preload: true,
-            loaded: (_) => {
-              this.audioLoaded = true;
-              console.log('sound service loaded successfully');
-              return resolve(true);
-            },
-          },
-        );
+        });
       } catch (error) {
         console.error('error loading sound service ==> ', error);
         return reject(false);
@@ -76,7 +66,7 @@ class SoundService {
     });
   }
 
-  playSound(alias: SoundsList, volume: number = 1, variance: number = 0) {
+  playSound(alias: SoundNames, volume: number = 1, variance: number = 0) {
     volume = betweenZeroAndOne(volume, 'volume');
     variance = betweenZeroAndOne(variance, 'variance');
 
@@ -85,7 +75,7 @@ class SoundService {
     });
   }
 
-  startMusic(alias: SoundsList, volume: number = 1) {
+  startMusic(alias: SoundNames, volume: number = 1) {
     volume = betweenZeroAndOne(volume, 'volume');
     sound.play(alias, {
       volume: volume,
@@ -93,7 +83,7 @@ class SoundService {
     });
   }
 
-  stopMusic(alias: SoundsList) {
+  stopMusic(alias: SoundNames) {
     sound.stop(alias);
   }
 
@@ -112,3 +102,4 @@ class SoundService {
 }
 
 export const soundService = new SoundService();
+
