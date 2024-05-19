@@ -30,8 +30,9 @@ type workersData = {
 } & priceData;
 
 interface clickerVisualModifiers {
-  rainingCoins: boolean;
-  isNight: boolean;
-  goldenOverlay: boolean;
-  isFlood: boolean;
+  rainingCoins: boolean; // Raining coins animation
+  isNight: boolean; // Diferent background image for night
+  goldenOverlay: boolean; // Golden overlay over the background of the component
+  isFlood: boolean; // Waves on the bottom of the component
+  //bountifulHarvest: boolean; // raining wheat animation
 }
