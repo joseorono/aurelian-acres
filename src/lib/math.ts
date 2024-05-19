@@ -41,3 +41,16 @@ export function randIntInRangeAfterTimeInterval(min: Integer, max: Integer, time
     }, timeInterval);
   });
 }
+
+export function betweenZeroAndOne(value: number, varName: string = 'variable'): number {
+  if (value > 1) {
+    console.warn(`${varName} must be a value between 0 and 1`);
+    return 1;
+  }
+  if (value < 0) {
+    console.warn(`${varName} must be a value between 0 and 1`);
+    return 0;
+  }
+  return value;
+}
+
