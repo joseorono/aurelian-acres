@@ -7,8 +7,22 @@ export enum SoundsList {
   coinClick = 'coinClick',
 }
 
+const availableSounds = Object.values(SoundsList);
+type SoundFile = `${SoundsList}`; // This is a template literal type with all the available sounds
+
+/*
+function test(sound: SoundFile) {
+  console.log(sound);
+}
+
+test('backgroundMus');
+test('backgroundMusic');
+*/
 class SoundService {
   private static instance: SoundService;
+
+  public static availableSounds: SoundFile[] = availableSounds;
+
   // We should probably expose the pixi sound object to the rest of the app as an attribute of this class
   // In JavaScript, objects and arrays are passed by reference, so this will not create a new object
   public static soundApi = sound;
@@ -98,4 +112,3 @@ class SoundService {
 }
 
 export const soundService = new SoundService();
-
