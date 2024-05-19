@@ -7,6 +7,7 @@ import '~/index.css';
 import AlertPixelIcon from '~/icons/AlertPixelIcon';
 import HeadlinesMarquee from '~/components/headlines-marquee';
 import SoundsDemo from './components/demo/sounds-demo';
+import LoopingProgressBar from './components/ui/loopingProgressBar';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
 
       <div id="app">
         <HeadlinesMarquee />
+        <div className="w-32">
+          <LoopingProgressBar durationInMs={1000} />
+        </div>
         <ToasterDemo />
         <AlertPixelIcon size={48} fill="white" />
       </div>

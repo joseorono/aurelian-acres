@@ -100,11 +100,6 @@ html {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px; /* Set them apart a bit for legibility */
-  /*
-  @screen xl {
-    font-size: 16px;
-  }
-  */
 }
 
 body {
@@ -142,5 +137,5 @@ body {
 */
 
 .btn {
-  @apply pixel-rounded mx-1 my-3 h-10 min-h-10 text-base font-bold;
+  @apply pixel-rounded mx-1 my-1 h-10 min-h-10 text-base font-bold;
 }

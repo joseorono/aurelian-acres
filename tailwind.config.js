@@ -90,4 +90,9 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
   ],
+
+  daisyui: {
+    themes: ['dark', 'light'],
+    logs: true,
+  },
 };
