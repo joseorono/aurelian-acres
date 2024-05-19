@@ -27,12 +27,12 @@ class SoundService {
     return SoundService.instance;
   }
 
-  isAudioPreloaded() {
-    return this.audioPreloaded;
-  }
+  //   isAudioPreloaded() {
+  //     return this.audioPreloaded;
+  //   }
 
   shouldPreload(): boolean {
-    return !this.isAudioPreloaded && !this.isPreloading;
+    return !this.audioPreloaded && !this.isPreloading;
   }
 
   async preloadAudios(): Promise<boolean> {
