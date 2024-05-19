@@ -5,11 +5,13 @@ import { betweenZeroAndOne, getRandomlyVariedValue } from '~/lib/math';
 export enum SoundNames {
   backgroundMusic = 'backgroundMusic',
   coinClick = 'coinClick',
+  upgrade = 'upgrade',
 }
 
 const soundFiles = {
   [SoundNames.backgroundMusic]: 'assets/audio/halo.mp3',
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
+  [SoundNames.upgrade]: 'assets/audio/upgrade.mp3',
 };
 
 class SoundService {
@@ -21,6 +23,7 @@ class SoundService {
 
   public audioLoaded: boolean;
   public isPreloading: boolean;
+  public globalVolume: number; //between 0 and 1;
 
   constructor() {
     if (!SoundService.instance) {
@@ -34,6 +37,10 @@ class SoundService {
 
   shouldPreload(): boolean {
     return !this.audioLoaded && !this.isPreloading;
+  }
+
+  isMuted(): boolean {
+    return sound.context.muted;
   }
 
   async preloadAudios(): Promise<boolean> {
@@ -91,7 +98,10 @@ class SoundService {
 
   setGlobalVolume(volume: number) {
     volume = betweenZeroAndOne(volume, 'volume');
+    //sets current sounds volume
     sound.volumeAll = volume;
+    //sets following sounds maximum volume;
+    sound.context.volume = volume;
   }
 
   muteAll() {
