@@ -31,17 +31,16 @@ export class SoundService {
         console.log('sound service is already loaded');
         return resolve(true);
       }
+      this.isPreloading = true;
       try {
-        this.isPreloading = true;
         sound.add(
           {
-            [Sound.backgroundMusic]: 'public/assets/audio/halo.mp3',
-            [Sound.coinClick]: 'public/assets/audio/coin.mp3',
+            [Sound.backgroundMusic]: 'assets/audio/halo.mp3',
+            [Sound.coinClick]: 'assets/audio/coin.mp3',
           },
           {
             preload: true,
-            loaded: (values) => {
-              console.log('loaded values ===> ', values);
+            loaded: (_) => {
               this.audioPreloaded = true;
               this.isPreloading = false;
               console.log('sound service loaded successfully');
