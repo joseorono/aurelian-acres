@@ -4,6 +4,8 @@ import ToasterDemo from '~/components/demo/toaster-demo';
 import { Toaster } from 'react-hot-toast';
 
 import '~/index.css';
+import AlertPixelIcon from '~/icons/AlertPixelIcon';
+import HeadlinesMarquee from '~/components/headlines-marquee';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
       </div>
 
       <div id="app">
+        <HeadlinesMarquee />
         <ToasterDemo />
+        <AlertPixelIcon size={48} fill="white" />
       </div>
 
       {/* configure global toast settings, like theme */}
