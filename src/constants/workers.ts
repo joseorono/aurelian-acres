@@ -1,5 +1,11 @@
-const WORKERS: workersData[] = [
-  {
+export type workerKeys = 'slave' | 'agricola' | 'miner' | 'baker' | 'mercator' | 'blacksmith' | 'legionary' | 'priest';
+
+export type workerMap = {
+  [key in workerKeys]: workersData;
+};
+
+export const WORKERS: workerMap = {
+  slave: {
     id: 1,
     name: 'Slave',
     description: "Multipurpose worker and someone's property. May be granted citizenship one day",
@@ -10,9 +16,9 @@ const WORKERS: workersData[] = [
     grainPerClick: 1,
     stonePerClick: 1,
   },
-  {
+  agricola: {
     id: 2,
-    name: 'Farmer',
+    name: 'Agricola',
     description: 'People dedicated to the craft of the land. Actually mostly slaves. ',
     costGold: 5,
     costGrain: 50,
@@ -21,7 +27,7 @@ const WORKERS: workersData[] = [
     grainPerClick: 3,
     stonePerClick: 0,
   },
-  {
+  miner: {
     id: 3,
     name: 'Miner',
     description: 'Workers for the mines. Ill-fated people, likely to face death. Good for the economy, though.',
@@ -32,7 +38,7 @@ const WORKERS: workersData[] = [
     grainPerClick: 0,
     stonePerClick: 3,
   },
-  {
+  baker: {
     id: 4,
     name: 'Baker',
     description: 'Keeps the people fed. Makes some good bread.',
@@ -43,9 +49,9 @@ const WORKERS: workersData[] = [
     grainPerClick: 0,
     stonePerClick: 0,
   },
-  {
+  mercator: {
     id: 5,
-    name: 'Mercatores',
+    name: 'Mercator',
     description: 'Sells goods. Buys goods. Makes the markets lively.',
     costGold: 1500,
     costGrain: 800,
@@ -54,7 +60,7 @@ const WORKERS: workersData[] = [
     grainPerClick: 30,
     stonePerClick: 10,
   },
-  {
+  blacksmith: {
     id: 6,
     name: 'Blacksmith',
     description: 'Skilled worker, covers a wide array of needs of the roman people.',
@@ -65,7 +71,7 @@ const WORKERS: workersData[] = [
     grainPerClick: 10,
     stonePerClick: 0,
   },
-  {
+  legionary: {
     id: 7,
     name: 'Legionary',
     description: 'Soldiers, security and even builders. Legionaries are really versatile.',
@@ -76,7 +82,7 @@ const WORKERS: workersData[] = [
     grainPerClick: 40,
     stonePerClick: 0,
   },
-  {
+  priest: {
     id: 8,
     name: 'Priest',
     description: 'Tends to the temples, holds rituals and receives offerings',
@@ -87,6 +93,4 @@ const WORKERS: workersData[] = [
     grainPerClick: 90,
     stonePerClick: 0,
   },
-];
-
-export default WORKERS;
+};

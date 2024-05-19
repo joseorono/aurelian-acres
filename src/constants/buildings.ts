@@ -1,10 +1,10 @@
-type buildingKeys = 'fields' | 'quarry' | 'bakery' | 'forum' | 'smithy' | 'castra' | 'temple';
+export type buildingKeys = 'fields' | 'quarry' | 'bakery' | 'forum' | 'smithy' | 'castra' | 'temple';
 
-type buildingMap = {
+export type buildingMap = {
   [key in buildingKeys]: buildingData;
 };
 
-const BUILDINGS: buildingMap = {
+export const BUILDINGS: buildingMap = {
   fields: {
     id: 1,
     name: 'Fields',
@@ -84,4 +84,4 @@ const BUILDINGS: buildingMap = {
   },
 } as const;
 
-export default BUILDINGS;
+export const BUILDINGS_ARRAY = Object.values(BUILDINGS);
