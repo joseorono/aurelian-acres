@@ -4,8 +4,7 @@ import { SoundNames, soundService } from '~/services/sound-service';
 export default function SoundsDemo() {
   useEffect(() => {
     if (soundService.shouldPreload()) {
-      console.log('is gonna preload bro');
-      soundService.preloadAudios();
+      soundService.preloadAudios().then((val) => console.log('preload promise response ', val));
     }
   }, []);
 
