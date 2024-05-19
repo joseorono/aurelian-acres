@@ -6,8 +6,13 @@ export enum Sound {
   backgroundMusic = 'backgroundMusic',
   coinClick = 'coinClick',
 }
+
 export class SoundService {
   private static instance: SoundService;
+  // We should probably expose the pixi sound object to the rest of the app as an attribute of this class
+  // In JavaScript, objects and arrays are passed by reference, so this will not create a new object
+  public static soundApi = sound;
+
   private audioPreloaded: boolean;
   private isPreloading: boolean;
 
@@ -99,4 +104,3 @@ export class SoundService {
     return;
   }
 }
-
