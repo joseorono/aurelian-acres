@@ -8,7 +8,6 @@ import { CounterSlice, CreateCounterSlice } from './slices/useCounterSlice';
 // Agregar aquí los slices que se creen en el proyecto
 export type GameStore = CounterSlice;
 
-// Esta es la store principal que contienen todos los slices
 // Esta es la Store principal que necesita tener el middleware, los slices no necesitan tener el middleware
 export const useStore = create<GameStore>()(
   devtools(
