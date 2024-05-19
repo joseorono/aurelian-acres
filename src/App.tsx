@@ -4,6 +4,7 @@ import ToasterDemo from '~/components/demo/toaster-demo';
 import { Toaster } from 'react-hot-toast';
 
 import '~/index.css';
+import SoundsDemo from './components/demo/sounds-demo';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <div className="p-8">
         <CounterExample />
       </div>
+
+      <SoundsDemo></SoundsDemo>
 
       <div id="app">
         <ToasterDemo />
@@ -51,3 +54,4 @@ function App() {
 }
 
 export default App;
+
