@@ -21,15 +21,10 @@ class SoundService {
       console.log('created new instance of sound service');
       this.audioPreloaded = false;
       this.isPreloading = false;
-      this.preloadAudios();
       SoundService.instance = this;
     }
     return SoundService.instance;
   }
-
-  //   isAudioPreloaded() {
-  //     return this.audioPreloaded;
-  //   }
 
   shouldPreload(): boolean {
     return !this.audioPreloaded && !this.isPreloading;
