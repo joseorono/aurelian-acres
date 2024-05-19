@@ -5,11 +5,13 @@ import { betweenZeroAndOne, getRandomlyVariedValue } from '~/lib/math';
 export enum SoundNames {
   backgroundMusic = 'backgroundMusic',
   coinClick = 'coinClick',
+  upgrade = 'upgrade',
 }
 
 const soundFiles = {
-  [SoundNames.backgroundMusic]: 'assets/audio/dammit.mp3',
+  [SoundNames.backgroundMusic]: 'assets/audio/halo.mp3',
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
+  [SoundNames.upgrade]: 'assets/audio/upgrade.mp3',
 };
 
 class SoundService {
