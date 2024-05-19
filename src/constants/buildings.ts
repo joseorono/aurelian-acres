@@ -1,17 +1,4 @@
-type buildingData = {
-  id: number;
-  name: string;
-  description: string;
-  costGold: number;
-  costGrain: number;
-  costStone: number;
-  goldPerSecond: number;
-  grainPerSecond: number;
-  stonePerSecond: number;
-  //TODO: unlock requirements?
-};
-
-const buildings: buildingData[] = [
+const BUILDINGS: buildingData[] = [
   {
     id: 1,
     name: 'Fields',
@@ -91,4 +78,4 @@ const buildings: buildingData[] = [
   },
 ];
 
-export default buildings;
+export default BUILDINGS;

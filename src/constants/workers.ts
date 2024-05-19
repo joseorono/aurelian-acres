@@ -1,16 +1,4 @@
-type workersData = {
-  id: number;
-  name: string;
-  description: string;
-  costGold: number;
-  costGrain: number;
-  costStone: number;
-  goldPerClick: number;
-  grainPerClick: number;
-  stonePerClick: number;
-};
-
-const workers: workersData[] = [
+const WORKERS: workersData[] = [
   {
     id: 1,
     name: 'Slave',
@@ -101,4 +89,4 @@ const workers: workersData[] = [
   },
 ];
 
-export default workers;
+export default WORKERS;
