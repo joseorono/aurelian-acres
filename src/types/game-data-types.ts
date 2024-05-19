@@ -42,7 +42,7 @@ export type buildingCount = {
 ======================================
 */
 
-export type workersData = {
+export type workerData = {
   id: number;
   name: string;
   description: string;
@@ -54,7 +54,7 @@ export type workersData = {
 export type workerKeys = 'slave' | 'agricola' | 'miner' | 'baker' | 'mercator' | 'blacksmith' | 'legionary' | 'priest';
 
 export type workerMap = {
-  [key in workerKeys]: workersData;
+  [key in workerKeys]: workerData;
 };
 
 export type workerCount = {
@@ -67,7 +67,7 @@ export type workerCount = {
 ======================================
 */
 
-interface clickerVisualModifiers {
+export interface clickerVisualModifiers {
   rainingCoins: boolean; // Raining coins animation
   isNight: boolean; // Diferent background image for night
   goldenOverlay: boolean; // Golden overlay over the background of the component
