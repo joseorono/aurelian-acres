@@ -13,13 +13,13 @@ class SoundService {
   // In JavaScript, objects and arrays are passed by reference, so this will not create a new object
   public static soundApi = sound;
 
-  public audioPreloaded: boolean;
+  public audioLoaded: boolean;
   public isPreloading: boolean;
 
   constructor() {
     if (!SoundService.instance) {
       console.log('created new instance of sound service');
-      this.audioPreloaded = false;
+      this.audioLoaded = false;
       this.isPreloading = false;
       SoundService.instance = this;
     }
@@ -27,12 +27,12 @@ class SoundService {
   }
 
   shouldPreload(): boolean {
-    return !this.audioPreloaded && !this.isPreloading;
+    return !this.audioLoaded && !this.isPreloading;
   }
 
   async preloadAudios(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      console.log('audioPreloaded => ', this.audioPreloaded);
+      console.log('audioLoaded => ', this.audioLoaded);
       if (!this.shouldPreload()) {
         console.log('sound service is already loaded');
         return;
@@ -47,10 +47,9 @@ class SoundService {
           {
             preload: true,
             loaded: (_) => {
-              this.audioPreloaded = true;
+              this.audioLoaded = true;
               this.isPreloading = false;
               console.log('sound service loaded successfully');
-              console.log('audioPreloaded => ', this.audioPreloaded);
               return resolve(true);
             },
           },
