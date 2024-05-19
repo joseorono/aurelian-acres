@@ -29,7 +29,7 @@ type gameStateSnapshot = {
   progressToggles: progressToggles;
 };
 
-const defaultValues: gameStateSnapshot = {
+const DEFAULT_VALUES: gameStateSnapshot = {
   // Audio Options
   playMusic: true,
   playSound: true,
@@ -58,4 +58,4 @@ const defaultValues: gameStateSnapshot = {
   progressToggles: {},
 };
 
-export default defaultValues;
+export default DEFAULT_VALUES;
