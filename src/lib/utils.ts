@@ -14,3 +14,7 @@ export function shuffleArray(argArray: any[]) {
   }
   return array;
 }
+
+export function auxSleepFor(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, Math.floor(ms)));
+}
