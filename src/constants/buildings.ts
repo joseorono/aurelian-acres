@@ -1,5 +1,11 @@
-const BUILDINGS: buildingData[] = [
-  {
+type buildingKeys = 'fields' | 'quarry' | 'bakery' | 'forum' | 'smithy' | 'castra' | 'temple';
+
+type buildingMap = {
+  [key in buildingKeys]: buildingData;
+};
+
+const BUILDINGS: buildingMap = {
+  fields: {
     id: 1,
     name: 'Fields',
     description: 'Wheat, barley, and millet. Everything a roman citizen (and the rest) needs. ',
@@ -10,7 +16,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 15,
     stonePerSecond: 0,
   },
-  {
+  quarry: {
     id: 2,
     name: 'Quarry',
     description: 'Procure stone for your province',
@@ -21,7 +27,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 0,
     stonePerSecond: 15,
   },
-  {
+  bakery: {
     id: 3,
     name: 'Bakery',
     description: 'Bread is an essential part of the roman diet.',
@@ -32,7 +38,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 0,
     stonePerSecond: 0,
   },
-  {
+  forum: {
     id: 4,
     name: 'Forum',
     description: 'Commerce, politics and a social space. The center of day-to-day roman life.',
@@ -43,7 +49,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 30,
     stonePerSecond: 50,
   },
-  {
+  smithy: {
     id: 5,
     name: 'Smithy',
     description: 'From household goods to weapons and war machinery, roman smithies are the best in the world.',
@@ -54,7 +60,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 0,
     stonePerSecond: 75,
   },
-  {
+  castra: {
     id: 6,
     name: 'Castra',
     description: 'The barracks, a place to safely house your troops before any campaign.',
@@ -65,7 +71,7 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 0,
     stonePerSecond: 150,
   },
-  {
+  temple: {
     id: 7,
     name: 'Temple',
     description: 'Place of worship for a deity of choice. Pray, make an offering. Perhaps the gods will answer.',
@@ -76,6 +82,6 @@ const BUILDINGS: buildingData[] = [
     grainPerSecond: 100,
     stonePerSecond: 250,
   },
-];
+} as const;
 
 export default BUILDINGS;
