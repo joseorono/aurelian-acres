@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { SoundNames, soundService } from '~/services/SoundService';
+import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function SoundsDemo() {
   useEffect(() => {

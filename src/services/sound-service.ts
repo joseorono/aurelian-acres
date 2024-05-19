@@ -35,6 +35,11 @@ class SoundService {
   shouldPreload(): boolean {
     return !this.audioLoaded && !this.isPreloading;
   }
+  onLoaded() {
+    this.audioLoaded = true;
+    this.isPreloading = false;
+    console.log('sound service loaded successfully');
+  }
 
   async preloadAudios(): Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -52,17 +57,17 @@ class SoundService {
         sound.add(soundsList, {
           preload: true,
           loaded: (_) => {
-            this.audioLoaded = true;
-            console.log('sound service loaded successfully');
-            return resolve(true);
+            this.onLoaded();
+            resolve(true);
           },
         });
       } catch (error) {
         console.error('error loading sound service ==> ', error);
-        return reject(false);
-      } finally {
-        this.isPreloading = false;
+        reject(false);
       }
+      //  finally {
+      //   this.isPreloading = false;
+      // }
     });
   }
 
