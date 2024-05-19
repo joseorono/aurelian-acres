@@ -1,26 +1,27 @@
 /* this is carl's domain */
 import { sound } from '@pixi/sound';
-import { getRandomlyVariedValue } from '~/lib/math';
+import { betweenZeroAndOne, getRandomlyVariedValue } from '~/lib/math';
 
-export enum Sound {
+export enum SoundsList {
   backgroundMusic = 'backgroundMusic',
   coinClick = 'coinClick',
 }
 
-export class SoundService {
+class SoundService {
   private static instance: SoundService;
   // We should probably expose the pixi sound object to the rest of the app as an attribute of this class
   // In JavaScript, objects and arrays are passed by reference, so this will not create a new object
   public static soundApi = sound;
 
-  private audioPreloaded: boolean;
-  private isPreloading: boolean;
+  public audioPreloaded: boolean;
+  public isPreloading: boolean;
 
   constructor() {
     if (!SoundService.instance) {
       console.log('created new instance of sound service');
       this.audioPreloaded = false;
       this.isPreloading = false;
+      this.preloadAudios();
       SoundService.instance = this;
     }
     return SoundService.instance;
@@ -30,18 +31,23 @@ export class SoundService {
     return this.audioPreloaded;
   }
 
+  shouldPreload(): boolean {
+    return !this.isAudioPreloaded && !this.isPreloading;
+  }
+
   async preloadAudios(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      if (this.audioPreloaded || this.isPreloading) {
+      console.log('audioPreloaded => ', this.audioPreloaded);
+      if (!this.shouldPreload()) {
         console.log('sound service is already loaded');
-        return resolve(true);
+        return;
       }
-      this.isPreloading = true;
       try {
+        this.isPreloading = true;
         sound.add(
           {
-            [Sound.backgroundMusic]: 'assets/audio/halo.mp3',
-            [Sound.coinClick]: 'assets/audio/coin.mp3',
+            [SoundsList.backgroundMusic]: 'assets/audio/halo.mp3',
+            [SoundsList.coinClick]: 'assets/audio/coin.mp3',
           },
           {
             preload: true,
@@ -49,8 +55,7 @@ export class SoundService {
               this.audioPreloaded = true;
               this.isPreloading = false;
               console.log('sound service loaded successfully');
-              console.log(this.audioPreloaded);
-              console.log(this.isPreloading);
+              console.log('audioPreloaded => ', this.audioPreloaded);
               return resolve(true);
             },
           },
@@ -62,29 +67,29 @@ export class SoundService {
     });
   }
 
-  playSound(alias: Sound, volume: number = 1, variance: number = 0) {
-    this.betweenZeroAndOne('volume', volume);
-    this.betweenZeroAndOne('variance', variance);
+  playSound(alias: SoundsList, volume: number = 1, variance: number = 0) {
+    volume = betweenZeroAndOne(volume, 'volume');
+    variance = betweenZeroAndOne(variance, 'variance');
 
     sound.play(alias, {
       volume: getRandomlyVariedValue(volume, variance),
     });
   }
 
-  startMusic(alias: Sound, volume: number = 1) {
-    this.betweenZeroAndOne('volume', volume);
+  startMusic(alias: SoundsList, volume: number = 1) {
+    volume = betweenZeroAndOne(volume, 'volume');
     sound.play(alias, {
       volume: volume,
       loop: true,
     });
   }
 
-  stopMusic(alias: Sound) {
+  stopMusic(alias: SoundsList) {
     sound.stop(alias);
   }
 
   setGlobalVolume(volume: number) {
-    this.betweenZeroAndOne('volume', volume);
+    volume = betweenZeroAndOne(volume, 'volume');
     sound.volumeAll = volume;
   }
 
@@ -95,11 +100,7 @@ export class SoundService {
   unmuteAll() {
     sound.unmuteAll();
   }
-
-  private betweenZeroAndOne(arg: string, value: number) {
-    if (value > 1) {
-      throw new Error(`${arg} must be a value between 0 and 1`);
-    }
-    return;
-  }
 }
+
+export const soundService = new SoundService();
+
