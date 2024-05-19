@@ -1,10 +1,10 @@
-type playerResources = {
+export type playerResources = {
   gold: number;
   grain: number;
   stone: number;
 };
 
-type priceData = {
+export type priceData = {
   costGold: number;
   costGrain: number;
   costStone: number;
@@ -16,7 +16,7 @@ type priceData = {
 ======================================
 */
 
-type buildingData = {
+export type buildingData = {
   id: number;
   name: string;
   description: string;
@@ -42,7 +42,7 @@ export type buildingCount = {
 ======================================
 */
 
-type workersData = {
+export type workersData = {
   id: number;
   name: string;
   description: string;
@@ -74,3 +74,4 @@ interface clickerVisualModifiers {
   isFlood: boolean; // Waves on the bottom of the component
   //bountifulHarvest: boolean; // raining wheat animation
 }
+
