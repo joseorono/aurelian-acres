@@ -113,3 +113,21 @@ body {
   width: 100%;
   height: 100vh;
 }
+
+/*
+    * The following styles are for the fake progress bar
+    * that represents the passive Buildings.
+*/
+
+@keyframes progress-bar-width-growth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.loopFakeProgressBar {
+  animation: progress-bar-width-growth 1s linear infinite;
+}
