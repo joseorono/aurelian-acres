@@ -48,7 +48,6 @@ class SoundService {
             preload: true,
             loaded: (_) => {
               this.audioLoaded = true;
-              this.isPreloading = false;
               console.log('sound service loaded successfully');
               return resolve(true);
             },
@@ -57,6 +56,8 @@ class SoundService {
       } catch (error) {
         console.error('error loading sound service ==> ', error);
         return reject(false);
+      } finally {
+        this.isPreloading = false;
       }
     });
   }
