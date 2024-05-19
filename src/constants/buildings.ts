@@ -1,4 +1,5 @@
 import { buildingMap } from '~/types/game-data-types';
+import { Integer } from '~/types/number-types';
 
 export const BUILDINGS: buildingMap = {
   fields: {
@@ -81,3 +82,4 @@ export const BUILDINGS: buildingMap = {
 } as const;
 
 export const BUILDINGS_ARRAY = Object.values(BUILDINGS);
+export const BUILDINGS_COUNT: Integer = BUILDINGS_ARRAY.length as Integer;
