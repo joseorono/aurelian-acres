@@ -9,12 +9,48 @@ export const assetList: string[] = [
   // Add more assets here
 ];
 
-export const preloadAsset = (src: string) =>
-  new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = src;
-  });
+class AssetsService {
+  private static instance: AssetsService;
+  public isPreloading: boolean;
+  public assetsLoaded: boolean;
 
-export const preloadAll = (srcs: string[]) => Promise.all(srcs.map(preloadAsset));
+  constructor() {
+    if (!AssetsService.instance) {
+      console.log('created new instance of AssetsService');
+      this.isPreloading = false;
+      this.assetsLoaded = false;
+      AssetsService.instance = this;
+    }
+    return AssetsService.instance;
+  }
+
+  shouldPreload(): boolean {
+    return !this.assetsLoaded && !this.isPreloading;
+  }
+
+  preloadAsset = (src: string) =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = src;
+    });
+
+  preloadAll = async (srcs: string[]) => {
+    if (!this.shouldPreload()) {
+      console.log('assets service is already loaded');
+      return;
+    }
+    this.isPreloading = true;
+    await Promise.all(srcs.map(this.preloadAsset))
+      .then((_) => {
+        console.log('all assets loaded successfully');
+        this.assetsLoaded = true;
+      })
+      .catch((error) => console.error('error loading sound service ==> ', error))
+      .finally(() => (this.isPreloading = false));
+  };
+}
+
+export const assetsService = new AssetsService();
+
