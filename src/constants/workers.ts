@@ -1,4 +1,5 @@
 import { workerMap } from '~/types/game-data-types';
+import { Integer } from '~/types/number-types';
 
 export const WORKERS: workerMap = {
   slave: {
@@ -92,3 +93,4 @@ export const WORKERS: workerMap = {
 };
 
 export const WORKERS_ARRAY = Object.values(WORKERS);
+export const WORKERS_COUNT: Integer = WORKERS_ARRAY.length as Integer;
