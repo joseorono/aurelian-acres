@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import '~/index.css';
 import AlertPixelIcon from '~/icons/AlertPixelIcon';
 import HeadlinesMarquee from '~/components/headlines-marquee';
+import SoundsDemo from './components/demo/sounds-demo';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <div className="p-8">
         <CounterExample />
       </div>
+
+      <SoundsDemo></SoundsDemo>
 
       <div id="app">
         <HeadlinesMarquee />
