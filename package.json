@@ -21,7 +21,8 @@
     "typescript"
   ],
   "scripts": {
-    "test": "vitest --run --reporter verbose",
+    "test-cli": "vitest --run --reporter verbose",
+    "test": "vitest --ui",
     "test-filter": "vitest --reporter verbose --testNamePattern",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts,.tsx",
@@ -60,10 +61,12 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
+    "@testing-library/react": "^15.0.7",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/ui": "^1.6.0",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.11.1",
     "eslint": "^9.3.0",
