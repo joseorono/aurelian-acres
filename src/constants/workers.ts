@@ -1,8 +1,4 @@
-export type workerKeys = 'slave' | 'agricola' | 'miner' | 'baker' | 'mercator' | 'blacksmith' | 'legionary' | 'priest';
-
-export type workerMap = {
-  [key in workerKeys]: workersData;
-};
+import { workerMap } from '~/types/game-data-types';
 
 export const WORKERS: workerMap = {
   slave: {
@@ -94,3 +90,5 @@ export const WORKERS: workerMap = {
     stonePerClick: 0,
   },
 };
+
+export const WORKERS_ARRAY = Object.values(WORKERS);

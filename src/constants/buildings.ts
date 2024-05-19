@@ -1,8 +1,4 @@
-export type buildingKeys = 'fields' | 'quarry' | 'bakery' | 'forum' | 'smithy' | 'castra' | 'temple';
-
-export type buildingMap = {
-  [key in buildingKeys]: buildingData;
-};
+import { buildingMap } from '~/types/game-data-types';
 
 export const BUILDINGS: buildingMap = {
   fields: {

@@ -10,6 +10,12 @@ type priceData = {
   costStone: number;
 };
 
+/* 
+======================================
+            Buildings 
+======================================
+*/
+
 type buildingData = {
   id: number;
   name: string;
@@ -20,6 +26,22 @@ type buildingData = {
   //TODO: unlock requirements?
 } & priceData;
 
+export type buildingKeys = 'fields' | 'quarry' | 'bakery' | 'forum' | 'smithy' | 'castra' | 'temple';
+
+export type buildingMap = {
+  [key in buildingKeys]: buildingData;
+};
+
+export type buildingCount = {
+  [key in buildingKeys]: number;
+};
+
+/* 
+======================================
+            Workers 
+======================================
+*/
+
 type workersData = {
   id: number;
   name: string;
@@ -28,6 +50,22 @@ type workersData = {
   grainPerClick: number;
   stonePerClick: number;
 } & priceData;
+
+export type workerKeys = 'slave' | 'agricola' | 'miner' | 'baker' | 'mercator' | 'blacksmith' | 'legionary' | 'priest';
+
+export type workerMap = {
+  [key in workerKeys]: workersData;
+};
+
+export type workerCount = {
+  [key in workerKeys]: number;
+};
+
+/* 
+======================================
+            Modifiers
+======================================
+*/
 
 interface clickerVisualModifiers {
   rainingCoins: boolean; // Raining coins animation
