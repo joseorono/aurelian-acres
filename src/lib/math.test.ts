@@ -56,3 +56,13 @@ test('randIntInRangeAfterTimeInterval gives you an integer', async () => {
   expect(result).toBeGreaterThanOrEqual(1);
   expect(result).toBeLessThanOrEqual(2);
 });
+
+test('betweenZeroAndOne is between zero and one', () => {
+  const lowerThanZero = math.betweenZeroAndOne(-5);
+  const higherThanOne = math.betweenZeroAndOne(5);
+  const betweenZeroAndOne = math.betweenZeroAndOne(0.752133);
+
+  expect(lowerThanZero).toEqual(0);
+  expect(higherThanOne).toEqual(1);
+  expect(betweenZeroAndOne).toEqual(0.752133);
+});
