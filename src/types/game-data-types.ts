@@ -63,6 +63,14 @@ export type workerCount = {
 
 /* 
 ======================================
+            Aggregated Types
+======================================
+*/
+
+export type tilesKeys = buildingKeys | workerKeys;
+
+/* 
+======================================
             Modifiers
 ======================================
 */
@@ -74,4 +82,3 @@ export interface clickerVisualModifiers {
   isFlood: boolean; // Waves on the bottom of the component
   //bountifulHarvest: boolean; // raining wheat animation
 }
-
