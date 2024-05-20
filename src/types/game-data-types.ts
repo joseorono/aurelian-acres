@@ -63,6 +63,39 @@ export type workerCount = {
 
 /* 
 ======================================
+        Upgrades   
+======================================
+*/
+
+export type upgradeData = {
+  id: number;
+  name: string;
+  description: string;
+  goldMultiplier: number;
+  grainMultiplier: number;
+  stoneMultiplier: number;
+} & priceData;
+
+export type UpgradeKeys =
+  | 'goldenEagleStandard'
+  | 'ceresBlessing'
+  | 'templeOfJupiter'
+  | 'aqueductExpansion'
+  | 'vulcansForge'
+  | 'roadExpansion'
+  | 'forumMarketplace'
+  | 'fieldOfMars'
+  | 'pantheonRenovation'
+  | 'apollosOracle';
+
+export type upgradeMap = Record<UpgradeKeys, upgradeData>;
+
+export type upgradeCount = {
+  [key in UpgradeKeys]: number;
+};
+
+/* 
+======================================
         Town Builder View
 ======================================
 */
