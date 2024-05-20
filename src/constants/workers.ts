@@ -90,7 +90,7 @@ export const WORKERS: workerMap = {
     grainPerClick: 90,
     stonePerClick: 0,
   },
-};
+} as const;
 
 export const WORKERS_ARRAY = Object.values(WORKERS);
 export const WORKERS_COUNT: Integer = WORKERS_ARRAY.length as Integer;

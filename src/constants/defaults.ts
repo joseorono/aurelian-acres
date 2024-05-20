@@ -56,6 +56,6 @@ const DEFAULT_VALUES: gameStateSnapshot = {
 
   // Progress Toggles
   progressToggles: {},
-};
+} as const;
 
 export default DEFAULT_VALUES;

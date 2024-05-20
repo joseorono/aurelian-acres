@@ -34,6 +34,6 @@ export const FLAVOR_TEXT_HEADLINES: string[] = [
   'Turkish Man claims to be descendant of Wolves.',
   "'Gluteus do be Maximus' says Physician.",
   "Galen's Morning Routine Questionable, says Killjoy'",
-];
+] as const;
 
 export const FAKE_HEADLINES_COUNT = FLAVOR_TEXT_HEADLINES.length;

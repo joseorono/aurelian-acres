@@ -1,15 +1,15 @@
 import { BUILDINGS, BUILDINGS_ARRAY, BUILDINGS_COUNT } from '~/constants/buildings';
 import { WORKERS, WORKERS_ARRAY, WORKERS_COUNT } from '~/constants/workers';
-import { buildingData, playerResources, priceData, workersData } from '~/types/game-data-types';
+import { buildingData, playerResources, priceData, workerData } from '~/types/game-data-types';
 
 export function getBuildingById(id: number): buildingData | null {
   // Handle the case where the building is not found
   return BUILDINGS_ARRAY.find((building: buildingData) => building.id === id) ?? null;
 }
 
-export function getWorkerById(id: number): workersData | null {
+export function getWorkerById(id: number): workerData | null {
   // Handle the case where the worker is not found
-  return WORKERS_ARRAY.find((worker: workersData) => worker.id === id) ?? null;
+  return WORKERS_ARRAY.find((worker: workerData) => worker.id === id) ?? null;
 }
 
 export function getBuildingCost(id: number): priceData | null {
