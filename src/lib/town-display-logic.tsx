@@ -4,6 +4,7 @@
 
 import { additionalTiles, buildingCount, tilesKey, townTilesMatrix, workerCount } from '~/types/game-data-types';
 import { shuffleArray } from './utils';
+import { TOWN_DENSITY_BIAS } from '~/constants/defaults';
 
 // ToDo: Poner los emojis que faltan
 // En el futuro ponemos paths a imagenes aqui y usamos imagenes dentro del componente
@@ -140,15 +141,26 @@ export function generateTownDisplayMatrix(
   // This is where all the logic for generating the town display matrix goes
 
   // Populate the matrix with the tiles
+  let nextTile: Nullable<tilesKey> = null;
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       // If there are no more tiles to place, break out of the loop
-      if (pendingTiles.length === 0) {
+      if (!pendingTiles) {
         break;
       }
 
+      // ToDo: Read this, see if I commited any logical mistakes. Test it.
+      // Make sure not to use up all the space before placing all the tiles
+      if (pendingTiles.length > matrixArea - (i * columns + j)) {
+        //nextTile = pendingTiles.pop() || getRandomFillerTile()
+        // 60-40 chance of getting a random tile or a filler tile, changes with TOWN_DENSITY_BIAS
+        nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
+      } else {
+        nextTile = getRandomFillerTile();
+      }
+
       // Place the tile in the matrix
-      matrix[i][j] = pendingTiles.pop() || getRandomFillerTile();
+      matrix[i][j] = nextTile;
     }
   }
 
