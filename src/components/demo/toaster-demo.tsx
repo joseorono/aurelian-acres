@@ -10,6 +10,12 @@ export default function ToasterDemo() {
       <button className="btn btn-primary" onClick={() => toast.error('Error Test Succesful!')}>
         Error Toast
       </button>
+      <button className="btn btn-primary" onClick={() => toast.loading('Loading Modal Succesful!')}>
+        Loading Toast
+      </button>
+      <button className="btn btn-primary" onClick={() => toast.custom('Info Modal Succesful!')}>
+        Info Toast
+      </button>
     </>
   );
 }
