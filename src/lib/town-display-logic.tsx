@@ -77,12 +77,28 @@ export function getShuffledArrayOfTiles(buildings: buildingCount, workers: worke
   return shuffleArray(resourcesArray);
 }
 
+// ToDo: Test this in-game
 export function generateTownDisplayMatrix(
   rows: number,
   columns: number,
   buildings: buildingCount,
   workers: workerCount,
 ): townTilesMatrix {
+  /* 
+    NOTE:
+
+    This function at this point generates a random matrix of tiles with the given dimensions.
+    - Functionally, that's the map we're showing in the town display component.
+    - We're currently not doing anything fancy like pathfinding or anything like that yet.
+
+    Possible Future Improvements:
+
+    Maybe we could start randomly but add incrementally to the map too by making the previous 
+    state an optional argument??... that sounds too complex for the current GameJam's deadline
+    
+    Doing that would kinda turn this function into a Reducer, and make it possible to memoize this. 
+  */
+
   /*
     ======================================
          Guard Clauses and Type Checks
@@ -117,18 +133,24 @@ export function generateTownDisplayMatrix(
   // Generate empty Matrix with the given dimensions
   let matrix = generateEmptyMatrix(rows, columns);
 
-  // ToDo: Populate the matrix with workers and buildings, and return it.
-  // Or maybe start randomly but add a incrementally too by making the previous state an optional argument??
-  // ... But that is too complex
-  // This is where all the logic for generating the town display matrix goes
-  // Remember: the matrix needs to respect the dimensions given by the arguments.
+  // Get a shuffled array of tiles to populate the matrix
+  const pendingTiles = getShuffledArrayOfTiles(buildings, workers);
 
-  // This is a placeholder for now
-  matrix = [
-    ['slave', 'agricola', 'fields', 'quarry', 'bakery', 'forum'],
-    ['miner', 'baker', 'mercator', 'fields', 'quarry', 'bakery'],
-    ['blacksmith', 'legionary', 'priest', 'fields', 'quarry', 'bakery'],
-  ];
+  // ToDo: Test this. This populates the matrix with workers and buildings..
+  // This is where all the logic for generating the town display matrix goes
+
+  // Populate the matrix with the tiles
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
+      // If there are no more tiles to place, break out of the loop
+      if (pendingTiles.length === 0) {
+        break;
+      }
+
+      // Place the tile in the matrix
+      matrix[i][j] = pendingTiles.pop() || getRandomFillerTile();
+    }
+  }
 
   return matrix;
 }
