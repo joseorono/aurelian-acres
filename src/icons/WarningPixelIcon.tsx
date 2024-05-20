@@ -11,7 +11,7 @@ const WarningPixelIcon: React.FC<IPixelIconProps> = ({ size = 24, className = ''
       height={size}
       className={className}
     >
-      <path d="M20 2H2v20h2V4h16v12H6v2H4v2h2v-2h16V2h-2z" fill="currentColor" />
+      <path d="M3 3h16v2H5v14h14v2H3V3zm18 0h-2v18h2V3zM11 15h2v2h-2v-2zm2-8h-2v6h2V7z" fill="currentColor" />
     </svg>
   );
 };

@@ -17,6 +17,3 @@ const ChatPixelIcon: React.FC<IPixelIconProps> = ({ size = 24, className = '', f
 };
 
 export default ChatPixelIcon;
-
-// Podria ser Algo asi para que sea mas performant luego
-//import AlertIcon from  "/node_modules/iconspixel/sadasdas.svg";
