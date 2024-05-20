@@ -63,11 +63,13 @@ export type workerCount = {
 
 /* 
 ======================================
-            Aggregated Types
+        Town Builder View
 ======================================
 */
 
-export type tilesKeys = buildingKeys | workerKeys;
+export type tilesKey = buildingKeys | workerKeys;
+
+export type townTilesMatrix = Array<Array<tilesKey | null>>;
 
 /* 
 ======================================

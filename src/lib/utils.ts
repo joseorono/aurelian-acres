@@ -19,7 +19,7 @@ export function auxSleepFor(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, Math.floor(ms)));
 }
 
-export function auxObjectMap(object: Record<string, any>, mapFn: (arg: any) => any): object {
+export function auxObjectMap(object: Record<string, any>, mapFn: (arg: any) => any): Record<string, any> {
   return Object.keys(object).reduce(function (result: any, key: any) {
     result[key] = mapFn(object[key]);
     return result;
