@@ -2,7 +2,8 @@
  * This file contains all the functions logically needed for generating and calculating the status of the town.
  */
 
-import { buildingCount, tilesKey, townTilesMatrix, workerCount } from '~/types/game-data-types';
+import { additionalTiles, buildingCount, tilesKey, townTilesMatrix, workerCount } from '~/types/game-data-types';
+import { shuffleArray } from './utils';
 
 // ToDo: Poner los emojis que faltan
 // En el futuro ponemos paths a imagenes aqui y usamos imagenes dentro del componente
@@ -22,7 +23,20 @@ export const spritesForTiles: Record<tilesKey, string> = {
   blacksmith: '',
   legionary: '',
   priest: '',
+  road: '🟫',
+  citizen: '👥',
+  tree: '🌲',
 };
+
+// ToDo: Unit-Test this. This populates the matrix with workers and buildings..
+export function getRandomFillerTile(chanceOfEmpty: number = 0.8): Nullable<additionalTiles> {
+  // By default, there's an 80% chance of an empty tile
+  // I won't be adding roads until we implement pathfinding/random walk or some sorta walkable-map generation algorithm
+
+  return Math.random() < chanceOfEmpty
+    ? null // null if the random number is less than the chance of empty
+    : (['citizen', 'tree'][Math.floor(Math.random() * 3)] as additionalTiles);
+}
 
 export function generateEmptyMatrix(rows: number, columns: number): townTilesMatrix {
   return Array(rows) // Generate the matrix
@@ -44,6 +58,23 @@ export function getDisplayTileForKey(key: Nullable<tilesKey>): RenderableElement
   }
 
   return spritesForTiles[key];
+}
+
+// ToDo: Unit-Test this.
+export function getShuffledArrayOfTiles(buildings: buildingCount, workers: workerCount): tilesKey[] {
+  // Flatten the resources into an array of tiles
+
+  // Just push it all into a single array and return it
+  const resourcesArray: tilesKey[] = [];
+  for (const [key, value] of Object.entries(buildings)) {
+    resourcesArray.push(...Array(value).fill(key as tilesKey));
+  }
+  for (const [key, value] of Object.entries(workers)) {
+    resourcesArray.push(...Array(value).fill(key as tilesKey));
+  }
+
+  // Shuffle the array so the tiles are in a random order and return it
+  return shuffleArray(resourcesArray);
 }
 
 export function generateTownDisplayMatrix(

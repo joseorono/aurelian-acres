@@ -67,7 +67,9 @@ export type workerCount = {
 ======================================
 */
 
-export type tilesKey = buildingKeys | workerKeys;
+export type additionalTiles = 'road' | 'citizen' | 'tree';
+
+export type tilesKey = buildingKeys | workerKeys | additionalTiles;
 
 export type townTilesMatrix = Array<Array<tilesKey | null>>;
 
