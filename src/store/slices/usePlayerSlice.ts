@@ -3,11 +3,13 @@ import { playerResources } from '~/types/game-data-types';
 
 interface PlayerState {
   playerName: string;
+  baseMultiplier: number;
   resourceCount: playerResources;
 }
 
 interface PlayerActions {
   setPlayerName: (value: string) => void;
+  setBaseMultiplier: (value: number) => void;
   increaseResource: (key: keyof playerResources, value: number) => void;
   decreaseResource: (key: keyof playerResources, value: number) => void;
 }
@@ -21,6 +23,10 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
     stone: 0,
     grain: 0,
   },
+  baseMultiplier: 1,
+
+  setBaseMultiplier: (value: number) => set(() => ({ baseMultiplier: value })),
+
   setPlayerName: (value: string) => set(() => ({ playerName: value })),
   increaseResource: (key: keyof playerResources, value: number) =>
     set(() => ({
@@ -38,4 +44,3 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
       },
     })),
 });
-
