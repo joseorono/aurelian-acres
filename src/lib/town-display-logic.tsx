@@ -27,7 +27,7 @@ export const spritesForTiles: Record<tilesKey, string> = {
   road: '🟫',
   citizen: '👥',
   tree: '🌲',
-};
+} as const;
 
 // ToDo: Unit-Test this. This populates the matrix with workers and buildings..
 export function getRandomFillerTile(chanceOfEmpty: number = 0.8): Nullable<additionalTiles> {
@@ -151,12 +151,14 @@ export function generateTownDisplayMatrix(
 
       // ToDo: Read this, see if I commited any logical mistakes. Test it.
       // Make sure not to use up all the space before placing all the tiles
-      if (pendingTiles.length > matrixArea - (i * columns + j)) {
-        //nextTile = pendingTiles.pop() || getRandomFillerTile()
+      if (pendingTiles.length < matrixArea - (i * columns + j)) {
+        // There is available space for a filler tile...
         // 60-40 chance of getting a random tile or a filler tile, changes with TOWN_DENSITY_BIAS
         nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
+      } else if (pendingTiles) {
+        nextTile = pendingTiles.pop() as Nullable<tilesKey>;
       } else {
-        nextTile = getRandomFillerTile();
+        getRandomFillerTile();
       }
 
       // Place the tile in the matrix
@@ -166,4 +168,3 @@ export function generateTownDisplayMatrix(
 
   return matrix;
 }
-
