@@ -1,4 +1,5 @@
 import CounterExample from '~/components/demo/counter-example';
+import StoreExample from '~/components/demo/store-demo';
 import ToasterDemo from '~/components/demo/toaster-demo';
 
 import { Toaster } from 'react-hot-toast';
@@ -21,6 +22,9 @@ function App() {
         <CounterExample />
       </div>
 
+      <div className="p-8">
+        <StoreExample />
+      </div>
       <SoundsDemo></SoundsDemo>
 
       <div id="app">
@@ -76,3 +80,4 @@ function App() {
 }
 
 export default App;
+
