@@ -27,16 +27,16 @@ export const CreateBuildingSlice: StateCreator<BuildingSlice> = (set, get) => ({
     castra: 0,
     temple: 0,
   },
-  increaseBuilding: (key: buildingKeys, value: number) => {
-    let build = get();
-    build.buildingCount[key] = build.buildingCount[key] + value;
-    set(build);
-  },
-  decreaseBuilding: (key: buildingKeys, value: number) => {
-    let build = get();
-    build.buildingCount[key] = build.buildingCount[key] + value == 0 ? 0 : build.buildingCount[key] - value;
-    set(build);
-  },
+  increaseBuilding: (key: buildingKeys, value: number) =>
+    set(() => ({ buildingCount: { ...get().buildingCount, [key]: get().buildingCount[key] + value } })),
+  decreaseBuilding: (key: buildingKeys, value: number) =>
+    set(() => ({
+      buildingCount: {
+        ...get().buildingCount,
+        [key]: get().buildingCount[key] - value < 0 ? 0 : get().buildingCount[key] - value,
+      },
+    })),
+
   getPassiveIncome: () => {
     let buildings = get().buildingCount;
     let buildingsArray = Object.entries(buildings);
@@ -48,7 +48,9 @@ export const CreateBuildingSlice: StateCreator<BuildingSlice> = (set, get) => ({
       accumulatedGoldPerSecond += BUILDINGS[key as keyof buildingMap].goldPerSecond * value;
       accumulatedGrainPerSecond += BUILDINGS[key as keyof buildingMap].grainPerSecond * value;
       accumulatedStoneGoldPerSecond += BUILDINGS[key as keyof buildingMap].stonePerSecond * value;
+      console.log(key, value);
     }
+
     return {
       goldPerSecond: accumulatedGoldPerSecond,
       grainPerSecond: accumulatedGrainPerSecond,
