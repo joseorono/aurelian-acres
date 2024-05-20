@@ -1,5 +1,5 @@
 // No sé si sea lo más optimo, pero se me ocurre que se podrían pre-cargar los assets de la siguiente manera:
-// const preloadin = await preloadAll(['img1.jpg', 'img2.jpg'])
+// const preloadin = await preloadEveryImage(['img1.jpg', 'img2.jpg'])
 
 export const assetList: string[] = [
   '/fonts/Minimal3x5.ttf',
@@ -28,21 +28,21 @@ class AssetsService {
     return !this.assetsLoaded && !this.isPreloading;
   }
 
-  preloadAsset = (src: string) =>
+  preloadImage = (src: string) =>
     new Promise((resolve, reject) => {
-      const img = new Image();
+      let img = new Image();
       img.onload = resolve;
       img.onerror = reject;
       img.src = src;
     });
 
-  preloadAll = async (srcs: string[]) => {
+  preloadEveryImage = async (srcs: string[]) => {
     if (!this.shouldPreload()) {
       console.log('assets service is already loaded');
       return;
     }
     this.isPreloading = true;
-    await Promise.all(srcs.map(this.preloadAsset))
+    await Promise.all(srcs.map(this.preloadImage))
       .then((_) => {
         console.log('all assets loaded successfully');
         this.assetsLoaded = true;
@@ -53,4 +53,3 @@ class AssetsService {
 }
 
 export const assetsService = new AssetsService();
-
