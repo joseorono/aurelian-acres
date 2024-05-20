@@ -16,14 +16,14 @@ export const spritesForTiles: Record<tilesKey, string> = {
   fields: '🌾',
   quarry: '🪨',
   bakery: '🍞',
-  forum: '',
-  smithy: '',
-  castra: '',
-  temple: '',
-  mercator: '',
-  blacksmith: '',
-  legionary: '',
-  priest: '',
+  forum: '🏛️',
+  smithy: '🔥',
+  castra: '🗼',
+  temple: '⛪',
+  mercator: '👛',
+  blacksmith: '🌫️',
+  legionary: '🪖',
+  priest: '📿',
   road: '🟫',
   citizen: '👥',
   tree: '🌲',
@@ -166,3 +166,4 @@ export function generateTownDisplayMatrix(
 
   return matrix;
 }
+
