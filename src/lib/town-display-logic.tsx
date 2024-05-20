@@ -145,20 +145,19 @@ export function generateTownDisplayMatrix(
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       // If there are no more tiles to place, break out of the loop
-      if (!pendingTiles) {
-        break;
-      }
 
       // ToDo: Read this, see if I commited any logical mistakes. Test it.
       // Make sure not to use up all the space before placing all the tiles
       if (pendingTiles.length < matrixArea - (i * columns + j)) {
         // There is available space for a filler tile...
         // 60-40 chance of getting a random tile or a filler tile, changes with TOWN_DENSITY_BIAS
-        nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
-      } else if (pendingTiles) {
-        nextTile = pendingTiles.pop() as Nullable<tilesKey>;
+        if (pendingTiles) {
+          nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
+        } else {
+          nextTile = getRandomFillerTile();
+        }
       } else {
-        getRandomFillerTile();
+        nextTile = pendingTiles.pop() as Nullable<tilesKey>;
       }
 
       // Place the tile in the matrix
