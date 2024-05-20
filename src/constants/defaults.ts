@@ -58,4 +58,7 @@ const DEFAULT_VALUES: gameStateSnapshot = {
   progressToggles: {},
 } as const;
 
+export const DEFAULT_TOWNDISPLAY_ROWS = 7;
+export const DEFAULT_TOWNDISPLAY_COLUMNS = 10;
+
 export default DEFAULT_VALUES;

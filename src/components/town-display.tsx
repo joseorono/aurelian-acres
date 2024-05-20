@@ -3,14 +3,15 @@ import { useStore } from '~/store/useStore';
 import { auxObjectMap } from '~/lib/utils';
 import { buildingCount, townTilesMatrix, workerCount } from '~/types/game-data-types';
 import { generateTownDisplayMatrix, getDisplayTileForKey } from '~/lib/town-display-logic';
+import { DEFAULT_TOWNDISPLAY_COLUMNS, DEFAULT_TOWNDISPLAY_ROWS } from '~/constants/defaults';
 
 function TownDisplay() {
   //  const gameStore = useStore();
 
   const renderableWorkerPerType = 6;
   const renderableBuildingPerType = 3;
-  const matrixHeight: number = 7;
-  const matrixWidth: number = 10;
+  const matrixHeight: number = DEFAULT_TOWNDISPLAY_ROWS;
+  const matrixWidth: number = DEFAULT_TOWNDISPLAY_COLUMNS;
 
   // ToDo: Test that this is Reactive. I really *hope* this updates reactively
   const workersCount: workerCount = useStore((state) => state.workerCount);
