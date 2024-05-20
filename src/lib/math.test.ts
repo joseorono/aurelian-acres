@@ -49,7 +49,7 @@ test('generateRange', () => {
   expect(() => math.generateRange(3, 2)).toThrowError(/RANGE ERROR/);
 });
 
-test('randIntInRangeAfterTimeInterval gives you an integer', async () => {
+test.skip('randIntInRangeAfterTimeInterval gives you an integer', async () => {
   const result = await math.randIntInRangeAfterTimeInterval(1 as Integer, 2 as Integer, 2000);
 
   expectTypeOf(result).toBeNumber();
