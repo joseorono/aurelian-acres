@@ -22,16 +22,20 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
     grain: 0,
   },
   setPlayerName: (value: string) => set(() => ({ playerName: value })),
-  increaseResource: (key: keyof playerResources, value: number) => {
-    let res = get();
-    res.resourceCount[key] = res.resourceCount[key] + value;
-    set(res);
-  },
+  increaseResource: (key: keyof playerResources, value: number) =>
+    set(() => ({
+      resourceCount: {
+        ...get().resourceCount,
+        [key]: get().resourceCount[key] + value,
+      },
+    })),
 
-  decreaseResource: (key: keyof playerResources, value: number) => {
-    let res = get();
-    res.resourceCount[key] = res.resourceCount[key] + value == 0 ? 0 : res.resourceCount[key] - value;
-    set(res);
-  },
+  decreaseResource: (key: keyof playerResources, value: number) =>
+    set(() => ({
+      resourceCount: {
+        ...get().resourceCount,
+        [key]: get().resourceCount[key] - value < 0 ? 0 : get().resourceCount[key] - value,
+      },
+    })),
 });
 

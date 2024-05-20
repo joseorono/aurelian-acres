@@ -28,16 +28,15 @@ export const CreateWorkerSlice: StateCreator<WorkerSlice> = (set, get) => ({
     legionary: 0,
     priest: 0,
   },
-  increaseWorker: (key: workerKeys, value: number) => {
-    let build = get();
-    build.workerCount[key] = build.workerCount[key] + value;
-    set(build);
-  },
-  decreaseWorker: (key: workerKeys, value: number) => {
-    let build = get();
-    build.workerCount[key] = build.workerCount[key] + value == 0 ? 0 : build.workerCount[key] - value;
-    set(build);
-  },
+  increaseWorker: (key: workerKeys, value: number) =>
+    set(() => ({ workerCount: { ...get().workerCount, [key]: get().workerCount[key] + value } })),
+  decreaseWorker: (key: workerKeys, value: number) =>
+    set(() => ({
+      workerCount: {
+        ...get().workerCount,
+        [key]: get().workerCount[key] - value < 0 ? 0 : get().workerCount[key] - value,
+      },
+    })),
   getActiveIncome: () => {
     let workers = get().workerCount;
     let workersArray = Object.entries(workers);
@@ -50,7 +49,6 @@ export const CreateWorkerSlice: StateCreator<WorkerSlice> = (set, get) => ({
       accumulatedGrainPerClick += WORKERS[key as keyof workerMap].grainPerClick * value;
       accumulatedStonePerClick += WORKERS[key as keyof workerMap].stonePerClick * value;
     }
-    console.log([accumulatedGoldPerClick, accumulatedGrainPerClick, accumulatedStonePerClick]);
     return {
       goldPerClick: accumulatedGoldPerClick,
       grainPerClick: accumulatedGrainPerClick,
