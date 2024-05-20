@@ -12,6 +12,7 @@ import LoopingProgressBar from './components/ui/loopingProgressBar';
 import CheckDoublePixelIcon from './icons/CheckDoubleIcon';
 import WarningPixelIcon from './icons/WarningPixelIcon';
 import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
+import TownDisplay from './components/town-display';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -25,7 +26,10 @@ function App() {
       <div className="p-8">
         <StoreExample />
       </div>
-      <SoundsDemo></SoundsDemo>
+      <div>
+        <TownDisplay></TownDisplay>
+      </div>
+      {/* <SoundsDemo></SoundsDemo> */}
 
       <div id="app">
         <HeadlinesMarquee />

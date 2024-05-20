@@ -40,8 +40,18 @@ export function getRandomFillerTile(chanceOfEmpty: number = 0.8): Nullable<addit
 }
 
 export function generateEmptyMatrix(rows: number, columns: number): townTilesMatrix {
-  return Array(rows) // Generate the matrix
-    .fill(Array(columns).fill(null)); // Create the empty rows
+  // return Array(rows) // Generate the matrix
+  //   .fill(Array(columns).fill(null)); // Create the empty rows
+
+  //declare matrix
+  const matrix = [];
+  for (let i = 0; i < rows; i++) {
+    // Create an inner array for each row filled with nulls
+    const innerArray = Array(columns).fill(null);
+    matrix.push(innerArray);
+  }
+
+  return matrix;
 }
 
 export function getDisplayTileForKey(key: Nullable<tilesKey>): RenderableElement {
