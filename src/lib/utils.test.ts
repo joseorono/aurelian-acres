@@ -75,3 +75,10 @@ test('auxObjectMap: Return Object has all the same keys as input', () => {
   let result = utils.auxObjectMap(absurdWorkers, (count: number) => count);
   expect(Object.keys(result).sort()).toEqual(Object.keys(absurdWorkers).sort());
 });
+
+// getRandomElement
+test('getRandomElement: Returns an element from the array', () => {
+  let arr = [1, 2, 3, 4, 5];
+  let result = utils.getRandomElement(arr);
+  expect(arr).toContain(result);
+});
