@@ -162,7 +162,9 @@ export function generateTownDisplayMatrix(
         // There is available space for a filler tile...
         // 60-40 chance of getting a random tile or a filler tile, changes with TOWN_DENSITY_BIAS
         if (pendingTiles) {
-          nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
+          nextTile =
+            (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() ?? getRandomFillerTile() : getRandomFillerTile()) ||
+            null;
         } else {
           nextTile = getRandomFillerTile();
         }
@@ -177,3 +179,4 @@ export function generateTownDisplayMatrix(
 
   return matrix;
 }
+

@@ -58,8 +58,8 @@ const DEFAULT_VALUES: gameStateSnapshot = {
   progressToggles: {},
 } as const;
 
-export const DEFAULT_TOWNDISPLAY_ROWS = 7;
-export const DEFAULT_TOWNDISPLAY_COLUMNS = 10;
+export const DEFAULT_TOWNDISPLAY_ROWS = 20;
+export const DEFAULT_TOWNDISPLAY_COLUMNS = 40;
 export const TOWN_DENSITY_BIAS = 0.6; // Used for probability calculations. Must be float between 0 and 1.
 
 export default DEFAULT_VALUES;
