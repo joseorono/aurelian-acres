@@ -1,4 +1,4 @@
-interface IPixelIconProps {
+export interface IPixelIconProps {
   className?: string;
   size?: number;
   fill?: string;
