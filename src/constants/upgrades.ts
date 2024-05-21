@@ -1,5 +1,79 @@
-import { UpgradeKeys, upgradeData } from '~/types/game-data-types';
+import { UpgradeKeys, playerLevelData, upgradeData } from '~/types/game-data-types';
 import { Integer } from '~/types/number-types';
+
+// Levels
+// Inspired by the Cursor unit in CClicker
+// We could pass the level number as the index to calculateIncome functions, and store index in the store.
+export const LEVELS: Array<playerLevelData> = [
+  {
+    baseMultiplier: 1,
+    costGold: 0,
+    costGrain: 0,
+    costStone: 0,
+  },
+  {
+    baseMultiplier: 1.1,
+    costGold: 50,
+    costGrain: 100,
+    costStone: 100,
+  },
+  {
+    baseMultiplier: 1.2,
+    costGold: 200,
+    costGrain: 150,
+    costStone: 150,
+  },
+  {
+    baseMultiplier: 1.3,
+    costGold: 300,
+    costGrain: 200,
+    costStone: 150,
+  },
+  {
+    baseMultiplier: 1.4,
+    costGold: 400,
+    costGrain: 300,
+    costStone: 250,
+  },
+  {
+    baseMultiplier: 1.5,
+    costGold: 500,
+    costGrain: 350,
+    costStone: 350,
+  },
+  {
+    baseMultiplier: 1.6,
+    costGold: 600,
+    costGrain: 400,
+    costStone: 450,
+  },
+  {
+    baseMultiplier: 1.7,
+    costGold: 700,
+    costGrain: 450,
+    costStone: 550,
+  },
+  {
+    baseMultiplier: 1.8,
+    costGold: 800,
+    costGrain: 500,
+    costStone: 650,
+  },
+  {
+    baseMultiplier: 1.9,
+    costGold: 900,
+    costGrain: 600,
+    costStone: 750,
+  },
+  {
+    baseMultiplier: 1.9,
+    costGold: 1000,
+    costGrain: 700,
+    costStone: 850,
+  },
+] as const;
+
+export const LEVELS_COUNT: number = LEVELS.length as number;
 
 // Shift them around so the mundane ones come first and the Divine ones are dead last
 export const UPGRADES: Record<UpgradeKeys, upgradeData> = {
@@ -128,4 +202,3 @@ export const UPGRADES: Record<UpgradeKeys, upgradeData> = {
 
 export const UPGRADES_ARRAY = Object.values(UPGRADES);
 export const UPGRADES_COUNT: Integer = UPGRADES_ARRAY.length as Integer;
-

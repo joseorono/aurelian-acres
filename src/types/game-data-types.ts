@@ -78,6 +78,10 @@ export type workerCount = {
 ======================================
 */
 
+export type playerLevelData = {
+  baseMultiplier: number;
+} & priceData;
+
 export type upgradeData = {
   id: number;
   name: string;
@@ -131,4 +135,3 @@ export interface clickerVisualModifiers {
   isFlood: boolean; // Waves on the bottom of the component
   //bountifulHarvest: boolean; // raining wheat animation
 }
-

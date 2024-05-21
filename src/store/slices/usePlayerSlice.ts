@@ -2,14 +2,15 @@ import { StateCreator } from 'zustand';
 import { playerResources, UpgradeKeys } from '~/types/game-data-types';
 interface PlayerState {
   playerName: string;
-  baseMultiplier: number;
+  playerLevel: number;
   resourceCount: playerResources;
   currentUpgrade: UpgradeKeys;
 }
 
 interface PlayerActions {
   setPlayerName: (value: string) => void;
-  setBaseMultiplier: (value: number) => void;
+  setPlayerLevel: (value: number) => void;
+  increasePlayerLevel: (value: number) => void;
   increaseResource: (key: keyof playerResources, value: number) => void;
   decreaseResource: (key: keyof playerResources, value: number) => void;
 }
@@ -23,9 +24,11 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
     stone: 0,
     grain: 0,
   },
-  baseMultiplier: 1,
+  playerLevel: 0,
   currentUpgrade: 'default',
-  setBaseMultiplier: (value: number) => set(() => ({ baseMultiplier: value })),
+
+  setPlayerLevel: (value: number) => set(() => ({ playerLevel: value })),
+  increasePlayerLevel: () => set((state) => ({ playerLevel: state.playerLevel + 1 })),
 
   setPlayerName: (value: string) => set(() => ({ playerName: value })),
   increaseResource: (key: keyof playerResources, value: number) =>
@@ -44,4 +47,3 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
       },
     })),
 });
-
