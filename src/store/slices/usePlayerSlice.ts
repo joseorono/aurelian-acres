@@ -24,7 +24,7 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
     grain: 0,
   },
   baseMultiplier: 1,
-
+  currentUpgrade: 'default',
   setBaseMultiplier: (value: number) => set(() => ({ baseMultiplier: value })),
 
   setPlayerName: (value: string) => set(() => ({ playerName: value })),
