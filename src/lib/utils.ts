@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { ROMAN_NAMES } from '~/constants/names';
 
 export const noop = () => {};
 
@@ -26,4 +27,23 @@ export function auxObjectMap(object: Record<string, any>, mapFn: (arg: any) => a
     result[key] = mapFn(object[key]);
     return result;
   }, {});
+}
+
+export function getRandomElement<T>(array: T[]): T {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+export function getRandomRomanName(type: 'full' | 'first' | null = null): string {
+  switch (type) {
+    case 'full':
+      const givenName = getRandomElement(ROMAN_NAMES.givenNames);
+      const familyName = getRandomElement(ROMAN_NAMES.familyNames);
+      const cognomen = getRandomElement(ROMAN_NAMES.cognomina);
+      return `${givenName} ${familyName} ${cognomen}`;
+    case 'first':
+      return getRandomElement(ROMAN_NAMES.givenNames);
+    default: // Just a formality
+      return getRandomElement(ROMAN_NAMES.givenNames);
+  }
 }
