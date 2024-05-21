@@ -8,80 +8,89 @@ import '~/index.css';
 import AlertPixelIcon from '~/icons/AlertPixelIcon';
 import HeadlinesMarquee from '~/components/headlines-marquee';
 import SoundsDemo from './components/demo/sounds-demo';
-import LoopingProgressBar from './components/ui/loopingProgressBar';
+import LoopingProgressBar from './components/game/misc/loopingProgressBar';
 import CheckDoublePixelIcon from './icons/CheckDoubleIcon';
 import WarningPixelIcon from './icons/WarningPixelIcon';
 import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
 import TownDisplay from './components/town-display';
+import GenericLoader from './components/loader/generic-loader';
+import DialogDemo from './components/demo/dialog-demo';
+import DialogDemo2 from './components/demo/dialog-demo-2';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
 
   return (
     <>
-      <div className="p-8">
-        <CounterExample />
-      </div>
-
-      <div className="p-8">
-        <StoreExample />
-      </div>
-      <div>
-        <TownDisplay></TownDisplay>
-      </div>
-      {/* <SoundsDemo></SoundsDemo> */}
-
-      <div id="app">
-        <HeadlinesMarquee />
-        <div className="w-32">
-          <LoopingProgressBar durationInMs={1000} />
+      <div id="app" vaul-drawer-wrapper="">
+        <div className="p-8">
+          <CounterExample />
         </div>
-        <ToasterDemo />
-        <AlertPixelIcon size={48} fill="white" />
-      </div>
 
-      <Toaster
-        gutter={12}
-        toastOptions={{
-          position: 'bottom-center',
+        <div className="p-8">
+          <StoreExample />
+        </div>
+        <div>
+          <TownDisplay></TownDisplay>
+        </div>
+        {/* <SoundsDemo></SoundsDemo> */}
 
-          // Aria
-          ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-          },
+        <div id="app">
+          <HeadlinesMarquee />
+          <div className="w-32">
+            <LoopingProgressBar durationInMs={1000} />
+          </div>
+          <ToasterDemo />
+          <AlertPixelIcon size={48} fill="white" />
+        </div>
+        <div className="p-4">
+          <DialogDemo />
+          <DialogDemo2 />
+          <SoundsDemo />
+        </div>
+        <GenericLoader />
+        <Toaster
+          gutter={12}
+          toastOptions={{
+            position: 'bottom-center',
 
-          // Styling
-          className: toastClasses,
-
-          success: {
-            icon: <CheckDoublePixelIcon size={24} fill="#fff" />,
-            style: {
-              background: '#4BB543',
-              color: '#fff',
+            // Aria
+            ariaProps: {
+              role: 'status',
+              'aria-live': 'polite',
             },
-          },
-          error: {
-            icon: <WarningPixelIcon size={24} fill="#fff" />,
-            style: {
-              background: '#d32f2f',
-              color: '#fff',
-            },
-          },
-          custom: {
-            icon: <LightBulbPixelIcon size={24} fill="#fff" />,
+
+            // Styling
             className: toastClasses,
-            style: {
-              background: '#333',
-              color: '#fff',
-              textShadow: '1px 1px 2px #000',
+
+            success: {
+              icon: <CheckDoublePixelIcon size={24} fill="#fff" />,
+              style: {
+                background: '#4BB543',
+                color: '#fff',
+              },
             },
-          },
-        }}
-      />
+            error: {
+              icon: <WarningPixelIcon size={24} fill="#fff" />,
+              style: {
+                background: '#d32f2f',
+                color: '#fff',
+              },
+            },
+            custom: {
+              icon: <LightBulbPixelIcon size={24} fill="#fff" />,
+              className: toastClasses,
+              style: {
+                background: '#333',
+                color: '#fff',
+                textShadow: '1px 1px 2px #000',
+              },
+            },
+          }}
+        />
+      </div>
     </>
   );
 }
 
 export default App;
-
