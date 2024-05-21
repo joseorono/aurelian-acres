@@ -5,6 +5,7 @@ import { SoundNames, soundService } from '~/services/sound-service';
 
 import { TypeAnimation } from 'react-type-animation';
 import { auxSleepFor, cn } from '~/lib/utils';
+import { TextSequence } from '~/types/component-props';
 
 // Define the interface for the props
 interface TypedTextProps {
