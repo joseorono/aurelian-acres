@@ -1,6 +1,5 @@
 import { StateCreator } from 'zustand';
-import { buildingKeys, buildingMap, buildingCount } from '~/types/game-data-types';
-import { BUILDINGS } from '~/constants/buildings';
+import { buildingKeys, buildingCount } from '~/types/game-data-types';
 interface BuildingState {
   buildingCount: buildingCount;
 }
@@ -8,11 +7,6 @@ interface BuildingState {
 interface BuildingActions {
   increaseBuilding: (key: buildingKeys, value: number) => void;
   decreaseBuilding: (key: buildingKeys, value: number) => void;
-  getPassiveIncome: () => {
-    goldPerSecond: number;
-    grainPerSecond: number;
-    stonePerSecond: number;
-  };
 }
 
 export type BuildingSlice = BuildingState & BuildingActions;
@@ -36,26 +30,5 @@ export const CreateBuildingSlice: StateCreator<BuildingSlice> = (set, get) => ({
         [key]: get().buildingCount[key] - value < 0 ? 0 : get().buildingCount[key] - value,
       },
     })),
-
-  getPassiveIncome: () => {
-    let buildings = get().buildingCount;
-    let buildingsArray = Object.entries(buildings);
-    let accumulatedGoldPerSecond = 0;
-    let accumulatedGrainPerSecond = 0;
-    let accumulatedStoneGoldPerSecond = 0;
-    for (let [key, value] of buildingsArray) {
-      if (value == 0) continue;
-      accumulatedGoldPerSecond += BUILDINGS[key as keyof buildingMap].goldPerSecond * value;
-      accumulatedGrainPerSecond += BUILDINGS[key as keyof buildingMap].grainPerSecond * value;
-      accumulatedStoneGoldPerSecond += BUILDINGS[key as keyof buildingMap].stonePerSecond * value;
-      console.log(key, value);
-    }
-
-    return {
-      goldPerSecond: accumulatedGoldPerSecond,
-      grainPerSecond: accumulatedGrainPerSecond,
-      stonePerSecond: accumulatedStoneGoldPerSecond,
-    };
-  },
 });
 

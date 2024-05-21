@@ -1,6 +1,19 @@
 import { BUILDINGS, BUILDINGS_ARRAY, BUILDINGS_COUNT } from '~/constants/buildings';
 import { WORKERS, WORKERS_ARRAY, WORKERS_COUNT } from '~/constants/workers';
-import { buildingData, playerResources, priceData, workerData } from '~/types/game-data-types';
+import { UPGRADES } from '~/constants/upgrades';
+import {
+  buildingData,
+  playerResources,
+  priceData,
+  workerData,
+  buildingCount,
+  UpgradeKeys,
+  activeIncomeData,
+  buildingKeys,
+  workerCount,
+  passiveIncomeData,
+  workerKeys,
+} from '~/types/game-data-types';
 
 export function getBuildingById(id: number): buildingData | null {
   // Handle the case where the building is not found
@@ -101,3 +114,47 @@ export function getBestAffordableWorker(res: playerResources): number | null {
   // Return null if no building is affordable
   return null;
 }
+
+export function calculatePassiveIncome(buildings: buildingCount, upgradeKey: UpgradeKeys): passiveIncomeData | null {
+  // Declare variables to store calculated values
+  let accumulatedGoldPerSecond = 0;
+  let accumulatedGrainPerSecond = 0;
+  let accumulatedStoneGoldPerSecond = 0;
+
+  // Iterate buildings to calculate income per each building
+  for (const key in buildings) {
+    if (buildings[key as keyof buildingCount] == 0) continue;
+    accumulatedGoldPerSecond += BUILDINGS[key as buildingKeys].goldPerSecond * buildings[key as keyof buildingCount];
+    accumulatedGrainPerSecond += BUILDINGS[key as buildingKeys].grainPerSecond * buildings[key as keyof buildingCount];
+    accumulatedStoneGoldPerSecond +=
+      BUILDINGS[key as buildingKeys].stonePerSecond * buildings[key as keyof buildingCount];
+  }
+
+  return {
+    goldPerSecond: accumulatedGoldPerSecond * UPGRADES[upgradeKey].goldMultiplier,
+    grainPerSecond: accumulatedGrainPerSecond * UPGRADES[upgradeKey].grainMultiplier,
+    stonePerSecond: accumulatedStoneGoldPerSecond * UPGRADES[upgradeKey].stoneMultiplier,
+  };
+}
+
+export function calculateActiveIncome(workers: workerCount, upgradeKey: UpgradeKeys): activeIncomeData | null {
+  // Declare variables to store calculated values
+  let accumulatedGoldPerClick = 0;
+  let accumulatedGrainPerClick = 0;
+  let accumulatedStoneGoldPerClick = 0;
+
+  // Iterate workers to calculate income per each building
+  for (const key in workers) {
+    if (workers[key as keyof workerCount] == 0) continue;
+    accumulatedGoldPerClick += WORKERS[key as workerKeys].goldPerClick * workers[key as keyof workerCount];
+    accumulatedGrainPerClick += WORKERS[key as workerKeys].grainPerClick * workers[key as keyof workerCount];
+    accumulatedStoneGoldPerClick += WORKERS[key as workerKeys].stonePerClick * workers[key as keyof workerCount];
+  }
+
+  return {
+    goldPerClick: accumulatedGoldPerClick * UPGRADES[upgradeKey].goldMultiplier,
+    grainPerClick: accumulatedGrainPerClick * UPGRADES[upgradeKey].grainMultiplier,
+    stonePerClick: accumulatedStoneGoldPerClick * UPGRADES[upgradeKey].stoneMultiplier,
+  };
+}
+

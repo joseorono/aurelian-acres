@@ -10,6 +10,17 @@ export type priceData = {
   costStone: number;
 };
 
+export type passiveIncomeData = {
+  goldPerSecond: number;
+  grainPerSecond: number;
+  stonePerSecond: number;
+};
+
+export type activeIncomeData = {
+  goldPerClick: number;
+  grainPerClick: number;
+  stonePerClick: number;
+};
 /* 
 ======================================
             Buildings 
@@ -77,6 +88,7 @@ export type upgradeData = {
 } & priceData;
 
 export type UpgradeKeys =
+  | 'default'
   | 'goldenEagleStandard'
   | 'ceresBlessing'
   | 'templeOfJupiter'
@@ -119,3 +131,4 @@ export interface clickerVisualModifiers {
   isFlood: boolean; // Waves on the bottom of the component
   //bountifulHarvest: boolean; // raining wheat animation
 }
+
