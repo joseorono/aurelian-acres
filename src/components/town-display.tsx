@@ -4,12 +4,19 @@ import { auxObjectMap } from '~/lib/utils';
 import { buildingCount, townTilesMatrix, workerCount } from '~/types/game-data-types';
 import { generateTownDisplayMatrix, getDisplayTileForKey } from '~/lib/town-display-logic';
 import { DEFAULT_TOWNDISPLAY_COLUMNS, DEFAULT_TOWNDISPLAY_ROWS } from '~/constants/defaults';
+import { useDrag } from '@use-gesture/react';
+import { useRef } from 'react';
 
 function TownDisplay() {
   //  const gameStore = useStore();
 
-  const renderableWorkerPerType = 6;
-  const renderableBuildingPerType = 3;
+  const containerStyles = {
+    cursor: 'grab',
+    touchAction: 'none',
+  };
+
+  const renderableWorkerPerType = 10;
+  const renderableBuildingPerType = 12;
   const matrixHeight: number = DEFAULT_TOWNDISPLAY_ROWS;
   const matrixWidth: number = DEFAULT_TOWNDISPLAY_COLUMNS;
 
@@ -34,10 +41,24 @@ function TownDisplay() {
     workersToRender,
   );
 
+  // dragging behavior
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bind = useDrag(({ event, offset: [x, y] }) => {
+    event.preventDefault();
+    if (containerRef.current !== null) {
+      containerRef.current.scroll(x, y);
+    }
+  });
+
   return (
     <>
       {/*  Yes, I'm literally setting it to double the Nintendo DS' resolution. I don't even know anymore */}
-      <div className="townDisplay h-1/2 max-h-[384px] max-w-[512px]">
+      <div
+        className="townDisplay h-1/2 max-h-[200px] max-w-[512px] overflow-scroll"
+        {...bind()}
+        ref={containerRef}
+        style={containerStyles}
+      >
         {
           // Render the matrix
           matrix.map((row, rowIndex) => (
@@ -56,3 +77,4 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
+
