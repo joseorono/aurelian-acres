@@ -1,10 +1,10 @@
 import { StateCreator } from 'zustand';
-import { playerResources } from '~/types/game-data-types';
-
+import { playerResources, UpgradeKeys } from '~/types/game-data-types';
 interface PlayerState {
   playerName: string;
   baseMultiplier: number;
   resourceCount: playerResources;
+  currentUpgrade: UpgradeKeys;
 }
 
 interface PlayerActions {
@@ -44,3 +44,4 @@ export const CreatePlayerSlice: StateCreator<PlayerSlice> = (set, get) => ({
       },
     })),
 });
+
