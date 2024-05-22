@@ -1,6 +1,8 @@
 // From https://pixelarticons.com/
 // https://github.com/halfmage/pixelarticons
 
+import { IPixelIconProps } from '~/types/component-props';
+
 const CheckDoublePixelIcon: React.FC<IPixelIconProps> = ({ size = 24, className = '', fill = '#fff' }) => {
   return (
     <svg
