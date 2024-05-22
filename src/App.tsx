@@ -16,9 +16,22 @@ import TownDisplay from './components/town-display';
 import GenericLoader from './components/loader/generic-loader';
 import DialogDemo from './components/demo/dialog-demo';
 import DialogDemo2 from './components/demo/dialog-demo-2';
+import { useEffect } from 'react';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
+
+  useEffect(() => {
+    const handler = (e: Event) => e.preventDefault();
+    document.addEventListener('gesturestart', handler);
+    document.addEventListener('gesturechange', handler);
+    document.addEventListener('gestureend', handler);
+    return () => {
+      document.removeEventListener('gesturestart', handler);
+      document.removeEventListener('gesturechange', handler);
+      document.removeEventListener('gestureend', handler);
+    };
+  }, []);
 
   return (
     <>
@@ -94,3 +107,4 @@ function App() {
 }
 
 export default App;
+

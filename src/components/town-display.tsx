@@ -52,38 +52,40 @@ function TownDisplay() {
 
   // gesture events
   const containerRef = useRef<HTMLDivElement>(null);
-  // useGesture->onWheel wouldn't let me prevent default, even if i set passive as false in the event options
-  useEffect(() => {
-    const preventDefaultScrollEvent = (ev: WheelEvent) => {
-      ev.preventDefault();
-    };
-    containerRef.current?.addEventListener('wheel', preventDefaultScrollEvent, { passive: false });
-    return () => containerRef.current?.removeEventListener('wheel', preventDefaultScrollEvent);
-  }, []);
 
-  const bind = useGesture({
-    onDrag: ({ event, offset: [x, y] }) => {
-      event.preventDefault();
-      if (containerRef.current !== null) {
-        console.log('Drag: ', x, y);
-        containerRef.current.scroll(x, y);
-      }
+  useGesture(
+    {
+      onDrag: ({ event, offset: [x, y], pinching: isPinching }) => {
+        event.preventDefault();
+        if (containerRef.current !== null) {
+          console.log('Drag: ', x, y, isPinching);
+          containerRef.current.scroll(x, y);
+        }
+      },
+      onWheel: ({ event, direction: [x, y] }) => {
+        console.log('Wheel: ', x, y);
+        currentZoom = calcZoom(y);
+        // @ts-ignore
+        document.querySelector('.townDisplay').style.zoom = currentZoom;
+      },
+      onPinch: ({ event, offset: [d] }) => {
+        console.log('Pinch: ', d);
+        currentZoom = Math.min(Math.max(0.5, d), 2);
+        // @ts-ignore
+        document.querySelector('.townDisplay').style.zoom = currentZoom;
+      },
     },
-    onWheel: ({ event, direction: [x, y] }) => {
-      //zoom here
-      console.log('Wheel: ', x, y);
-      currentZoom = calcZoom(y);
-      // @ts-ignore
-      document.querySelector('.townDisplay').style.zoom = currentZoom;
+    {
+      target: containerRef,
+      pinch: { eventOptions: { passive: true }, scaleBounds: { min: 0.5, max: 2 } },
     },
-  });
+  );
 
   return (
     <>
       {/*  Yes, I'm literally setting it to double the Nintendo DS' resolution. I don't even know anymore */}
       <div className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
         <div
-          {...bind()}
           className="townDisplay h-100 absolute max-h-full w-full overflow-auto"
           ref={containerRef}
           style={containerStyles}
