@@ -36,7 +36,7 @@ export function getRandomFillerTile(chanceOfEmpty: number = 0.6): Nullable<addit
 
   return Math.random() < chanceOfEmpty
     ? null // null if the random number is less than the chance of empty
-    : (['citizen', 'tree'][Math.floor(Math.random() * 3)] as additionalTiles);
+    : (['citizen', 'tree'][Math.ceil(Math.random() * 2)] as additionalTiles);
 }
 
 export function generateEmptyMatrix(rows: number, columns: number): townTilesMatrix {
@@ -176,4 +176,3 @@ export function generateTownDisplayMatrix(
 
   return matrix;
 }
-
