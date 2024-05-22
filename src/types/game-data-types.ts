@@ -133,5 +133,5 @@ export interface clickerVisualModifiers {
   isNight: boolean; // Diferent background image for night
   goldenOverlay: boolean; // Golden overlay over the background of the component
   isFlood: boolean; // Waves on the bottom of the component
-  //bountifulHarvest: boolean; // raining wheat animation
+  bountifulHarvest: boolean; // raining wheat animation
 }
