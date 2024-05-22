@@ -1,6 +1,6 @@
 import { BUILDINGS, BUILDINGS_ARRAY, BUILDINGS_COUNT } from '~/constants/buildings';
 import { WORKERS, WORKERS_ARRAY, WORKERS_COUNT } from '~/constants/workers';
-import { UPGRADES } from '~/constants/upgrades';
+import { LEVELS, UPGRADES } from '~/constants/upgrades';
 import {
   buildingData,
   playerResources,
@@ -115,7 +115,11 @@ export function getBestAffordableWorker(res: playerResources): number | null {
   return null;
 }
 
-export function calculatePassiveIncome(buildings: buildingCount, upgradeKey: UpgradeKeys): passiveIncomeData | null {
+export function calculatePassiveIncome(
+  buildings: buildingCount,
+  upgradeKey: UpgradeKeys,
+  playerLevel: number = 0,
+): passiveIncomeData | null {
   // Declare variables to store calculated values
   let accumulatedGoldPerSecond = 0;
   let accumulatedGrainPerSecond = 0;
@@ -137,7 +141,11 @@ export function calculatePassiveIncome(buildings: buildingCount, upgradeKey: Upg
   };
 }
 
-export function calculateActiveIncome(workers: workerCount, upgradeKey: UpgradeKeys): activeIncomeData | null {
+export function calculateActiveIncome(
+  workers: workerCount,
+  upgradeKey: UpgradeKeys,
+  playerLevel: number = 0,
+): activeIncomeData | null {
   // Declare variables to store calculated values
   let accumulatedGoldPerClick = 0;
   let accumulatedGrainPerClick = 0;
@@ -152,9 +160,9 @@ export function calculateActiveIncome(workers: workerCount, upgradeKey: UpgradeK
   }
 
   return {
-    goldPerClick: accumulatedGoldPerClick * UPGRADES[upgradeKey].goldMultiplier,
-    grainPerClick: accumulatedGrainPerClick * UPGRADES[upgradeKey].grainMultiplier,
-    stonePerClick: accumulatedStoneGoldPerClick * UPGRADES[upgradeKey].stoneMultiplier,
+    goldPerClick: accumulatedGoldPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].goldMultiplier,
+    grainPerClick: accumulatedGrainPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].grainMultiplier,
+    stonePerClick:
+      accumulatedStoneGoldPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].stoneMultiplier,
   };
 }
-
