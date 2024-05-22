@@ -29,6 +29,7 @@
     "prettier-format": "prettier --config .prettierrc --write src/**/*.ts src/**/*.tsx spec/**/*.ts",
     "prettier-watch": "onchange src/**/*.ts src/**/*.tsx spec/**/*.ts -- prettier --write {{changed}}",
     "dev": "vite",
+    "dev-expose-host": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
@@ -98,3 +99,4 @@
     "vitest": "^1.6.0"
   }
 }
+
