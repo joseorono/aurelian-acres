@@ -1,4 +1,5 @@
 @import 'css/pixelated-utils.css';
+@import 'css/town-display.css';
 
 @tailwind base;
 @tailwind components;

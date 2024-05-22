@@ -1,0 +1,18 @@
+:root {
+  --townDSlot: 32px;
+  --townDSprite: 28px;
+}
+
+.townTile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Dimensions */
+  width: var(--townDSlot);
+  min-width: var(--townDSlot);
+  height: var(--townDSlot);
+  background-color: green;
+
+  /* Temporal, remove when you have a proper sprite */
+  font-size: var(--townDSprite);
+}

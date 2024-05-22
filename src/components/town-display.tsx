@@ -83,7 +83,6 @@ function TownDisplay() {
 
   return (
     <>
-      {/*  Yes, I'm literally setting it to double the Nintendo DS' resolution. I don't even know anymore */}
       <div className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
         <div
           className="townDisplay h-100 absolute max-h-full w-full overflow-auto"
@@ -95,8 +94,8 @@ function TownDisplay() {
             matrix.map((row, rowIndex) => (
               <div key={rowIndex} className="flex flex-row justify-items-start">
                 {row.map((tileKey, tileIndex) => (
-                  <div key={tileIndex} className="flex flex-col items-center justify-items-center">
-                    <div className="townTile text-2xl">{getDisplayTileForKey(tileKey)}</div>
+                  <div key={tileIndex} className="townTile">
+                    {getDisplayTileForKey(tileKey)}
                   </div>
                 ))}
               </div>
@@ -109,4 +108,3 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
-
