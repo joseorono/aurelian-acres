@@ -6,7 +6,6 @@ import { additionalTiles, buildingCount, tilesKey, townTilesMatrix, workerCount 
 import { shuffleArray } from './utils';
 import { TOWN_DENSITY_BIAS } from '~/constants/defaults';
 
-// ToDo: Poner los emojis que faltan
 // En el futuro ponemos paths a imagenes aqui y usamos imagenes dentro del componente
 export const spritesForTiles: Record<tilesKey, string> = {
   slave: '👷',
@@ -30,7 +29,7 @@ export const spritesForTiles: Record<tilesKey, string> = {
 } as const;
 
 // ToDo: Unit-Test this. This populates the matrix with workers and buildings..
-export function getRandomFillerTile(chanceOfEmpty: number = 0.1): Nullable<additionalTiles> {
+export function getRandomFillerTile(chanceOfEmpty: number = 0.6): Nullable<additionalTiles> {
   // chanceOfEmpty is super low bc we dont have many buildings in the tests
   // By default, there's an 80% chance of an empty tile
   // I won't be adding roads until we implement pathfinding/random walk or some sorta walkable-map generation algorithm
@@ -72,7 +71,6 @@ export function getDisplayTileForKey(key: Nullable<tilesKey>): RenderableElement
   return spritesForTiles[key];
 }
 
-// ToDo: Unit-Test this.
 export function getShuffledArrayOfTiles(buildings: buildingCount, workers: workerCount): tilesKey[] {
   // Flatten the resources into an array of tiles
 
@@ -163,9 +161,7 @@ export function generateTownDisplayMatrix(
         // There is available space for a filler tile...
         // 60-40 chance of getting a random tile or a filler tile, changes with TOWN_DENSITY_BIAS
         if (pendingTiles) {
-          nextTile =
-            (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() ?? getRandomFillerTile() : getRandomFillerTile()) ||
-            null;
+          nextTile = (Math.random() < TOWN_DENSITY_BIAS ? pendingTiles.pop() : getRandomFillerTile()) || null;
         } else {
           nextTile = getRandomFillerTile();
         }
