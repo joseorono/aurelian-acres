@@ -60,6 +60,9 @@ const DEFAULT_VALUES: gameStateSnapshot = {
 
 export const DEFAULT_TOWNDISPLAY_ROWS = 20;
 export const DEFAULT_TOWNDISPLAY_COLUMNS = 40;
-export const TOWN_DENSITY_BIAS = 0.6; // Used for probability calculations. Must be float between 0 and 1.
+// Used for probability calculations. Must be float between 0 and 1.
+// super low bc we dont have many buildings in the tests
+export const TOWN_DENSITY_BIAS = 0.05;
 
 export default DEFAULT_VALUES;
+
