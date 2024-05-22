@@ -4,15 +4,23 @@ import { auxObjectMap } from '~/lib/utils';
 import { buildingCount, townTilesMatrix, workerCount } from '~/types/game-data-types';
 import { generateTownDisplayMatrix, getDisplayTileForKey } from '~/lib/town-display-logic';
 import { DEFAULT_TOWNDISPLAY_COLUMNS, DEFAULT_TOWNDISPLAY_ROWS } from '~/constants/defaults';
-import { useDrag } from '@use-gesture/react';
-import { useRef } from 'react';
+import { useGesture } from '@use-gesture/react';
+import { useEffect, useRef } from 'react';
 
 function TownDisplay() {
-  //  const gameStore = useStore();
-
   const containerStyles = {
     cursor: 'grab',
     touchAction: 'none',
+  };
+
+  let currentZoom = 1;
+
+  const calcZoom = (y: number) => {
+    // if y is neg, zoom in
+
+    const newZoom = y < 0 ? Math.min(2, currentZoom + 0.1) : Math.max(currentZoom - 0.1, 0.5);
+    currentZoom = newZoom;
+    return newZoom;
   };
 
   const renderableWorkerPerType = 10;
@@ -21,6 +29,7 @@ function TownDisplay() {
   const matrixWidth: number = DEFAULT_TOWNDISPLAY_COLUMNS;
 
   // ToDo: Test that this is Reactive. I really *hope* this updates reactively
+  // it does!
   const workersCount: workerCount = useStore((state) => state.workerCount);
   const buildingsCount: buildingCount = useStore((state) => state.buildingCount);
 
@@ -41,36 +50,57 @@ function TownDisplay() {
     workersToRender,
   );
 
-  // dragging behavior
+  // gesture events
   const containerRef = useRef<HTMLDivElement>(null);
-  const bind = useDrag(({ event, offset: [x, y] }) => {
-    event.preventDefault();
-    if (containerRef.current !== null) {
-      containerRef.current.scroll(x, y);
-    }
+  // useGesture->onWheel wouldn't let me prevent default, even if i set passive as false in the event options
+  useEffect(() => {
+    const preventDefaultScrollEvent = (ev: WheelEvent) => {
+      ev.preventDefault();
+    };
+    containerRef.current?.addEventListener('wheel', preventDefaultScrollEvent, { passive: false });
+    return () => containerRef.current?.removeEventListener('wheel', preventDefaultScrollEvent);
+  }, []);
+
+  const bind = useGesture({
+    onDrag: ({ event, offset: [x, y] }) => {
+      event.preventDefault();
+      if (containerRef.current !== null) {
+        console.log('Drag: ', x, y);
+        containerRef.current.scroll(x, y);
+      }
+    },
+    onWheel: ({ event, direction: [x, y] }) => {
+      //zoom here
+      console.log('Wheel: ', x, y);
+      currentZoom = calcZoom(y);
+      // @ts-ignore
+      document.querySelector('.townDisplay').style.zoom = currentZoom;
+    },
   });
 
   return (
     <>
       {/*  Yes, I'm literally setting it to double the Nintendo DS' resolution. I don't even know anymore */}
-      <div
-        className="townDisplay h-1/2 max-h-[200px] max-w-[512px] overflow-scroll"
-        {...bind()}
-        ref={containerRef}
-        style={containerStyles}
-      >
-        {
-          // Render the matrix
-          matrix.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex flex-row justify-items-start">
-              {row.map((tileKey, tileIndex) => (
-                <div key={tileIndex} className="flex flex-col items-center justify-items-center">
-                  <div className="townTile text-2xl">{getDisplayTileForKey(tileKey)}</div>
-                </div>
-              ))}
-            </div>
-          ))
-        }
+      <div className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
+        <div
+          {...bind()}
+          className="townDisplay h-100 absolute max-h-full w-full overflow-auto"
+          ref={containerRef}
+          style={containerStyles}
+        >
+          {
+            // Render the matrix
+            matrix.map((row, rowIndex) => (
+              <div key={rowIndex} className="flex flex-row justify-items-start">
+                {row.map((tileKey, tileIndex) => (
+                  <div key={tileIndex} className="flex flex-col items-center justify-items-center">
+                    <div className="townTile text-2xl">{getDisplayTileForKey(tileKey)}</div>
+                  </div>
+                ))}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </>
   );
