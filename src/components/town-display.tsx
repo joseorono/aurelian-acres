@@ -51,6 +51,7 @@ function TownDisplay() {
   );
 
   // gesture events
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGesture(
@@ -83,7 +84,7 @@ function TownDisplay() {
 
   return (
     <>
-      <div className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
+      <div ref={wrapperRef} className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
         <div
           className="townDisplay h-100 absolute max-h-full w-full overflow-auto"
           ref={containerRef}
