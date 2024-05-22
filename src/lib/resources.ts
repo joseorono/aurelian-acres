@@ -116,53 +116,58 @@ export function getBestAffordableWorker(res: playerResources): number | null {
 }
 
 export function calculatePassiveIncome(
-  buildings: buildingCount,
+  buildingCount: buildingCount,
   upgradeKey: UpgradeKeys,
   playerLevel: number = 0,
 ): passiveIncomeData | null {
-  // Declare variables to store calculated values
+  // Declare variables to store calculated values and the current multipliers
   let accumulatedGoldPerSecond = 0;
   let accumulatedGrainPerSecond = 0;
-  let accumulatedStoneGoldPerSecond = 0;
-
+  let accumulatedStonePerSecond = 0;
+  const CURRENT_MULTIPLIER = LEVELS[playerLevel].baseMultiplier;
+  const CURRENT_UPGRADE = UPGRADES[upgradeKey];
   // Iterate buildings to calculate income per each building
-  for (const key in buildings) {
-    if (buildings[key as keyof buildingCount] == 0) continue;
-    accumulatedGoldPerSecond += BUILDINGS[key as buildingKeys].goldPerSecond * buildings[key as keyof buildingCount];
-    accumulatedGrainPerSecond += BUILDINGS[key as buildingKeys].grainPerSecond * buildings[key as keyof buildingCount];
-    accumulatedStoneGoldPerSecond +=
-      BUILDINGS[key as buildingKeys].stonePerSecond * buildings[key as keyof buildingCount];
+  for (const key in buildingCount) {
+    if (buildingCount[key as keyof buildingCount] == 0) continue;
+    const BUILDING_INFO = BUILDINGS[key as buildingKeys];
+    const BUILDING_COUNT = buildingCount[key as keyof buildingCount];
+    accumulatedGoldPerSecond += BUILDING_INFO.goldPerSecond * BUILDING_COUNT;
+    accumulatedGrainPerSecond += BUILDING_INFO.grainPerSecond * BUILDING_COUNT;
+    accumulatedStonePerSecond += BUILDING_INFO.stonePerSecond * BUILDING_COUNT;
   }
 
   return {
-    goldPerSecond: accumulatedGoldPerSecond * UPGRADES[upgradeKey].goldMultiplier,
-    grainPerSecond: accumulatedGrainPerSecond * UPGRADES[upgradeKey].grainMultiplier,
-    stonePerSecond: accumulatedStoneGoldPerSecond * UPGRADES[upgradeKey].stoneMultiplier,
+    goldPerSecond: accumulatedGoldPerSecond * CURRENT_MULTIPLIER * CURRENT_UPGRADE.goldMultiplier,
+    grainPerSecond: accumulatedGrainPerSecond * CURRENT_MULTIPLIER * CURRENT_UPGRADE.grainMultiplier,
+    stonePerSecond: accumulatedStonePerSecond * CURRENT_MULTIPLIER * CURRENT_UPGRADE.stoneMultiplier,
   };
 }
 
 export function calculateActiveIncome(
-  workers: workerCount,
+  workerCount: workerCount,
   upgradeKey: UpgradeKeys,
   playerLevel: number = 0,
 ): activeIncomeData | null {
-  // Declare variables to store calculated values
+  // Declare variables to store calculated values and the current multipliers
   let accumulatedGoldPerClick = 0;
   let accumulatedGrainPerClick = 0;
-  let accumulatedStoneGoldPerClick = 0;
-
+  let accumulatedStonePerClick = 0;
+  const CURRENT_MULTIPLIER = LEVELS[playerLevel].baseMultiplier;
+  const CURRENT_UPGRADE = UPGRADES[upgradeKey];
   // Iterate workers to calculate income per each building
-  for (const key in workers) {
-    if (workers[key as keyof workerCount] == 0) continue;
-    accumulatedGoldPerClick += WORKERS[key as workerKeys].goldPerClick * workers[key as keyof workerCount];
-    accumulatedGrainPerClick += WORKERS[key as workerKeys].grainPerClick * workers[key as keyof workerCount];
-    accumulatedStoneGoldPerClick += WORKERS[key as workerKeys].stonePerClick * workers[key as keyof workerCount];
+  for (const key in workerCount) {
+    if (workerCount[key as keyof workerCount] == 0) continue;
+    const WORKER_INFO = WORKERS[key as workerKeys];
+    const WORKER_COUNT = workerCount[key as keyof workerCount];
+    accumulatedGoldPerClick += WORKER_INFO.goldPerClick * WORKER_COUNT;
+    accumulatedGrainPerClick += WORKER_INFO.grainPerClick * WORKER_COUNT;
+    accumulatedStonePerClick += WORKER_INFO.stonePerClick * WORKER_COUNT;
   }
 
   return {
-    goldPerClick: accumulatedGoldPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].goldMultiplier,
-    grainPerClick: accumulatedGrainPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].grainMultiplier,
-    stonePerClick:
-      accumulatedStoneGoldPerClick * LEVELS[playerLevel].baseMultiplier * UPGRADES[upgradeKey].stoneMultiplier,
+    goldPerClick: accumulatedGoldPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.goldMultiplier,
+    grainPerClick: accumulatedGrainPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.grainMultiplier,
+    stonePerClick: accumulatedStonePerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.stoneMultiplier,
   };
 }
+
