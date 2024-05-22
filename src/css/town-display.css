@@ -3,6 +3,15 @@
   --townDSprite: 28px;
 }
 
+.townDisplay__wrapper {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .townTile {
   display: flex;
   justify-content: center;
