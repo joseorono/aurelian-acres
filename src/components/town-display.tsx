@@ -109,12 +109,12 @@ function TownDisplay() {
 
   useGesture(
     {
-      onDrag: ({ event, offset: [x, y], pinching: isPinching }) => {
-        event.preventDefault();
-        if (containerRef.current !== null) {
-          console.log('Drag: ', x, y, isPinching);
-          containerRef.current.scroll(x, y);
-        }
+      onDrag: ({ event, offset: [x, y] }) => {
+        console.log('dragging');
+        // event.preventDefault();
+
+        console.log('Drag: ', x, y);
+        wrapperRef.current?.scroll(x, y);
       },
       onWheel: ({ event, direction: [x, y] }) => {
         console.log('Wheel: ', x, y);
@@ -131,6 +131,17 @@ function TownDisplay() {
     },
     {
       target: containerRef,
+      drag: {
+        bounds: {
+          // Offset wont ever go past these values
+          // scrollWidth/Height should be the max possible scroll
+          // in an overflowed element
+          left: 0,
+          top: 0,
+          right: containerRef.current?.scrollWidth,
+          bottom: containerRef.current?.scrollHeight,
+        },
+      },
       pinch: { eventOptions: { passive: true }, scaleBounds: { min: 0.5, max: 2 } },
     },
   );
@@ -139,9 +150,10 @@ function TownDisplay() {
     <>
       <div
         ref={wrapperRef}
+        style={containerStyles}
         className="townDisplay__wrapper relative h-[50svh] max-h-[480px] min-h-[200px] w-full overflow-auto"
       >
-        <div className="townDisplay w-full overflow-visible" ref={containerRef} style={containerStyles}>
+        <div className="townDisplay w-full overflow-visible" ref={containerRef}>
           {
             // Render the matrix
             matrix.map((row, rowIndex) => (
@@ -161,3 +173,4 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
+
