@@ -12,6 +12,7 @@ import DebugArea from './components/debug-area';
 import MainGameArea from './components/main-game-area';
 import FirstSidePane from './components/first-side-pane';
 import ResponsiveNotice from './components/responsive-notice';
+import BackgroundWorker from './components/game/background-worker';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -32,9 +33,11 @@ function App() {
     <>
       <MouseTracker />
       <ResponsiveNotice />
+      <BackgroundWorker />
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
-        <MainGameArea className="h-svh w-1/2" />
-        <FirstSidePane className="flex h-svh w-1/2 flex-col" />
+        <MainGameArea className="h-svh w-2/6" />
+        <FirstSidePane className="flex h-svh w-2/6 flex-col" />
+        <div className="flex h-svh w-2/6 flex-col" />
       </div>
       <DebugArea />
       <Toaster

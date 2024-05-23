@@ -25,7 +25,6 @@ export default function DebugArea() {
       {/* <SoundsDemo></SoundsDemo> */}
 
       <div id="app">
-        <HeadlinesMarquee />
         <div className="w-32">
           <LoopingProgressBar durationInMs={1000} />
         </div>

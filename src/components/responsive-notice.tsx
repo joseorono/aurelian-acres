@@ -13,13 +13,13 @@ export default function ResponsiveNotice() {
       )}
       onDoubleClick={() => setIsHidden(true)}
     >
-      <p className="text-center text-3xl">
+      <div className="text-center text-3xl">
         This Game is not yet optimized for mobile.
         <br />
         Please view on a computer screen or large tablet.
         <br />
         <div className="my-4 text-red-500">Double Click to Play Anyway</div>
-      </p>
+      </div>
     </div>
   );
 }
