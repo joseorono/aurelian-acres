@@ -12,6 +12,10 @@
   user-select: none;
 }
 
+.townDisplay {
+  transform-origin: top left;
+}
+
 .townTile {
   display: flex;
   justify-content: center;

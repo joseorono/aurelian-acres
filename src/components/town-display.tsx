@@ -16,9 +16,46 @@ function TownDisplay() {
   let currentZoom = 1;
 
   const calcZoom = (y: number) => {
-    // if y is neg, zoom in
+    // Do ref null checks first
+    if (containerRef.current === null || wrapperRef.current === null) {
+      console.warn('TownDisplay: Refs are null');
+      return currentZoom;
+    }
 
-    const newZoom = y < 0 ? Math.min(2, currentZoom + 0.1) : Math.max(currentZoom - 0.1, 0.5);
+    // PREVENT ZOOMING OUT TOO MUCH
+    // Before we set the new zoom, we need to check that the containerRef elem isn't smaller than the wrapperRef elem, but width and height
+    if (containerRef.current?.getBoundingClientRect().width < wrapperRef.current?.clientWidth && y > 0) {
+      console.warn('TownDisplay: Zoom out prevented. Container horizontally smaller than wrapper');
+      /*
+      console.log(
+        'prevented zoom out: container ',
+        containerRef.current?.clientWidth,
+        ' wrapper ',
+        wrapperRef.current?.clientWidth,
+        ' scrolling width parent ',
+        wrapperRef.current?.scrollWidth,
+      );
+      */
+      return currentZoom;
+    }
+
+    if (
+      containerRef.current?.getBoundingClientRect().height < wrapperRef.current?.getBoundingClientRect().height &&
+      y > 0
+    ) {
+      console.warn('TownDisplay: Zoom out prevented. Container vertically smaller than wrapper');
+      console.log(
+        ' parent height ',
+        wrapperRef.current?.clientHeight,
+        ' container height ',
+        containerRef.current?.getBoundingClientRect().height,
+      );
+      return currentZoom;
+    }
+
+    // if y is neg, zoom in, else zoom out
+    let newZoom = y < 0 ? Math.min(2, currentZoom + 0.1) : Math.max(currentZoom - 0.1, 0.5);
+
     currentZoom = newZoom;
     return newZoom;
   };
@@ -67,13 +104,13 @@ function TownDisplay() {
         console.log('Wheel: ', x, y);
         currentZoom = calcZoom(y);
         // @ts-ignore
-        document.querySelector('.townDisplay').style.zoom = currentZoom;
+        document.querySelector('.townDisplay').style.transform = 'scale(' + currentZoom + ')';
       },
       onPinch: ({ event, offset: [d] }) => {
         console.log('Pinch: ', d);
         currentZoom = Math.min(Math.max(0.5, d), 2);
         // @ts-ignore
-        document.querySelector('.townDisplay').style.zoom = currentZoom;
+        document.querySelector('.townDisplay').style.transform = 'scale(' + currentZoom + ')';
       },
     },
     {
@@ -84,12 +121,11 @@ function TownDisplay() {
 
   return (
     <>
-      <div ref={wrapperRef} className="townDisplay__wrapper relative max-h-[50svh] min-h-[200px] w-full">
-        <div
-          className="townDisplay h-100 absolute max-h-full w-full overflow-auto"
-          ref={containerRef}
-          style={containerStyles}
-        >
+      <div
+        ref={wrapperRef}
+        className="townDisplay__wrapper relative h-[50svh] max-h-[480px] min-h-[200px] w-full overflow-auto"
+      >
+        <div className="townDisplay w-full overflow-visible" ref={containerRef} style={containerStyles}>
           {
             // Render the matrix
             matrix.map((row, rowIndex) => (
