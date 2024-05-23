@@ -135,3 +135,18 @@ export interface clickerVisualModifiers {
   isFlood: boolean; // Waves on the bottom of the component
   bountifulHarvest: boolean; // raining wheat animation
 }
+
+/* 
+======================================
+            Modifiers
+======================================
+*/
+
+export type eventData = {
+  id: number;
+  probability: number;
+  name: string;
+  description: string;
+} & Partial<buildingCount> &
+  Partial<playerResources> &
+  Partial<workerCount>;
