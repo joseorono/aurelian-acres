@@ -3,6 +3,9 @@
         Generic on Click effect
 =======================================
 */
+.mouseTracker {
+  pointer-events: none;
+}
 
 /* CURSOR ANIMATION */
 .clickAnim {
