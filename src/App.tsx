@@ -45,7 +45,7 @@ function App() {
         <div className="p-8">
           <StoreExample />
         </div>
-        <div>
+        <div className="w-1/2">
           <TownDisplay></TownDisplay>
         </div>
         {/* <SoundsDemo></SoundsDemo> */}
@@ -109,4 +109,3 @@ function App() {
 }
 
 export default App;
-

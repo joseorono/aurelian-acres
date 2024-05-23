@@ -28,7 +28,7 @@ const GenericLoader: React.FC<LoadingComponentProps> = ({ classNames }) => {
   }, []);
 
   return (
-    <div className={`flex flex-col items-center justify-center ${classNames}`}>
+    <div className={`flex select-none flex-col items-center justify-center ${classNames}`}>
       <h1 className="mb-1 text-3xl font-bold">Loading...</h1>
       <div className="flex">
         {[...Array(7)].map((_, index) => (
