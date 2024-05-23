@@ -17,6 +17,7 @@ import GenericLoader from './components/loader/generic-loader';
 import DialogDemo from './components/demo/dialog-demo';
 import DialogDemo2 from './components/demo/dialog-demo-2';
 import { useEffect } from 'react';
+import MouseTracker from './components/effects/mouse-tracker';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <>
+      <MouseTracker />
       <div id="app" vaul-drawer-wrapper="">
         <div className="p-8">
           <CounterExample />
