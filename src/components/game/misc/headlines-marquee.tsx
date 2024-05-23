@@ -1,5 +1,5 @@
 import { shuffleArray } from '~/lib/utils';
-import { FLAVOR_TEXT_HEADLINES } from '../constants/flavor-text';
+import { FLAVOR_TEXT_HEADLINES } from '../../../constants/flavor-text';
 
 import Marquee from 'react-fast-marquee';
 

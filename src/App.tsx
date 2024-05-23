@@ -9,6 +9,8 @@ import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
 import { useEffect } from 'react';
 import MouseTracker from '~/components/effects/mouse-tracker';
 import DebugArea from './components/debug-area';
+import MainGameArea from './components/main-game-area';
+import FirstSidePane from './components/first-side-pane';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -28,9 +30,11 @@ function App() {
   return (
     <>
       <MouseTracker />
-      <div id="app" vaul-drawer-wrapper="">
-        <DebugArea />
+      <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
+        <MainGameArea className="h-svh w-1/2" />
+        <FirstSidePane className="flex h-svh w-1/2 flex-col" />
       </div>
+      <DebugArea />
       <Toaster
         gutter={12}
         toastOptions={{
