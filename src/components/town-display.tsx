@@ -24,6 +24,20 @@ function TownDisplay() {
       return currentZoom;
     }
 
+    /*
+    console.log('==========================================================');
+    // Log all the widths
+    console.log('parent width: ', wrapperRef.current?.clientWidth);
+    console.log('child bounding width: ', containerRef.current?.getBoundingClientRect().width);
+    console.log('child client width: ', containerRef.current?.clientWidth);
+    console.log('child offset width: ', containerRef.current?.offsetWidth);
+    console.log('parent overflow width: ', wrapperRef.current?.scrollWidth);
+
+    // Now al the heights
+    console.log('parent height: ', wrapperRef.current?.clientHeight);
+    console.log('child bounding height: ', containerRef.current?.getBoundingClientRect().height);
+    console.log('parent overflow height: ', wrapperRef.current?.scrollHeight);
+    */
     // PREVENT ZOOMING OUT TOO MUCH
     // Before we set the new zoom, we need to check that the containerRef elem isn't smaller than the wrapperRef elem, but width and height
     if (containerRef.current?.getBoundingClientRect().width < wrapperRef.current?.clientWidth && y > 0) {
@@ -147,4 +161,3 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
-
