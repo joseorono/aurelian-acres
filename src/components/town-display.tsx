@@ -1,11 +1,11 @@
-import { useStore } from '~/store/useStore';
-
+import { workersAtom, buildingsAtom } from '~/store/atoms';
+import { useAtomValue } from 'jotai';
 import { auxObjectMap } from '~/lib/utils';
 import { buildingCount, townTilesMatrix, workerCount } from '~/types/game-data-types';
 import { generateTownDisplayMatrix, getDisplayTileForKey } from '~/lib/town-display-logic';
 import { DEFAULT_TOWNDISPLAY_COLUMNS, DEFAULT_TOWNDISPLAY_ROWS } from '~/constants/defaults';
 import { useGesture } from '@use-gesture/react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 function TownDisplay() {
   const containerStyles = {
@@ -13,6 +13,8 @@ function TownDisplay() {
     touchAction: 'none',
   };
 
+  const workers = useAtomValue(workersAtom);
+  const buildings = useAtomValue(buildingsAtom);
   let currentZoom = 1;
 
   const calcZoom = (y: number) => {
@@ -67,8 +69,8 @@ function TownDisplay() {
 
   // ToDo: Test that this is Reactive. I really *hope* this updates reactively
   // it does!
-  const workersCount: workerCount = useStore((state) => state.workerCount);
-  const buildingsCount: buildingCount = useStore((state) => state.buildingCount);
+  const workersCount: workerCount = workers;
+  const buildingsCount: buildingCount = buildings;
 
   // Determine how many buildings and to render, limiting them to a certain number
   const buildingsToRender = auxObjectMap(buildingsCount, (count: number) =>
@@ -145,3 +147,4 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
+
