@@ -3,11 +3,11 @@
  */
 
 import { additionalTiles, buildingCount, tilesKey, townTilesMatrix, workerCount } from '~/types/game-data-types';
-import { shuffleArray } from './utils';
+import { getRandomElement, shuffleArray } from './utils';
 import { TOWN_DENSITY_BIAS } from '~/constants/defaults';
 
 // En el futuro ponemos paths a imagenes aqui y usamos imagenes dentro del componente
-export const spritesForTiles: Record<tilesKey, string> = {
+export const spritesForTiles: Record<tilesKey, string | Array<string>> = {
   slave: '👷',
   agricola: '👨‍🌾',
   miner: '⛏️',
@@ -68,7 +68,13 @@ export function getDisplayTileForKey(key: Nullable<tilesKey>): RenderableElement
     return null;
   }
 
-  return spritesForTiles[key];
+  const selectedSprite = spritesForTiles[key];
+  // It can be a single sprite or an array of sprites..
+  if (Array.isArray(selectedSprite)) {
+    return getRandomElement(selectedSprite);
+  } else {
+    return selectedSprite;
+  }
 }
 
 export function getShuffledArrayOfTiles(buildings: buildingCount, workers: workerCount): tilesKey[] {
