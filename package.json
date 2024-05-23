@@ -47,6 +47,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "howler": "^2.2.4",
+    "immer": "^10.1.1",
+    "jotai": "^2.8.1",
+    "jotai-immer": "^0.4.0",
+    "jotai-utils": "^0.0.0",
     "localforage": "^1.10.0",
     "lucide-react": "^0.378.0",
     "pixi.js": "^8.1.4",
@@ -99,4 +103,3 @@
     "vitest": "^1.6.0"
   }
 }
-
