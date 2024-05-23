@@ -8,6 +8,7 @@ import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
 
 import { useEffect } from 'react';
 import MouseTracker from '~/components/effects/mouse-tracker';
+import DebugArea from './components/debug-area';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -28,46 +29,47 @@ function App() {
     <>
       <MouseTracker />
       <div id="app" vaul-drawer-wrapper="">
-        <Toaster
-          gutter={12}
-          toastOptions={{
-            position: 'bottom-center',
-
-            // Aria
-            ariaProps: {
-              role: 'status',
-              'aria-live': 'polite',
-            },
-
-            // Styling
-            className: toastClasses,
-
-            success: {
-              icon: <CheckDoublePixelIcon size={24} fill="#fff" />,
-              style: {
-                background: '#4BB543',
-                color: '#fff',
-              },
-            },
-            error: {
-              icon: <WarningPixelIcon size={24} fill="#fff" />,
-              style: {
-                background: '#d32f2f',
-                color: '#fff',
-              },
-            },
-            custom: {
-              icon: <LightBulbPixelIcon size={24} fill="#fff" />,
-              className: toastClasses,
-              style: {
-                background: '#333',
-                color: '#fff',
-                textShadow: '1px 1px 2px #000',
-              },
-            },
-          }}
-        />
+        <DebugArea />
       </div>
+      <Toaster
+        gutter={12}
+        toastOptions={{
+          position: 'bottom-center',
+
+          // Aria
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+
+          // Styling
+          className: toastClasses,
+
+          success: {
+            icon: <CheckDoublePixelIcon size={24} fill="#fff" />,
+            style: {
+              background: '#4BB543',
+              color: '#fff',
+            },
+          },
+          error: {
+            icon: <WarningPixelIcon size={24} fill="#fff" />,
+            style: {
+              background: '#d32f2f',
+              color: '#fff',
+            },
+          },
+          custom: {
+            icon: <LightBulbPixelIcon size={24} fill="#fff" />,
+            className: toastClasses,
+            style: {
+              background: '#333',
+              color: '#fff',
+              textShadow: '1px 1px 2px #000',
+            },
+          },
+        }}
+      />
     </>
   );
 }
