@@ -119,7 +119,7 @@ export function calculatePassiveIncome(
   buildingCount: buildingCount,
   upgradeKey: UpgradeKeys,
   playerLevel: number = 0,
-): passiveIncomeData | null {
+): passiveIncomeData {
   // Declare variables to store calculated values and the current multipliers
   let accumulatedGoldPerSecond = 0;
   let accumulatedGrainPerSecond = 0;
@@ -147,7 +147,7 @@ export function calculateActiveIncome(
   workerCount: workerCount,
   upgradeKey: UpgradeKeys,
   playerLevel: number = 0,
-): activeIncomeData | null {
+): activeIncomeData {
   // Declare variables to store calculated values and the current multipliers
   let accumulatedGoldPerClick = 0;
   let accumulatedGrainPerClick = 0;
@@ -170,4 +170,3 @@ export function calculateActiveIncome(
     stonePerClick: accumulatedStonePerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.stoneMultiplier,
   };
 }
-
