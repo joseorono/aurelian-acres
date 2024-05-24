@@ -37,3 +37,20 @@ export const FLAVOR_TEXT_HEADLINES: string[] = [
 ] as const;
 
 export const FAKE_HEADLINES_COUNT = FLAVOR_TEXT_HEADLINES.length;
+
+// Random names for "Newspaper" names
+export const NEWSPAPER_NAMES: string[] = [
+  'The Augustus Press',
+  'The Daily Pleb',
+  'The Patrician Post',
+  'The Nova Roma Post',
+  'The Forum Times',
+  'Veni Vidi News',
+  'STOA',
+  'Epicurean Times',
+  'The Oeconomicus',
+  'The Anatolian',
+  'Quotidian Tribunus',
+  'Associated Scroll',
+  "Scribe's Digest",
+];
