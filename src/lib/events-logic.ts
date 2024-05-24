@@ -1,6 +1,6 @@
 import { eventData } from '~/types/game-data-types';
 
-function getRandomEvent(EVENTS: Array<eventData>): eventData {
+export function getRandomEvent(EVENTS: Array<eventData>): eventData {
   if (!EVENTS) {
     throw new Error('EMPTY_EVENTS: No events passed.');
   }
