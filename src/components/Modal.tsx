@@ -10,6 +10,7 @@ import {
   CredenzaTitle,
 } from '~/components/ui/credenza';
 import { isModalOpenAtom, modalContentAtom } from '~/store/atoms';
+import styles from '~/css/modal.module.css';
 
 export default function Modal() {
   const [isModalOpen, setIsModalOpen] = useAtom(isModalOpenAtom);
@@ -25,7 +26,11 @@ export default function Modal() {
   return (
     <>
       <Credenza open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <CredenzaContent onEscapeKeyDown={(e) => e.preventDefault()} onInteractOutside={(e) => e.preventDefault()}>
+        <CredenzaContent
+          onEscapeKeyDown={(e) => e.preventDefault()}
+          onInteractOutside={(e) => e.preventDefault()}
+          className={styles.modalContent}
+        >
           <CredenzaHeader>
             <CredenzaTitle>{modalContent.title}</CredenzaTitle>
             {modalContent.subtitle && <CredenzaDescription>{modalContent.subtitle}</CredenzaDescription>}

@@ -1,0 +1,5 @@
+.modalContent {
+  background-image: url('../public/assets/modal_bg.jpg');
+  background-repeat: repeat;
+  background-position: left;
+}
