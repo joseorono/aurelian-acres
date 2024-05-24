@@ -7,10 +7,20 @@ import {
   playerResources,
   workerCount,
 } from '~/types/game-data-types';
+import { atom } from 'jotai';
+import { IModal } from '~/types/dialog-props';
 
 export const playerNameAtom = atomWithStorage<string>('playerName', 'Lucius');
 export const playerLevelAtom = atomWithStorage<number>('playerLevel', 0);
 export const playerUpgradeAtom = atomWithStorage<UpgradeKeys>('playerUpgrade', 'default');
+// atoms for the modal
+export const isModalOpenAtom = atom<boolean>(false);
+export const modalContentAtom = atom<IModal>({ title: '', subtitle: '', content: null, onClose: () => {} });
+export const setContentAtom = atom(null, (_, set, newContent: IModal) => {
+  //when you set new content, show modal immediately
+  set(modalContentAtom, newContent);
+  set(isModalOpenAtom, true);
+});
 
 export const buildingsAtom = withImmer(
   atomWithStorage<buildingCount>('buildings', {

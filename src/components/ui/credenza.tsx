@@ -25,6 +25,11 @@ import {
   DrawerTrigger,
 } from '~/components/ui/drawer';
 
+// these 2 types are needed for the dialog content events
+type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
+type FocusOutsideEvent = CustomEvent<{
+  originalEvent: FocusEvent;
+}>;
 interface BaseProps {
   children: React.ReactNode;
 }
@@ -37,6 +42,13 @@ interface RootCredenzaProps extends BaseProps {
 interface CredenzaProps extends BaseProps {
   className?: string;
   asChild?: true;
+}
+
+interface ContentCredenzaProps extends CredenzaProps {
+  open?: boolean;
+  onEscapeKeyDown?: (event: KeyboardEvent) => void;
+  onPointerDownOutside?: (event: PointerDownOutsideEvent) => void;
+  onInteractOutside?: (event: PointerDownOutsideEvent | FocusOutsideEvent) => void;
 }
 
 const desktop = '(min-width: 768px)';
@@ -70,7 +82,7 @@ const CredenzaClose = ({ className, children, ...props }: CredenzaProps) => {
   );
 };
 
-const CredenzaContent = ({ className, children, ...props }: CredenzaProps) => {
+const CredenzaContent = ({ className, children, ...props }: ContentCredenzaProps) => {
   const isDesktop = useMediaQuery(desktop);
   const CredenzaContent = isDesktop ? DialogContent : DrawerContent;
 
@@ -144,3 +156,4 @@ export {
   CredenzaBody,
   CredenzaFooter,
 };
+
