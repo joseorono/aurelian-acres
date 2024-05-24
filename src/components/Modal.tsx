@@ -27,8 +27,8 @@ export default function Modal() {
     <>
       <Credenza open={isModalOpen} onOpenChange={setIsModalOpen}>
         <CredenzaContent
-          onEscapeKeyDown={(e) => e.preventDefault()}
-          onInteractOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
+          onInteractOutside={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
           className={styles.modalContent}
         >
           <CredenzaHeader>
