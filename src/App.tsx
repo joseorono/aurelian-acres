@@ -39,8 +39,8 @@ function App() {
       <BackgroundWorker />
       <Modal />
 
-      <GameLoader />
-      {/* <DebugArea />
+      {/* <GameLoader /> */}
+      <DebugArea />
       <Toaster
         gutter={12}
         toastOptions={{
@@ -79,7 +79,7 @@ function App() {
             },
           },
         }}
-      /> */}
+      />
     </>
   );
 }
