@@ -2,4 +2,6 @@
   background-image: url('../public/assets/modal_bg.jpg');
   background-repeat: repeat;
   background-position: left;
+  background-size: cover;
+  color: #222;
 }
