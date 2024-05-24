@@ -18,7 +18,11 @@ class LoaderService {
   }
 
   preloadEverything = async () => {
-    return await Promise.all([assetsService.preloadEveryImage(assetList), soundService.preloadAudios()])
+    return await Promise.all([
+      assetsService.preloadEveryImage(assetList),
+      soundService.preloadAudios(),
+      this.delayMock(2000),
+    ])
       .then((_) => {
         console.log('Everything has been loaded successfully');
         this.isLoaded = true;
@@ -30,6 +34,14 @@ class LoaderService {
   shouldPreload(): boolean {
     return !this.isLoaded && !this.isPreloading;
   }
+  delayMock(time: number): Promise<boolean> {
+    // this is to simulate a higher loading time
+    // returns true after time in ms
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(true), time);
+    });
+  }
 }
 
 export const loaderService = new LoaderService();
+
