@@ -34,10 +34,6 @@ export default function BackgroundWorker() {
     };
   }, [resources]);
 
-  return (
-    <>
-      <div className="hidden">{/* Useful Debug Info*/}</div>
-    </>
-  );
+  return <div className="hidden">{/* Useful Debug Info*/}</div>;
 }
 

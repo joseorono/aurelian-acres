@@ -41,7 +41,7 @@ function App() {
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
         <GameLoader />
       </div>
-      {/* <DebugArea />
+      <DebugArea />
       <Toaster
         gutter={12}
         toastOptions={{
@@ -80,10 +80,9 @@ function App() {
             },
           },
         }}
-      /> */}
+      />
     </>
   );
 }
 
 export default App;
-

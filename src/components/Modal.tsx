@@ -53,6 +53,7 @@ export default function Modal() {
           </CredenzaFooter>
         </CredenzaContent>
       </Credenza>
+      ;
     </>
   );
 }
