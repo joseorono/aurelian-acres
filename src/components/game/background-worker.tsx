@@ -1,4 +1,4 @@
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { GAME_TICK_MS } from '~/constants/defaults';
 import { resourcesAtom } from '~/store/atoms';
@@ -10,7 +10,6 @@ export default function BackgroundWorker() {
   // return the LoopingProgressBar component with the durationInMs prop set to 1000
 
   const resources = useAtomValue(resourcesAtom);
-
   useEffect(() => {
     console.log('BackgroundWorker mounted');
     const interval = setInterval(() => {
@@ -33,7 +32,8 @@ export default function BackgroundWorker() {
       console.log('BackgroundWorker unmounted');
       clearInterval(interval);
     };
-  }, []);
+  }, [resources]);
 
   return <div className="hidden">{/* Useful Debug Info*/}</div>;
 }
+
