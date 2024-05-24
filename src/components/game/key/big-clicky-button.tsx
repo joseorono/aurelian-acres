@@ -21,7 +21,7 @@ function visualModifiersToClasses(modifiers: clickerVisualModifiers): string {
 
 export default function BigClickyButton(props: { modifiers: clickerVisualModifiers }) {
   //const { rainingCoins, isNight, goldenOverlay, isFlood, bountifulHarvest } = props.modifiers;
-  const [resources, setResource] = useAtom(resourcesAtom);
+  const [, setResource] = useAtom(resourcesAtom);
   const workers = useAtomValue(workersAtom);
   const upgrade = useAtomValue(playerUpgradeAtom);
   const playerLevel = useAtomValue(playerLevelAtom);
@@ -37,7 +37,7 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
       onClick={() => {
         setResource((resourcesDraft) => {
           Object.assign(resourcesDraft, {
-            gold: resourcesDraft.gold + activeIncome.goldPerClick,
+            gold: resourcesDraft.gold + activeIncome.goldPerClick + 1,
             grain: resourcesDraft.grain + activeIncome.grainPerClick,
             stone: resourcesDraft.stone + activeIncome.stonePerClick,
           });
@@ -46,3 +46,4 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     />
   );
 }
+
