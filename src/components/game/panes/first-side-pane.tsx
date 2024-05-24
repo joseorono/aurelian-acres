@@ -1,5 +1,5 @@
 import TownDisplay from '~/components/town-display';
-import GenericLoader from './loader/generic-loader';
+import GenericLoader from '../../loader/generic-loader';
 import { Suspense } from 'react';
 import { useAtomValue } from 'jotai';
 import { workersAtom } from '~/store/atoms';

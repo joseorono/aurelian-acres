@@ -1,8 +1,8 @@
-import AutoBuySection from './game/key/auto-buy-section';
-import ClickerArea from './game/key/clicker-area';
-import HeadlinesMarquee from './game/misc/headlines-marquee';
-import PlayerNameView from './game/misc/player-name-view';
-import ResourceIndicator from './game/misc/resource-indicator';
+import AutoBuySection from '../key/auto-buy-section';
+import ClickerArea from '../key/clicker-area';
+import HeadlinesMarquee from '../misc/headlines-marquee';
+import PlayerNameView from '../misc/player-name-view';
+import ResourceIndicator from '../misc/resource-indicator';
 
 interface IMainGameAreaProps {
   className?: string;

@@ -9,8 +9,8 @@ import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
 import { useEffect } from 'react';
 import MouseTracker from '~/components/effects/mouse-tracker';
 import DebugArea from './components/debug-area';
-import MainGameArea from './components/main-game-area';
-import FirstSidePane from './components/first-side-pane';
+import MainGameArea from './components/game/panes/main-game-area';
+import FirstSidePane from './components/game/panes/first-side-pane';
 import ResponsiveNotice from './components/responsive-notice';
 import BackgroundWorker from './components/game/background-worker';
 import Modal from './components/Modal';
@@ -36,12 +36,13 @@ function App() {
       <ResponsiveNotice />
       <BackgroundWorker />
       <Modal />
+
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
         <MainGameArea className="h-svh w-2/6" />
         <FirstSidePane className="flex h-svh w-2/6 flex-col" />
         <div className="flex h-svh w-2/6 flex-col" />
+        <DebugArea />
       </div>
-      <DebugArea />
       <Toaster
         gutter={12}
         toastOptions={{
@@ -86,4 +87,3 @@ function App() {
 }
 
 export default App;
-
