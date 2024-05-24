@@ -34,7 +34,7 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
       src={spriteClicker}
       id="big-clicky-button"
       className={'mx-auto block w-full max-w-[75%] cursor-pointer' + addClasses}
-      onClick={() => {
+      onMouseDown={() => {
         setResource((resourcesDraft) => {
           Object.assign(resourcesDraft, {
             gold: resourcesDraft.gold + activeIncome.goldPerClick + 1,
@@ -46,4 +46,3 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     />
   );
 }
-
