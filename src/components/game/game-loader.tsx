@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
@@ -45,18 +45,18 @@ export default function GameLoader() {
         </button>
       );
     }
-    if (!loading && ready) {
-      return <MainGameArea />;
-    }
+    // i cant put MainGameArea inside innerView or the styles of the wrappers will break everything
+    // if (!loading && ready) {
+    //   return <MainGameArea />;
+    // }
   }
 
-  return (
-    <>
-      <div className="flex h-svh w-full items-center justify-center">
-        <div className="flex flex-col items-center justify-center"></div>
-      </div>
-      {innerView()}
-    </>
+  return !ready ? (
+    <div className="flex h-svh w-full items-center justify-center">
+      <div className="flex flex-col items-center justify-center">{innerView()}</div>
+    </div>
+  ) : (
+    <MainGameArea />
   );
 }
 
