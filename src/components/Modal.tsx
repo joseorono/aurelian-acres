@@ -17,7 +17,6 @@ export default function Modal() {
   const modalContent = useAtomValue(modalContentAtom);
 
   const closeModal = (value: any | null) => {
-    console.log('call close');
     setIsModalOpen(false);
     if (modalContent.onClose) {
       modalContent.onClose(value);
@@ -25,7 +24,7 @@ export default function Modal() {
   };
   return (
     <>
-      <Credenza open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <Credenza open={isModalOpen} onOpenChange={() => closeModal(null)}>
         <CredenzaContent
           onEscapeKeyDown={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
           onInteractOutside={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
