@@ -39,7 +39,7 @@ export default function Modal() {
             {modalContent.content}
           </CredenzaBody>
           <CredenzaFooter>
-            {modalContent.buttons != null && modalContent.buttons.length > 0 ? (
+            {!modalContent.disableButtons && modalContent.buttons != null && modalContent.buttons.length > 0 ? (
               modalContent.buttons.map((el, i) => (
                 <button key={i} onClick={() => closeModal(el.value)} className={el.classes}>
                   {el.label}
@@ -47,7 +47,7 @@ export default function Modal() {
               ))
             ) : (
               <CredenzaClose asChild>
-                <button>Close</button>
+                <button disabled={modalContent.disableButtons}>Close</button>
               </CredenzaClose>
             )}
           </CredenzaFooter>
