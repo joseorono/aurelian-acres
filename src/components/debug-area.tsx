@@ -11,6 +11,7 @@ import { useSetAtom } from 'jotai';
 import { setContentAtom } from '~/store/atoms';
 import TailwindDemo from './demo/tailwind-demo';
 import SoundBar from './soundBar';
+import NameChangerDialog from './modals/player-name-changer-dialog';
 
 export default function DebugArea() {
   const setIsModalOpen = useSetAtom(setContentAtom);
@@ -31,7 +32,7 @@ export default function DebugArea() {
         <StoreExample />
       </div>
 
-      <button
+      {/* <button
         onClick={() =>
           setIsModalOpen({
             title: 'NEW TITLE BABAAAAY',
@@ -59,7 +60,7 @@ export default function DebugArea() {
         className="p-8"
       >
         OPEN MODAL 2 HERE
-      </button>
+      </button> */}
 
       {/* <SoundsDemo></SoundsDemo> */}
 
@@ -82,3 +83,4 @@ export default function DebugArea() {
     </>
   );
 }
+

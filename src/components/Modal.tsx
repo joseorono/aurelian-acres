@@ -38,22 +38,23 @@ export default function Modal() {
             {/* This component is built using shadcn/ui&apos;s dialog and drawer component, which is built on top of Vaul. */}
             {modalContent.content}
           </CredenzaBody>
-          <CredenzaFooter>
-            {!modalContent.disableButtons && modalContent.buttons != null && modalContent.buttons.length > 0 ? (
-              modalContent.buttons.map((el, i) => (
-                <button key={i} onClick={() => closeModal(el.value)} className={el.classes}>
-                  {el.label}
-                </button>
-              ))
-            ) : (
-              <CredenzaClose asChild>
-                <button disabled={modalContent.disableButtons}>Close</button>
-              </CredenzaClose>
-            )}
-          </CredenzaFooter>
         </CredenzaContent>
       </Credenza>
     </>
   );
 }
+
+// <CredenzaFooter>
+//   {!modalContent.disableButtons && modalContent.buttons != null && modalContent.buttons.length > 0 ? (
+//     modalContent.buttons.map((el, i) => (
+//       <button key={i} onClick={() => closeModal(el.value)} className={`btn btn-neutral ${el.classes}`}>
+//         {el.label}
+//       </button>
+//     ))
+//   ) : (
+//     <CredenzaClose asChild>
+//       <button disabled={modalContent.disableButtons}>Close</button>
+//     </CredenzaClose>
+//   )}
+// </CredenzaFooter>
 

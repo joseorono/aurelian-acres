@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import EventDisplay from '~/components/dialogs/event-display';
 import TownNameView from '../misc/town-name-view';
 import PopulationView from '../misc/population-view';
+import PlayerNameView from '../misc/player-name-view';
 
 interface IFirstSidePaneProps {
   className?: string;
@@ -29,3 +30,4 @@ const FirstSidePane: React.FC<IFirstSidePaneProps> = ({ className = '' }) => {
 };
 
 export default FirstSidePane;
+

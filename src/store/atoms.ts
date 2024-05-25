@@ -18,6 +18,7 @@ export const isMutedAtom = atomWithStorage<boolean>('isMuted', false);
 export const volumeAtom = atomWithStorage<number>('volume', 1);
 //player atoms
 export const playerNameAtom = atomWithStorage<string>('playerName', 'Lucius');
+export const townNameAtom = atomWithStorage<string>('townName', 'da town');
 export const playerLevelAtom = atomWithStorage<number>('playerLevel', 0);
 export const playerUpgradeAtom = atomWithStorage<UpgradeKeys>('playerUpgrade', 'default');
 // atoms for the modal
