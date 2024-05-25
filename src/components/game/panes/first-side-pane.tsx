@@ -14,11 +14,12 @@ interface IFirstSidePaneProps {
 const FirstSidePane: React.FC<IFirstSidePaneProps> = ({ className = '' }) => {
   return (
     <section className={className}>
-      <div className="townName SectionHeader p-4 text-center text-white">
+      <div className="SectionHeader ">
         <TownNameView />
         <PopulationView />
       </div>
-      <div className="flex flex-auto flex-col items-center justify-center bg-gray-800">
+      <div className="SectionHeader">LATEST NEWS</div>
+      <div className="flex flex-col items-center justify-center bg-gray-800">
         <EventDisplay />
       </div>
       <div className="SectionHeader p-4 text-center text-white">MAP</div>

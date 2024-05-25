@@ -11,15 +11,17 @@ interface INewspaperHeadlinesProp {
 const NewspaperHeadline: React.FC<INewspaperHeadlinesProp> = (props: INewspaperHeadlinesProp) => {
   return (
     <>
-      <div className="text-center text-xl">{getRandomElement(NEWSPAPER_NAMES)}</div>
-      <div className="flex h-12 w-full items-center justify-center bg-gray-800 text-white">
-        <h1 className="text-xl font-bold">{props.headline}</h1>
-      </div>
+      <div className="newsHeadline__wrapper mb-4 text-slate-700">
+        <div className="p-2 text-center text-lg uppercase">{getRandomElement(NEWSPAPER_NAMES)}</div>
 
-      <div className="border-y-1 items-center border-gray-700 bg-white p-2 text-gray-700">
-        <h2 className="text-sm">
+        {/* The Random title and separator */}
+        <div className="eventSubhead text-xs mx-2 mb-2 mt-1 break-words border-y-2 border-slate-700 py-1 text-center uppercase">
           {props.headline == NOTHING_EVENT.name ? "It's the end of history." : getRandomElement(FLAVOR_TEXT_HEADLINES)}
-        </h2>
+        </div>
+        {/* The Actual Title of the News */}
+        <div className="eventHeadline flex w-full items-center justify-center">
+          <h1 className="text-2xl font-bold">{props.headline}</h1>
+        </div>
       </div>
     </>
   );

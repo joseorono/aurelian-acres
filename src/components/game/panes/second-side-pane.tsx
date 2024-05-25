@@ -1,6 +1,6 @@
-export default function SecondSidePane() {
+export default function SecondSidePane({ className = '' }) {
   return (
-    <div className="flex h-svh w-2/6 flex-col bg-slate-800 text-white">
+    <div className={className}>
       <p className="text-center">SECOND SIDE PANE</p>
     </div>
   );

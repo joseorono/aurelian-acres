@@ -3,6 +3,7 @@
 
 import { useAtom, useAtomValue } from 'jotai';
 import { calculateActiveIncome } from '~/lib/resources';
+import { SoundNames, soundService } from '~/services/sound-service';
 import { workersAtom, playerUpgradeAtom, playerLevelAtom, resourcesAtom } from '~/store/atoms';
 import { clickerVisualModifiers } from '~/types/game-data-types';
 
@@ -30,8 +31,9 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     <img
       src="/assets/big-coin.png"
       id="big-clicky-button"
-      className={'mx-auto block w-full max-w-[75%] cursor-pointer' + addClasses}
+      className={'mx-auto block w-full max-w-[60%] cursor-pointer' + addClasses}
       onMouseDown={() => {
+        soundService.playSound(SoundNames.coinClick, 0.6, 0.7);
         setResource((resourcesDraft) => {
           console.log(resourcesDraft.gold);
           Object.assign(resourcesDraft, {

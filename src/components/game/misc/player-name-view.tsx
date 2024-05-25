@@ -11,7 +11,7 @@ export default function TownNameView() {
   // const dialogContent = <NameChangerDialog />;
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-800 p-4 text-white">
+    <div className="sectionHeader">
       <button
         type="button"
         onClick={() =>
@@ -22,7 +22,7 @@ export default function TownNameView() {
           })
         }
       >
-        <h1 className="text-3xl">{playerName}</h1>
+        <h1 className="text-3xl text-white">{playerName}</h1>
       </button>
     </div>
   );

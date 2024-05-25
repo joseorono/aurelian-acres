@@ -12,6 +12,7 @@ module.exports = {
       '5x5mono': ['Minimal5x5Monospaced', 'sans-serif'],
     },
     fontSize: {
+      xs: '0.725rem',
       sm: '0.875rem',
       base: '1.15rem',
       lg: '1.20rem',
@@ -68,6 +69,33 @@ module.exports = {
           900: '#74480f',
           950: '#442604',
         },
+        blue: {
+          50: '#e6f0ff',
+          100: '#cce1ff',
+          200: '#99c2ff',
+          300: '#66a3ff',
+          400: '#3384ff',
+          500: '#0065ff',
+          600: '#0057e6',
+          700: '#0047b3',
+          800: '#003580',
+          900: '#002452',
+          950: '#001326',
+        },
+        green: {
+          50: '#e6f9e6',
+          100: '#ccf2cc',
+          200: '#99e699',
+          300: '#66d966',
+          400: '#33cc33',
+          500: '#00bf00',
+          600: '#00a300',
+          700: '#008000',
+          800: '#005900',
+          900: '#003300',
+          950: '#001900',
+        },
+
         brown: {
           50: '#f8f6ee',
           100: '#efead2',
@@ -182,7 +210,21 @@ module.exports = {
   ],
 
   daisyui: {
-    themes: ['dark', 'light'],
+    themes: [
+      {
+        aurelian: {
+          primary: '#8E001C',
+          secondary: '#FFD700',
+          accent: '#d9292f',
+          neutral: '#dcfce7',
+          'base-100': '#282C34',
+          info: '#2998D9',
+          success: '#4BB543',
+          warning: '#FFB300',
+          error: '#d32f2f',
+        },
+      },
+    ],
     logs: true,
   },
 };

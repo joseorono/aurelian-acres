@@ -83,10 +83,47 @@ html {
 
 body {
   color: #f5f6fa;
-  background-color: #282c34;
+  background-color: #3e4f59;
 }
 .clickerArea {
   @apply flex flex-auto items-center justify-center bg-gray-800;
+}
+
+/*
+==========================================
+    Background Styles
+==========================================
+*/
+
+.bg-img-noise-scroll {
+  background-image: url('./assets/bg/noise-10-60-scroll.png');
+  background-size: 100%;
+  background-repeat: repeat;
+}
+
+.bg-img-noise-gray {
+  background-image: url('./assets/bg/noise-10-40-gray.webp');
+  background-size: 100%;
+  background-repeat: repeat;
+}
+
+.bg-scroll {
+  @apply bg-img-noise-scroll;
+  background-color: #f9f4e7;
+}
+
+/*
+==========================================
+    Layout Elements Styles
+==========================================
+*/
+
+.border-scroll-groove {
+  border: 3px groove #e8e0c3;
+}
+
+.SectionHeader {
+  @apply bg-img-noise-scroll border-scroll-groove bg-red-800 p-1 text-center text-2xl font-bold text-white;
 }
 
 /*
