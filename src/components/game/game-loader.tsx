@@ -2,9 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
-import DebugArea from '../debug-area';
 import LoopingProgressBar from './misc/loopingProgressBar';
-import MainGameArea from './panes/main-game-area';
 
 export default function GameLoader() {
   // TODO: Implement a loading screen that when done, displays a big PLAY button
@@ -56,7 +54,6 @@ export default function GameLoader() {
       <div className="flex flex-col items-center justify-center">{innerView()}</div>
     </div>
   ) : (
-    <MainGameArea />
+    <GameScreen />
   );
 }
-

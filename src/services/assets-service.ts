@@ -2,9 +2,9 @@
 // const preloadin = await preloadEveryImage(['img1.jpg', 'img2.jpg'])
 
 export const assetList: string[] = [
-  '/fonts/Minimal3x5.ttf',
-  '/fonts/Minimal5x5Monospaced.ttf',
-  '/fonts/Minimal5x7.ttf',
+  // '/fonts/Minimal3x5.ttf',
+  // '/fonts/Minimal5x5Monospaced.ttf',
+  // '/fonts/Minimal5x7.ttf',
   '/favicon.png',
   // Add more assets here
 ];
@@ -53,3 +53,4 @@ class AssetsService {
 }
 
 export const assetsService = new AssetsService();
+
