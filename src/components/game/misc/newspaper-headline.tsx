@@ -1,4 +1,5 @@
 import React from 'react';
+import { NOTHING_EVENT } from '~/constants/events';
 import { NEWSPAPER_NAMES } from '~/constants/flavor-text';
 import { FLAVOR_TEXT_HEADLINES } from '~/constants/flavor-text';
 import { getRandomElement } from '~/lib/utils';
@@ -16,7 +17,9 @@ const NewspaperHeadline: React.FC<INewspaperHeadlinesProp> = (props: INewspaperH
       </div>
 
       <div className="border-y-1 items-center border-gray-700 bg-white p-2 text-gray-700">
-        <h2 className="text-sm">{getRandomElement(FLAVOR_TEXT_HEADLINES)}</h2>
+        <h2 className="text-sm">
+          {props.headline == NOTHING_EVENT.name ? "It's the end of history." : getRandomElement(FLAVOR_TEXT_HEADLINES)}
+        </h2>
       </div>
     </>
   );
