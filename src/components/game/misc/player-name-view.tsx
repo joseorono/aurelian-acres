@@ -11,12 +11,13 @@ export default function TownNameView() {
   // const dialogContent = <NameChangerDialog />;
 
   return (
-    <div className="sectionHeader">
+    <div className="SectionHeader">
       <button
         type="button"
         onClick={() =>
           setIsModalOpen({
-            title: 'this is the SECOND modal lets see whats up',
+            title: 'Change name',
+            subtitle: 'Change the name of your emperor',
             content: <PlayerNameChangerDialog />,
             onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
           })

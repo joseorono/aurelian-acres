@@ -14,7 +14,8 @@ export default function PopulationView() {
         type="button"
         onClick={() =>
           setIsModalOpen({
-            title: 'Change town name',
+            title: 'Change name',
+            subtitle: 'Change the name of your little town',
             content: <TownNameChangerDialog />,
             onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
           })
