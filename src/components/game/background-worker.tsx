@@ -34,7 +34,7 @@ export default function BackgroundWorker() {
 
   // Add the passive income to the resources
   useEffect(() => {
-    console.log('Passive income BackgroundWorker mounted');
+    // console.log('Passive income BackgroundWorker mounted');
     const passiveIncome = calculatePassiveIncome(buildings, upgrade, playerLevel);
     const interval = setInterval(() => {
       setResources((resourcesDraft) => {
@@ -45,14 +45,14 @@ export default function BackgroundWorker() {
     }, GAME_TICK_MS);
 
     return () => {
-      console.log('Passive income BackgroundWorker unmounted');
+      // console.log('Passive income BackgroundWorker unmounted');
       clearInterval(interval);
     };
   }, [buildings, upgrade, playerLevel]);
 
   // Update the resource labels
   useEffect(() => {
-    console.log('Resource BackgroundWorker mounted');
+    // console.log('Resource BackgroundWorker mounted');
     const interval = setInterval(() => {
       // Update the game tick
 
@@ -69,17 +69,17 @@ export default function BackgroundWorker() {
     }, GAME_TICK_MS);
 
     return () => {
-      console.log('BackgroundWorker unmounted');
+      // console.log('BackgroundWorker unmounted');
       clearInterval(interval);
     };
   }, [resources]);
 
   //Event trigger
   useEffect(() => {
-    console.log('Event BackgroundWorker mounted');
+    // console.log('Event BackgroundWorker mounted');
     const interval = setInterval(() => {
       if (Math.random() < EVENT_PROBABILITY) {
-        console.log('Event triggered');
+        // console.log('Event triggered');
         // Generate random event
         const newEvent = getRandomEvent(GLOBAL_EVENTS);
 
@@ -115,7 +115,7 @@ export default function BackgroundWorker() {
     }, GAME_TICK_MS);
 
     return () => {
-      console.log('Event BackgroundWorker unmounted');
+      // console.log('Event BackgroundWorker unmounted');
       clearInterval(interval);
     };
   }, []);

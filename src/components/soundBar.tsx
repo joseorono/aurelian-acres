@@ -3,23 +3,29 @@ import { isMutedAtom, volumeAtom } from '~/store/atoms';
 import { VolumeHigh, VolumeLow, VolumeMed, VolumeMute, VolumeNone } from '~/icons/sound/volume';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { soundService } from '~/services/sound-service';
+import { useEffect } from 'react';
 export default function SoundBar() {
   const [isMuted, setIsMuted] = useAtom(isMutedAtom);
   const [volume, setVolume] = useAtom(volumeAtom);
 
+  useEffect(() => {
+    if (isMuted === true) {
+      soundService.muteAll();
+    } else {
+      soundService.unmuteAll();
+    }
+  }, [isMuted]);
+
+  useEffect(() => {
+    soundService.setGlobalVolume(volume);
+  }, [volume]);
+
   const onVolumeChange = (val: number) => {
-    console.log(val / 100);
-    soundService.setGlobalVolume(val / 100);
     setVolume(val / 100);
   };
 
   const handleMute = () => {
     setIsMuted(!isMuted);
-    if (isMuted === false) {
-      soundService.muteAll();
-    } else {
-      soundService.unmuteAll();
-    }
   };
 
   const VolumeToShow = () => {
