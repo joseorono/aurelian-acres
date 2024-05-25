@@ -12,6 +12,7 @@ module.exports = {
       '5x5mono': ['Minimal5x5Monospaced', 'sans-serif'],
     },
     fontSize: {
+      xs: '0.725rem',
       sm: '0.875rem',
       base: '1.15rem',
       lg: '1.20rem',

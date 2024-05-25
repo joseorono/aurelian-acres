@@ -8,7 +8,7 @@ export default function GameScreen() {
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
         <MainGameArea className="h-svh w-2/6" />
         <FirstSidePane className="flex h-svh w-2/6 flex-col" />
-        <SecondSidePane />
+        <SecondSidePane className="flex h-svh w-2/6 flex-col" />
       </div>
     </>
   );

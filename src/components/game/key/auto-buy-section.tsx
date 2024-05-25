@@ -3,7 +3,10 @@ import LoopingProgressBar from '../misc/loopingProgressBar';
 export default function AutoBuySection() {
   return (
     <div className="flex bg-slate-800">
-      <div id="availableWorker" className="flex-auto bg-gradient-to-b from-red-600 to-red-900 p-4">
+      <div
+        id="availableWorker"
+        className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4"
+      >
         Best Worker
       </div>
       <div id="availableBuilding" className="flex flex-auto flex-col bg-blue-800">
