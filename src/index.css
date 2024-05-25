@@ -86,7 +86,8 @@ body {
   background-color: #3e4f59;
 }
 .clickerArea {
-  @apply flex flex-auto items-center justify-center bg-gray-800;
+  @apply flex flex-auto items-center justify-center bg-gray-300;
+  background: no-repeat center/cover url('./assets/splashscreen.webp');
 }
 
 /*
@@ -110,6 +111,13 @@ body {
 .bg-scroll {
   @apply bg-img-noise-scroll;
   background-color: #f9f4e7;
+}
+
+.bg-blue-noise {
+  background-image: url('./assets/bg/noise-10-60-scroll.png');
+  background-color: theme('colors.blue.800');
+  background-size: 100%;
+  background-repeat: repeat;
 }
 
 /*
