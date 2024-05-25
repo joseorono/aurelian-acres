@@ -20,7 +20,7 @@ const ClickerArea: FC<IClickerAreaProps> = ({ className = '' }) => {
 
   // In the future this returns a big div with a button that says "Click Me" in the middle, and containers with justify content between above and below
   return (
-    <div className={cn('flex flex-auto items-center justify-center bg-gray-800', className)}>
+    <div className={'clickerArea ' + className}>
       <BigClickyButton modifiers={visualModifiers} />
     </div>
   );

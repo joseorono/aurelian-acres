@@ -115,6 +115,10 @@ body {
 }
 */
 
+.clickerArea {
+  @apply flex flex-auto items-center justify-center bg-gray-800;
+}
+
 /*
     * The following styles are for the fake progress bar
     * that represents the passive Buildings.
