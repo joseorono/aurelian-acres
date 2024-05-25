@@ -147,6 +147,8 @@ export type eventData = {
   probability: number;
   name: string;
   description: string;
-} & Partial<buildingCount> &
-  Partial<playerResources> &
-  Partial<workerCount>;
+  buildingMultiplier?: buildingCount;
+  workerMultiplier?: workerCount;
+  resourceMultiplier?: playerResources;
+};
+
