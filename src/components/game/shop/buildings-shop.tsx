@@ -10,6 +10,8 @@ export default function BuildingsShop() {
   const resources = useAtomValue(resourcesAtom);
 
   const handleBuy = (buildId: number, amount: number, cost: priceData | null) => {
+    console.log('handle buy');
+
     if (cost === null) {
       console.error('trying to buy building with 0 cost. Shouldnt be possible');
     }
@@ -43,7 +45,7 @@ export default function BuildingsShop() {
               <button
                 className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
                 type="button"
-                disabled={canAfford}
+                disabled={!canAfford}
                 onClick={() => handleBuy(buildingData.id, 1, buildingCost)}
               >
                 BUY
