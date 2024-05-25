@@ -1,5 +1,6 @@
 import MainGameArea from '~/components/game/panes/main-game-area';
 import FirstSidePane from '~/components/game/panes/first-side-pane';
+import SecondSidePane from './panes/second-side-pane';
 
 export default function GameScreen() {
   return (
@@ -7,9 +8,7 @@ export default function GameScreen() {
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
         <MainGameArea className="h-svh w-2/6" />
         <FirstSidePane className="flex h-svh w-2/6 flex-col" />
-        <div id="lastPane" className="flex h-svh w-2/6 flex-col">
-          <p className="text-center">LAST PANE</p>
-        </div>
+        <SecondSidePane />
       </div>
     </>
   );
