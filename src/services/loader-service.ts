@@ -21,7 +21,7 @@ class LoaderService {
     return await Promise.all([
       assetsService.preloadEveryImage(assetList),
       soundService.preloadAudios(),
-      this.delayMock(2000),
+      // this.delayMock(2000),
     ])
       .then((_) => {
         console.log('Everything has been loaded successfully');
