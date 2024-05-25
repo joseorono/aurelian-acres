@@ -16,7 +16,7 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
   return (
     <div className="bg-scroll p-4 text-gray-700">
       <NewspaperHeadline headline={event.name} />
-      <h1>{JSON.stringify(event)}</h1>
+      <div className="break-all text-sm">{JSON.stringify(event)}</div>
     </div>
   );
 };

@@ -6,9 +6,9 @@ export default function GameScreen() {
   return (
     <>
       <div id="app" vaul-drawer-wrapper="" className="flex h-svh w-full">
-        <MainGameArea className="h-svh w-2/6" />
-        <FirstSidePane className="flex h-svh w-2/6 flex-col" />
-        <SecondSidePane className="flex h-svh w-2/6 flex-col" />
+        <MainGameArea className="h-svh w-2/6 justify-items-start" />
+        <FirstSidePane className="flex h-svh w-2/6 flex-col justify-items-start" />
+        <SecondSidePane className="flex h-svh w-2/6 flex-col justify-items-start" />
       </div>
     </>
   );
