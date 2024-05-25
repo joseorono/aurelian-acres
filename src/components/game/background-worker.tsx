@@ -23,13 +23,13 @@ export default function BackgroundWorker() {
   //Read-write
   const [resources, setResources] = useAtom(resourcesAtom);
   const [buildings, setBuildings] = useAtom(buildingsAtom);
-  const setWorkers = useSetAtom(workersAtom);
 
   //Read
   const playerLevel = useAtomValue(playerLevelAtom);
+  const upgrade = useAtomValue(playerUpgradeAtom);
 
   //Write
-  const upgrade = useAtomValue(playerUpgradeAtom);
+  const setWorkers = useSetAtom(workersAtom);
   const setEvent = useSetAtom(eventsAtom);
 
   // Add the passive income to the resources
@@ -57,14 +57,16 @@ export default function BackgroundWorker() {
       // Update the game tick
 
       // Update the value of resources in every DOM element with labelForGold, labelForGrain, and labelForStone
-      document.querySelectorAll('.labelForGold').forEach((el) => {
-        el.textContent = resources.gold.toString();
-      });
-      document.querySelectorAll('.labelForGrain').forEach((el) => {
-        el.textContent = resources.grain.toString();
-      });
-      document.querySelectorAll('.labelForStone').forEach((el) => {
-        el.textContent = resources.stone.toString();
+      setResources((resourcesDraft) => {
+        document.querySelectorAll('.labelForGold').forEach((el) => {
+          el.textContent = resourcesDraft.gold.toString();
+        });
+        document.querySelectorAll('.labelForGrain').forEach((el) => {
+          el.textContent = resourcesDraft.grain.toString();
+        });
+        document.querySelectorAll('.labelForStone').forEach((el) => {
+          el.textContent = resourcesDraft.stone.toString();
+        });
       });
     }, GAME_TICK_MS);
 
@@ -72,7 +74,7 @@ export default function BackgroundWorker() {
       console.log('BackgroundWorker unmounted');
       clearInterval(interval);
     };
-  }, [resources]);
+  }, []);
 
   //Event trigger
   useEffect(() => {
