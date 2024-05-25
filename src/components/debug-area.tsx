@@ -10,6 +10,7 @@ import ToasterDemo from '~/components/demo/toaster-demo';
 import { useSetAtom } from 'jotai';
 import { setContentAtom } from '~/store/atoms';
 import TailwindDemo from './demo/tailwind-demo';
+import SoundBar from './soundBar';
 
 export default function DebugArea() {
   const setIsModalOpen = useSetAtom(setContentAtom);
@@ -19,6 +20,9 @@ export default function DebugArea() {
 
   return (
     <>
+      <div className="p-8">
+        <SoundBar />
+      </div>
       <div className="p-8">
         <CounterExample />
       </div>
