@@ -1,15 +1,17 @@
 import { atomWithStorage } from 'jotai/utils';
 import { withImmer } from 'jotai-immer';
+import { atom } from 'jotai';
+
 import {
   UpgradeKeys,
   buildingCount,
   clickerVisualModifiers,
+  eventData,
   playerResources,
   workerCount,
 } from '~/types/game-data-types';
-import { atom } from 'jotai';
 import { IModal } from '~/types/dialog-props';
-
+import { NOTHING_EVENT } from '~/constants/events';
 export const playerNameAtom = atomWithStorage<string>('playerName', 'Lucius');
 export const playerLevelAtom = atomWithStorage<number>('playerLevel', 0);
 export const playerUpgradeAtom = atomWithStorage<UpgradeKeys>('playerUpgrade', 'default');
@@ -54,7 +56,7 @@ export const resourcesAtom = withImmer(
   }),
 );
 
-export const eventsAtom = withImmer(
+export const visualModifiersAtom = withImmer(
   atomWithStorage<clickerVisualModifiers>('visualModifiers', {
     rainingCoins: false,
     isNight: false,
@@ -64,6 +66,7 @@ export const eventsAtom = withImmer(
   }),
 );
 
+export const eventsAtom = withImmer(atomWithStorage<eventData>('event', NOTHING_EVENT));
 // import { buildingKeys, buildingCount } from '~/types/game-data-types';
 // interface BuildingState {
 //   buildingCount: buildingCount;
