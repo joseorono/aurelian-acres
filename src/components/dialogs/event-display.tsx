@@ -1,12 +1,18 @@
-import { GLOBAL_EVENTS } from '~/constants/events';
+import { GLOBAL_EVENTS, NOTHING_EVENT } from '~/constants/events';
 import { getRandomEvent } from '~/lib/events-logic';
 import { eventData } from '~/types/game-data-types';
 import NewspaperHeadline from '../game/misc/newspaper-headline';
 
-const EventDisplay = (event: Nullable<eventData>) => {
-  // If no event is passed, get a random one
+interface IPropsEventDisplay {
+  initialEvent?: Nullable<eventData>;
+  className?: string;
+}
+
+const EventDisplay = ({ initialEvent = null, className = '' }: IPropsEventDisplay) => {
+  // If no event is passed, get a random
+  let event = initialEvent;
   if (!event) {
-    event = getRandomEvent(GLOBAL_EVENTS);
+    event = NOTHING_EVENT;
   }
   return (
     <div>
