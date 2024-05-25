@@ -1,6 +1,6 @@
 export default function ResourceIndicator() {
   return (
-    <div className="my-3 p-2 text-center text-2xl">
+    <div className="bg-blue-noise p-2 py-3 text-center text-2xl">
       Current resources
       <div className="text-center text-5xl">
         {' '}
