@@ -1,9 +1,11 @@
-import { GLOBAL_EVENTS, NOTHING_EVENT } from '~/constants/events';
+import { GAME_TICK_MS } from '~/constants/defaults';
+import { GLOBAL_EVENTS, EVENT_PROBABILITY } from '~/constants/events';
+import { useEffect } from 'react';
 import { getRandomEvent } from '~/lib/events-logic';
-import { eventData } from '~/types/game-data-types';
+import { buildingCount, workerCount } from '~/types/game-data-types';
 import NewspaperHeadline from '../game/misc/newspaper-headline';
-import { eventsAtom } from '~/store/atoms';
-import { useAtomValue } from 'jotai';
+import { eventsAtom, buildingsAtom, resourcesAtom, workersAtom } from '~/store/atoms';
+import { useSetAtom, useAtom } from 'jotai';
 
 interface IPropsEventDisplay {
   className?: string;
@@ -11,8 +13,58 @@ interface IPropsEventDisplay {
 
 const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
   // If no event is passed, get a random
-  const event = useAtomValue(eventsAtom);
+  const [event, setEvent] = useAtom(eventsAtom);
 
+  //Write
+  const setWorkers = useSetAtom(workersAtom);
+  const setBuildings = useSetAtom(buildingsAtom);
+  const setResources = useSetAtom(resourcesAtom);
+  //Event trigger
+  useEffect(() => {
+    console.log('Event worker mounted');
+    const interval = setInterval(() => {
+      if (Math.random() < EVENT_PROBABILITY) {
+        console.log('Event triggered');
+        // Generate random event
+        const newEvent = getRandomEvent(GLOBAL_EVENTS);
+
+        // We check for every multiplier object and then multiply the pertinent value by the corresponding multiplier
+        if (newEvent.resourceMultiplier) {
+          setResources((resourcesDraft) => {
+            resourcesDraft.gold = Math.floor(resourcesDraft.gold * (newEvent?.resourceMultiplier?.gold ?? 1));
+            resourcesDraft.grain = Math.floor(resourcesDraft.grain * (newEvent?.resourceMultiplier?.grain ?? 1));
+            resourcesDraft.stone = Math.floor(resourcesDraft.stone * (newEvent?.resourceMultiplier?.stone ?? 1));
+          });
+        }
+
+        if (newEvent.buildingMultiplier) {
+          setBuildings((buildingsDraft) => {
+            for (const key in newEvent.buildingMultiplier) {
+              buildingsDraft[key as keyof buildingCount] = Math.floor(
+                buildingsDraft[key as keyof buildingCount] * newEvent.buildingMultiplier[key as keyof buildingCount],
+              );
+            }
+          });
+        }
+
+        if (newEvent.workerMultiplier) {
+          setWorkers((workersDraft) => {
+            for (const key in newEvent.workerMultiplier) {
+              workersDraft[key as keyof workerCount] = Math.floor(
+                workersDraft[key as keyof workerCount] * newEvent.workerMultiplier[key as keyof workerCount],
+              );
+            }
+          });
+        }
+        setEvent(newEvent);
+      }
+    }, GAME_TICK_MS);
+
+    return () => {
+      console.log('Event BackgroundWorker unmounted');
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div className="flex flex-auto flex-col justify-center bg-scroll p-4 text-gray-700">
       <NewspaperHeadline headline={event.name} />
@@ -22,3 +74,4 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
 };
 
 export default EventDisplay;
+
