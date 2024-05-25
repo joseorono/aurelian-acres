@@ -1,20 +1,38 @@
-import { useAtom, useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { GAME_TICK_MS } from '~/constants/defaults';
-import { calculatePassiveIncome } from '~/lib/resources';
-import { resourcesAtom, buildingsAtom, playerUpgradeAtom, playerLevelAtom } from '~/store/atoms';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 
+import { GAME_TICK_MS } from '~/constants/defaults';
+import { EVENT_PROBABILITY, GLOBAL_EVENTS } from '~/constants/events';
+import { getRandomEvent } from '~/lib/events-logic';
+import { calculatePassiveIncome } from '~/lib/resources';
+import {
+  resourcesAtom,
+  buildingsAtom,
+  playerUpgradeAtom,
+  playerLevelAtom,
+  eventsAtom,
+  workersAtom,
+} from '~/store/atoms';
+import { buildingCount, workerCount } from '~/types/game-data-types';
 export default function BackgroundWorker() {
   // save the game tick as a state using useState
   // use the useEffect hook to update the game tick every 1000ms
   // use the setInterval function to update the game tick every 1000ms
   // return the LoopingProgressBar component with the durationInMs prop set to 1000
 
+  //Read-write
   const [resources, setResources] = useAtom(resourcesAtom);
-  const buildings = useAtomValue(buildingsAtom);
-  const upgrade = useAtomValue(playerUpgradeAtom);
+  const [buildings, setBuildings] = useAtom(buildingsAtom);
+  const setWorkers = useSetAtom(workersAtom);
+
+  //Read
   const playerLevel = useAtomValue(playerLevelAtom);
-  // We add the passive income to the resources
+
+  //Write
+  const upgrade = useAtomValue(playerUpgradeAtom);
+  const setEvent = useSetAtom(eventsAtom);
+
+  // Add the passive income to the resources
   useEffect(() => {
     console.log('Passive income BackgroundWorker mounted');
     const passiveIncome = calculatePassiveIncome(buildings, upgrade, playerLevel);
@@ -31,7 +49,8 @@ export default function BackgroundWorker() {
       clearInterval(interval);
     };
   }, [buildings, upgrade, playerLevel]);
-  //Actualizamos los recursos
+
+  // Update the resource labels
   useEffect(() => {
     console.log('Resource BackgroundWorker mounted');
     const interval = setInterval(() => {
@@ -39,7 +58,6 @@ export default function BackgroundWorker() {
 
       // Update the value of resources in every DOM element with labelForGold, labelForGrain, and labelForStone
       document.querySelectorAll('.labelForGold').forEach((el) => {
-        console.log('Found labelForGold');
         el.textContent = resources.gold.toString();
       });
       document.querySelectorAll('.labelForGrain').forEach((el) => {
@@ -56,30 +74,51 @@ export default function BackgroundWorker() {
     };
   }, [resources]);
 
-  //Actualizamos los recursos
+  //Event trigger
   useEffect(() => {
-    console.log('Resource BackgroundWorker mounted');
+    console.log('Event BackgroundWorker mounted');
     const interval = setInterval(() => {
-      // Update the game tick
+      if (Math.random() < EVENT_PROBABILITY) {
+        console.log('Event triggered');
+        // Generate random event
+        const newEvent = getRandomEvent(GLOBAL_EVENTS);
 
-      // Update the value of resources in every DOM element with labelForGold, labelForGrain, and labelForStone
-      document.querySelectorAll('.labelForGold').forEach((el) => {
-        console.log('Found labelForGold');
-        el.textContent = resources.gold.toString();
-      });
-      document.querySelectorAll('.labelForGrain').forEach((el) => {
-        el.textContent = resources.grain.toString();
-      });
-      document.querySelectorAll('.labelForStone').forEach((el) => {
-        el.textContent = resources.stone.toString();
-      });
+        // We check for every multiplier object and then multiply the pertinent value by the corresponding multiplier
+        if (newEvent.resourceMultiplier) {
+          setResources((resourcesDraft) => {
+            resourcesDraft.gold = Math.floor(resourcesDraft.gold * (newEvent?.resourceMultiplier?.gold ?? 1));
+            resourcesDraft.grain = Math.floor(resourcesDraft.grain * (newEvent?.resourceMultiplier?.grain ?? 1));
+            resourcesDraft.stone = Math.floor(resourcesDraft.stone * (newEvent?.resourceMultiplier?.stone ?? 1));
+          });
+        }
+        if (newEvent.buildingMultiplier) {
+          setBuildings((buildingsDraft) => {
+            for (const key in newEvent.buildingMultiplier) {
+              buildingsDraft[key as keyof buildingCount] = Math.floor(
+                buildingsDraft[key as keyof buildingCount] * newEvent.buildingMultiplier[key as keyof buildingCount],
+              );
+            }
+          });
+        }
+
+        if (newEvent.workerMultiplier) {
+          setWorkers((workersDraft) => {
+            for (const key in newEvent.workerMultiplier) {
+              workersDraft[key as keyof workerCount] = Math.floor(
+                workersDraft[key as keyof workerCount] * newEvent.workerMultiplier[key as keyof workerCount],
+              );
+            }
+          });
+        }
+        setEvent(newEvent);
+      }
     }, GAME_TICK_MS);
 
     return () => {
-      console.log('BackgroundWorker unmounted');
+      console.log('Event BackgroundWorker unmounted');
       clearInterval(interval);
     };
-  }, [resources]);
+  }, []);
   return <div className="hidden">{/* Useful Debug Info*/}</div>;
 }
 

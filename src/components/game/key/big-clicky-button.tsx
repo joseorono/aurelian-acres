@@ -28,7 +28,6 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
 
   const activeIncome = calculateActiveIncome(workers, upgrade, playerLevel);
   const addClasses = visualModifiersToClasses(props.modifiers);
-
   return (
     <img
       src={bigCoin}
@@ -36,8 +35,9 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
       className={'mx-auto block w-full max-w-[75%] cursor-pointer' + addClasses}
       onMouseDown={() => {
         setResource((resourcesDraft) => {
+          console.log(resourcesDraft.gold);
           Object.assign(resourcesDraft, {
-            gold: resourcesDraft.gold + activeIncome.goldPerClick + 1,
+            gold: resourcesDraft.gold + activeIncome.goldPerClick,
             grain: resourcesDraft.grain + activeIncome.grainPerClick,
             stone: resourcesDraft.stone + activeIncome.stonePerClick,
           });
@@ -46,3 +46,4 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     />
   );
 }
+

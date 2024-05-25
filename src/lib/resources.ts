@@ -165,8 +165,9 @@ export function calculateActiveIncome(
   }
 
   return {
-    goldPerClick: accumulatedGoldPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.goldMultiplier,
+    goldPerClick: 1 + accumulatedGoldPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.goldMultiplier,
     grainPerClick: accumulatedGrainPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.grainMultiplier,
     stonePerClick: accumulatedStonePerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.stoneMultiplier,
   };
 }
+
