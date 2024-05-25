@@ -6,8 +6,6 @@ import { calculateActiveIncome } from '~/lib/resources';
 import { workersAtom, playerUpgradeAtom, playerLevelAtom, resourcesAtom } from '~/store/atoms';
 import { clickerVisualModifiers } from '~/types/game-data-types';
 
-import bigCoin from '@/assets/big-coin.png';
-
 function visualModifiersToClasses(modifiers: clickerVisualModifiers): string {
   return `
     big-clicky-button 
@@ -30,7 +28,7 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
   const addClasses = visualModifiersToClasses(props.modifiers);
   return (
     <img
-      src={bigCoin}
+      src="/assets/big-coin.png"
       id="big-clicky-button"
       className={'mx-auto block w-full max-w-[75%] cursor-pointer' + addClasses}
       onMouseDown={() => {
@@ -46,4 +44,3 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     />
   );
 }
-

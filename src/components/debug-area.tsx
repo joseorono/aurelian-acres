@@ -9,6 +9,7 @@ import StoreExample from '~/components/demo/store-demo';
 import ToasterDemo from '~/components/demo/toaster-demo';
 import { useSetAtom } from 'jotai';
 import { setContentAtom } from '~/store/atoms';
+import TailwindDemo from './demo/tailwind-demo';
 
 export default function DebugArea() {
   const setIsModalOpen = useSetAtom(setContentAtom);
@@ -59,6 +60,9 @@ export default function DebugArea() {
       {/* <SoundsDemo></SoundsDemo> */}
 
       <div id="app">
+        {/*
+        <TailwindDemo />
+        */}
         <div className="w-32">
           <LoopingProgressBar durationInMs={1000} />
         </div>
@@ -74,4 +78,3 @@ export default function DebugArea() {
     </>
   );
 }
-
