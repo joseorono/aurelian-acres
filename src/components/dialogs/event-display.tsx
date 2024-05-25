@@ -14,7 +14,7 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
   const event = useAtomValue(eventsAtom);
 
   return (
-    <div className="bg-scroll p-4 text-gray-700">
+    <div className="flex flex-auto flex-col justify-center bg-scroll p-4 text-gray-700">
       <NewspaperHeadline headline={event.name} />
       <div className="break-all text-sm">{JSON.stringify(event)}</div>
     </div>

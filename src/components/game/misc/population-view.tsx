@@ -6,9 +6,8 @@ export default function PopulationView() {
   const workers = useAtomValue(workersAtom);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-800 p-4 text-white">
+    <div className="p-1 text-center text-base">
       <p>Population: {Object.values(workers).reduce((a, b) => a + b, 0) + BASE_CITIZEN_COUNT}</p>
     </div>
   );
 }
-

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAtom, useSetAtom } from 'jotai';
 import { isModalOpenAtom, townNameAtom } from '~/store/atoms';
 import { getRandomRomanTownName } from '~/lib/utils';
+import toast from 'react-hot-toast';
 
 export default function TownNameChangerDialog() {
   const [nameAtomVal, setNameAtom] = useAtom(townNameAtom);
@@ -19,6 +20,7 @@ export default function TownNameChangerDialog() {
       return;
     }
     setNameAtom(name);
+    toast.success('The Town has a new name!');
     setIsModalOpen(false);
   };
   return (

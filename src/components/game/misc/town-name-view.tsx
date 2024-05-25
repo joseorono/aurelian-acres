@@ -7,7 +7,7 @@ export default function PopulationView() {
   const setIsModalOpen = useSetAtom(setContentAtom);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-800 p-4 text-white">
+    <div className="px-1 text-center text-lg">
       <button
         type="button"
         onClick={() =>
@@ -26,4 +26,3 @@ export default function PopulationView() {
     </div>
   );
 }
-

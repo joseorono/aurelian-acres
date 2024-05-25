@@ -132,6 +132,7 @@ body {
 
 .SectionHeader {
   @apply bg-img-noise-scroll border-scroll-groove bg-red-800 p-1 text-center text-2xl font-bold text-white;
+  user-select: none;
 }
 
 /*

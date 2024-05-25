@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAtom, useSetAtom } from 'jotai';
 import { isModalOpenAtom, playerNameAtom } from '~/store/atoms';
 import { getRandomRomanName } from '~/lib/utils';
+import toast from 'react-hot-toast';
 
 export default function PlayerNameChangerDialog() {
   const [nameAtom, setNameAtom] = useAtom(playerNameAtom);
@@ -19,6 +20,7 @@ export default function PlayerNameChangerDialog() {
       return;
     }
     setNameAtom(name);
+    toast.success('Legate has a new name!');
     setIsModalOpen(false);
   };
   return (

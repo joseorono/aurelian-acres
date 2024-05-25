@@ -49,7 +49,7 @@ export function getRandomRomanName(type: 'full' | 'first' | null = null): string
 }
 
 export function getRandomRomanTownName(): string {
-  const prefix = getRandomElement(['Colonia ', 'Nova', 'Polis ', '', '']);
+  const prefix = getRandomElement(['Colonia ', 'Nova ', 'Polis ', '', '']);
   const root = getRandomElement([
     'Roma',
     'Tiber',
