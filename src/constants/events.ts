@@ -91,3 +91,12 @@ export const GLOBAL_EVENTS: Array<eventData> = [
     mercator: 1,
   },
 ] as const;
+
+// A simple joke event that does nothing. A reference to the "Nothing Happens" meme.
+export const NOTHING_EVENT: eventData = {
+  id: 0,
+  probability: 0.1,
+  name: 'Local Bachelor: Nothing Ever Happens',
+  description:
+    'Local men are baffled by the lack of events in the village. Nothing ever happens here. We need more hustle and bustle.',
+};
