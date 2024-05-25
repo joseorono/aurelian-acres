@@ -130,3 +130,5 @@ export const NOTHING_EVENT: eventData = {
     'Local men are baffled by the lack of events in the village. Nothing ever happens here. We need more hustle and bustle.',
 };
 
+export const EVENT_PROBABILITY: number = 0.01;
+
