@@ -1,7 +1,7 @@
-const nameArray = ['Lucius', 'Augustus', 'Aurelius', 'Iosephus', 'Carolus', 'Eduardus'];
 import { useState } from 'react';
 import { useAtom, useSetAtom } from 'jotai';
 import { isModalOpenAtom, playerNameAtom } from '~/store/atoms';
+import { getRandomRomanName } from '~/lib/utils';
 
 export default function PlayerNameChangerDialog() {
   const [nameAtom, setNameAtom] = useAtom(playerNameAtom);
@@ -9,8 +9,8 @@ export default function PlayerNameChangerDialog() {
   const setIsModalOpen = useSetAtom(isModalOpenAtom);
 
   const randomName = () => {
-    console.log('calling func');
-    setName(nameArray[Math.floor(Math.random() * nameArray.length)]);
+    console.log('Setting random player name.');
+    setName(getRandomRomanName());
   };
 
   const handleNameChange = () => {

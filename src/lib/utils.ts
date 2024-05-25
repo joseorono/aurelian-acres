@@ -47,3 +47,20 @@ export function getRandomRomanName(type: 'full' | 'first' | null = null): string
       return getRandomElement(ROMAN_NAMES.givenNames);
   }
 }
+
+export function getRandomRomanTownName(): string {
+  const prefix = getRandomElement(['Colonia ', 'Nova', 'Polis ', '', '']);
+  const root = getRandomElement([
+    'Roma',
+    'Tiber',
+    'Flavius',
+    'Luna',
+    'Caesarea',
+    'Nerva',
+    'Traiana',
+    'Valeria',
+    'Agrippina',
+    'Maxima',
+  ]);
+  return `${prefix}${root}`;
+}

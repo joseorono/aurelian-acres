@@ -1,7 +1,7 @@
-const nameArray = ['Lucius', 'Augustus', 'Aurelius', 'Iosephus', 'Carolus', 'Eduardus'];
 import { useState } from 'react';
 import { useAtom, useSetAtom } from 'jotai';
 import { isModalOpenAtom, townNameAtom } from '~/store/atoms';
+import { getRandomRomanTownName } from '~/lib/utils';
 
 export default function TownNameChangerDialog() {
   const [nameAtomVal, setNameAtom] = useAtom(townNameAtom);
@@ -9,8 +9,8 @@ export default function TownNameChangerDialog() {
   const [name, setName] = useState(nameAtomVal);
 
   const randomName = () => {
-    console.log('calling func');
-    setName(nameArray[Math.floor(Math.random() * nameArray.length)]);
+    console.log('Setting Random Town Name.');
+    setName(getRandomRomanTownName());
   };
 
   const handleNameChange = () => {
