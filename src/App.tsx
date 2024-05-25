@@ -15,7 +15,6 @@ import BackgroundWorker from './components/game/background-worker';
 import Modal from './components/Modal';
 import GameScreen from './components/game/game-screen';
 import GameLoader from './components/game/game-loader';
-import MainGameArea from './components/game/panes/main-game-area';
 
 function App() {
   const toastClasses = 'pixel-rounded font-bold text-xl mx-2 w-11/12 md:w-fit min-w-[200px]';
@@ -39,7 +38,11 @@ function App() {
       <BackgroundWorker />
       <Modal />
 
-      {/* <GameLoader /> */}
+      {/* 
+      <GameScreen />
+    */}
+      <GameLoader />
+
       <DebugArea />
       <Toaster
         gutter={12}
@@ -85,4 +88,3 @@ function App() {
 }
 
 export default App;
-
