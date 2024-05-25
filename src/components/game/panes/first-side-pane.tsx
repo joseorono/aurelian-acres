@@ -13,7 +13,7 @@ interface IFirstSidePaneProps {
 const FirstSidePane: React.FC<IFirstSidePaneProps> = ({ className = '' }) => {
   return (
     <section className={className}>
-      <div className="townName SectionHeader p-4 text-center text-white">
+      <div className="SectionHeader ">
         <TownNameView />
         <PopulationView />
       </div>

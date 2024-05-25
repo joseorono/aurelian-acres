@@ -83,10 +83,33 @@ html {
 
 body {
   color: #f5f6fa;
-  background-color: #282c34;
+  background-color: #3e4f59;
 }
 .clickerArea {
   @apply flex flex-auto items-center justify-center bg-gray-800;
+}
+
+/*
+==========================================
+    Background Styles
+==========================================
+*/
+
+.bg-img-noise {
+  background-image: url('./assets/bg/noise-10-60-scroll.png');
+  background-size: 100%;
+  background-repeat: repeat;
+}
+
+/*
+==========================================
+    Layout Elements Styles
+==========================================
+*/
+
+.SectionHeader {
+  @apply bg-img-noise bg-red-800 p-1 text-center text-2xl font-bold text-white;
+  border: 3px groove #e8e0c3;
 }
 
 /*
