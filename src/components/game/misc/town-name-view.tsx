@@ -1,10 +1,8 @@
 import { useAtomValue, useSetAtom } from 'jotai';
 import TownNameChangerDialog from '~/components/modals/town-name-changer-dialog';
-import { BASE_CITIZEN_COUNT } from '~/constants/defaults';
-import { setContentAtom, townNameAtom, workersAtom } from '~/store/atoms';
+import { setContentAtom, townNameAtom } from '~/store/atoms';
 
 export default function PopulationView() {
-  const workers = useAtomValue(workersAtom);
   const townName = useAtomValue(townNameAtom);
   const setIsModalOpen = useSetAtom(setContentAtom);
 

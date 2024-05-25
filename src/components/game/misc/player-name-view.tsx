@@ -7,9 +7,6 @@ import { playerNameAtom, setContentAtom } from '~/store/atoms';
 export default function TownNameView() {
   const playerName = useAtomValue(playerNameAtom);
   const setIsModalOpen = useSetAtom(setContentAtom);
-
-  // const dialogContent = <NameChangerDialog />;
-
   return (
     <div className="SectionHeader">
       <button
