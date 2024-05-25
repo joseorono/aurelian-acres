@@ -74,13 +74,6 @@ html {
   letter-spacing: 1px; /* Set them apart a bit for legibility */
 }
 
-/*
-#app {
-  width: 100%;
-  height: 100vh;
-}
-*/
-
 body {
   color: #f5f6fa;
   background-color: #3e4f59;
@@ -118,6 +111,34 @@ body {
   background-color: theme('colors.blue.800');
   background-size: 100%;
   background-repeat: repeat;
+}
+
+:root {
+  --height-navbar: 96px;
+}
+
+.h-navbar {
+  height: var(--height-navbar);
+}
+
+.h-game {
+  height: calc(100vh - var(--height-navbar));
+  height: calc(100svh - var(--height-navbar));
+}
+
+#loaderLogo {
+  display: block;
+  margin: 2rem auto;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.navbar {
+  @apply h-navbar;
+  background-color: theme('colors.blue.800');
+  background-repeat: repeat;
+  border-bottom: 1px solid theme('colors.blue.900');
 }
 
 /*
