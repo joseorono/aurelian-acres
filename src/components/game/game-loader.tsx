@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
 import LoopingProgressBar from './misc/loopingProgressBar';
-import { useAtomValue, useSetAtom } from 'jotai';
-import { isMutedAtom, volumeAtom } from '~/store/atoms';
-import { soundService } from '~/services/sound-service';
 
 export default function GameLoader() {
   // TODO: Implement a loading screen that when done, displays a big PLAY button
@@ -14,18 +11,12 @@ export default function GameLoader() {
   const [error, setError] = useState(null);
   // stupid name but should be true when everything is loading and user clicks Play
   const [ready, setReady] = useState(false);
-  const savedVolume = useAtomValue(volumeAtom);
-  const isMuted = useAtomValue(isMutedAtom);
 
   useEffect(() => {
     loaderService
       .preloadEverything()
       .then((_) => {
         setLoading(false);
-        // this should work but it doesnt!!!!!!!!!!
-        //fuck!
-        soundService.setGlobalVolume(savedVolume);
-        isMuted ? soundService.muteAll() : soundService.unmuteAll();
       })
       .catch((error) => {
         setError(error);
@@ -70,3 +61,4 @@ export default function GameLoader() {
     <GameScreen />
   );
 }
+
