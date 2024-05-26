@@ -3,7 +3,18 @@
   --townDSprite: 28px;
 }
 
-.townDisplay__wrapper {
+.townDisplay__wrapper,
+.townDisplay,
+.townDisplay img {
+  user-drag: none;
+}
+
+.townDisplay img {
+  pointer-events: none;
+}
+
+.townDisplay__wrapper,
+.townDisplay {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -28,4 +39,3 @@
   /* Temporal, remove when you have a proper sprite */
   font-size: var(--townDSprite);
 }
-
