@@ -64,3 +64,33 @@ export function getRandomRomanTownName(): string {
   ]);
   return `${prefix}${root}`;
 }
+
+export function findLastInArray<T>(
+  array: T[],
+  predicate: (value: T, index: number, obj: T[]) => boolean,
+): T | undefined {
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (predicate(array[i], i, array)) {
+      return array[i];
+    }
+  }
+  return undefined;
+}
+
+export function getFormattedNumber(num: Nullable<number> | undefined, digits: number = 1): string {
+  const lookup = [
+    { value: 1, symbol: '' },
+    { value: 1e3, symbol: 'k' },
+    { value: 1e6, symbol: 'M' },
+    { value: 1e9, symbol: 'G' },
+    { value: 1e12, symbol: 'T' },
+    { value: 1e15, symbol: 'P' },
+    { value: 1e18, symbol: 'E' },
+  ];
+
+  if (!num) return '0';
+
+  const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+  const item = findLastInArray(lookup, (item) => num >= item.value);
+  return item ? (num / item.value).toFixed(digits).replace(regexp, '').concat(item.symbol) : '0';
+}

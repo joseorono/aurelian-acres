@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { BUILDINGS } from '~/constants/buildings';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { canAffordBuilding, getBuildingInfo, playBuildingSound } from '~/lib/resources';
+import { getFormattedNumber } from '~/lib/utils';
 import { buildingsAtom, resourcesAtom } from '~/store/atoms';
 import { buildingKeys, priceData } from '~/types/game-data-types';
 
@@ -52,10 +53,12 @@ export default function BuildingsShop() {
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
                 <div className="store__unitCost">
-                  <b>Cost:</b> {buildingInfo?.costGold}🪙 / {buildingInfo?.costGrain}🌾 / {buildingInfo?.costStone}🪨{' '}
+                  <b>Cost:</b> {getFormattedNumber(buildingInfo?.costGold)}🪙 /{' '}
+                  {getFormattedNumber(buildingInfo?.costGrain)}🌾 / {getFormattedNumber(buildingInfo?.costStone)}🪨{' '}
                   <br></br>
-                  <b>Passive Income:</b> {buildingInfo?.goldPerSecond}🪙pS / {buildingInfo?.grainPerSecond}🌾pS /{' '}
-                  {buildingInfo?.stonePerSecond}🪨pS
+                  <b>Passive Income:</b> {getFormattedNumber(buildingInfo?.goldPerSecond)}🪙pS /{' '}
+                  {getFormattedNumber(buildingInfo?.grainPerSecond)}🌾pS /{' '}
+                  {getFormattedNumber(buildingInfo?.stonePerSecond)}🪨pS
                 </div>
               </div>
               <button

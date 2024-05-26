@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
 import { canAffordWorker, getWorkerInfo, playBuildingSound } from '~/lib/resources';
+import { getFormattedNumber } from '~/lib/utils';
 import { resourcesAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
 
@@ -54,7 +55,8 @@ export default function WorkersShop() {
                   <b>Current amount: </b> {workerCount}
                 </p>
                 <div className="store__unitCost">
-                  <b>Cost: </b> {workerInfo?.costGold}🪙 / {workerInfo?.costGrain}🌾 / {workerInfo?.costStone}🪨
+                  <b>Cost: </b> {getFormattedNumber(workerInfo?.costGold)}🪙 /{' '}
+                  {getFormattedNumber(workerInfo?.costGrain)}🌾 / {getFormattedNumber(workerInfo?.costStone)}🪨
                 </div>
               </div>
               <button
