@@ -114,7 +114,7 @@ body {
 }
 
 :root {
-  --height-navbar: 96px;
+  --height-navbar: 80px;
 }
 
 .h-navbar {
@@ -139,6 +139,22 @@ body {
   background-color: theme('colors.blue.800');
   background-repeat: repeat;
   border-bottom: 1px solid theme('colors.blue.900');
+
+  /* For the navbar to be always on top */
+  z-index: 1000;
+
+  /* /assets/bg/navbar_bg.png repeating horizontally, pressed to the bottom, and old_dirt.png in the whole background*/
+
+  /* Multiple background images */
+  background-image: url('/assets/bg/navbar_bg.png'), url('/assets/bg/old_dirt.png');
+  /* Position the first background image at the bottom, and let it repeat horizontally */
+  background-position:
+    bottom left,
+    top left;
+  /* Repeat the first background image horizontally, and the second image both horizontally and vertically */
+  background-repeat: repeat-x, repeat;
+  /* Set the background size to auto, meaning it will use the natural size of the images */
+  background-size: auto, auto;
 }
 
 /*
