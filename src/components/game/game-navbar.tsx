@@ -1,9 +1,19 @@
+import { useSetAtom } from 'jotai';
 import SoundBar from '~/components/soundBar';
 import GithubPixelIcon from '~/icons/GithubPixelIcon';
+import { setContentAtom } from '~/store/atoms';
+import CreditsDialog from '../modals/credits-dialog';
 
 export default function GameNavbar() {
+  const setIsModalOpen = useSetAtom(setContentAtom);
+
   const handleShowCredits = () => {
     console.log('Display the Credits modal');
+    setIsModalOpen({
+      title: 'Credits',
+      content: <CreditsDialog />,
+      onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
+    });
   };
   return (
     <div className="h-navbar navbar min-h-0 bg-base-100 p-0">
@@ -83,3 +93,4 @@ export default function GameNavbar() {
     </div>
   );
 }
+
