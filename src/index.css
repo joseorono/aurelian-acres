@@ -290,8 +290,15 @@ body::-webkit-scrollbar-track {
 }
 
 .store__buyButton {
-  /* pixel-rounded ml-2 flex h-[100px] basis-1/4 items-center justify-center*/
+  /* */
 
-  @apply rounded-lg bg-primary px-2 py-1 text-2xl font-bold text-brown-800 text-primary-foreground;
+  @apply pixel-rounded ml-2 flex h-[100px] basis-1/4 cursor-pointer items-center justify-center rounded-lg bg-primary px-2 
+  py-1 text-2xl font-bold text-primary-foreground hover:bg-brown-950 hover:text-scroll-500;
   border: 8px ridge theme('colors.scroll.900');
+}
+
+.store__buyButton:disabled,
+.store__buyButton:disabled:hover,
+.store__buyButton[disabled] {
+  @apply cursor-not-allowed bg-gray-500 text-gray-300;
 }

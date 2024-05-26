@@ -58,7 +58,7 @@ export default function WorkersShop() {
                 </div>
               </div>
               <button
-                className="store__buyButton pixel-rounded ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
+                className="store__buyButton"
                 type="button"
                 disabled={maxCapacity || !canAfford}
                 onClick={() => handleBuy(workerKey, workerCount, 1, workerCost)}
