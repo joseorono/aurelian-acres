@@ -1,7 +1,7 @@
 .pixel-btn {
   width: 200px;
   height: 70px;
-  background: #06c1de;
+  background: theme('colors.red.500');
   border: 0px;
   position: relative;
   box-shadow:

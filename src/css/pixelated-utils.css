@@ -118,7 +118,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: #0099ff;
+  background: theme('colors.white');
   display: block;
   pointer-events: none;
 }

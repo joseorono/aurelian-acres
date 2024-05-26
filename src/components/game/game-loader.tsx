@@ -51,7 +51,10 @@ export default function GameLoader() {
       return (
         <>
           <img id="loaderLogo" src="/assets/logo.png" />
-          <button onClick={onSetReady} className="pixel-btn text-4xl text-white">
+          <button
+            onClick={onSetReady}
+            className="pixel-xl-corners mx-auto w-11/12 max-w-[280px] bg-red-500 p-4 text-5xl text-white hover:bg-red-700"
+          >
             Play!
           </button>
         </>
