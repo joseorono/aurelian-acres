@@ -4,7 +4,6 @@ import DialogDemo2 from '~/components/demo/dialog-demo-2';
 import AlertPixelIcon from '~/icons/AlertPixelIcon';
 import SoundsDemo from '~/components/demo/sounds-demo';
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
-import CounterExample from '~/components/demo/counter-example';
 import StoreExample from '~/components/demo/store-demo';
 import ToasterDemo from '~/components/demo/toaster-demo';
 import { useSetAtom } from 'jotai';
@@ -22,10 +21,6 @@ export default function DebugArea() {
   return (
     <>
       <div className="p-8"></div>
-      <div className="p-8">
-        <CounterExample />
-      </div>
-
       <div className="p-8">
         <StoreExample />
       </div>
@@ -81,3 +76,4 @@ export default function DebugArea() {
     </>
   );
 }
+
