@@ -1,4 +1,10 @@
+import SoundBar from '~/components/soundBar';
+import GithubPixelIcon from '~/icons/GithubPixelIcon';
+
 export default function GameNavbar() {
+  const handleShowCredits = () => {
+    console.log('Display the Credits modal');
+  };
   return (
     <div className="h-navbar navbar min-h-0 bg-base-100 p-0">
       <div className="navbar-start">
@@ -16,21 +22,26 @@ export default function GameNavbar() {
           </div>
           <ul tabIndex={0} className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
             <li>
-              <a>Item 1</a>
+              <a onClick={() => handleShowCredits()}>Credits</a>
             </li>
             <li>
-              <a>Parent</a>
+              <a href="https://github.com/joseorono/idle-roman-game/">
+                <GithubPixelIcon />
+              </a>
+            </li>
+            <li>
+              <a>Authors</a>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <a href="https://github.com/joseorono">JanJozefo</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a href="https://github.com/Charlemagnes">Charlemagnes</a>
+                </li>
+                <li>
+                  <a href="https://github.com/eangulom">Edd</a>
                 </li>
               </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
             </li>
           </ul>
         </div>
@@ -41,28 +52,33 @@ export default function GameNavbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <a href="https://github.com/joseorono/idle-roman-game/">
+              <GithubPixelIcon />
+            </a>
+          </li>
+          <li>
+            <a onClick={() => handleShowCredits()}>Credits</a>
           </li>
           <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Creators</summary>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <a href="https://github.com/joseorono">JanJozefo</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a href="https://github.com/Charlemagnes">Charlemagnes</a>
+                </li>
+                <li>
+                  <a href="https://github.com/eangulom">Edd</a>
                 </li>
               </ul>
             </details>
           </li>
-          <li>
-            <a>Item 3</a>
-          </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <SoundBar />
       </div>
     </div>
   );

@@ -21,9 +21,7 @@ export default function DebugArea() {
 
   return (
     <>
-      <div className="p-8">
-        <SoundBar />
-      </div>
+      <div className="p-8"></div>
       <div className="p-8">
         <CounterExample />
       </div>
@@ -83,4 +81,3 @@ export default function DebugArea() {
     </>
   );
 }
-
