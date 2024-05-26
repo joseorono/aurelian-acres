@@ -21,6 +21,36 @@ Metallic pickaxe 1/4
 CC Attribution 4.0, TechspiredMinds
 https://freesound.org/people/TechspiredMinds/sounds/728756/
 
+chicken sound for farmers and farm
+01130 chicken hen 2.wav
+CC Attribution 4.0, Robinhood76
+https://freesound.org/people/Robinhood76/sounds/75726/
+
+fire crackling for bakers and bakery
+Fire_Crackle_2.wav
+CC Attribution 4.0, KieranKeegan
+https://freesound.org/people/KieranKeegan/sounds/422741/
+
+coin pouch for mercator
+Pouch of Gold Coins, Rummaging Through.wav
+CC Attribution 4.0, The_Frisbee_of_Peace
+https://freesound.org/people/The_Frisbee_of_Peace/sounds/575576/
+
+black smith hammer for smithy and blacksmith
+Blacksmith Hammer
+CC Attribution 4.0, Kastenfrosch
+https://freesound.org/people/Kastenfrosch/sounds/521972/
+
+marching for legionary
+Marching 3.wav
+CC Attribution 4.0, WebbFilmsUK
+https://freesound.org/people/WebbFilmsUK/sounds/200322/
+
+amen for priests
+amen.wav
+CC Attribution 4.0, ERH
+https://freesound.org/people/ERH/sounds/29933/
+
 ---
 
 # Fanfares (Sound to Play when the PLAY button is clicked, before game starts)
@@ -56,3 +86,4 @@ https://freesound.org/people/TechspiredMinds/sounds/728756/
 
 Licencias:
 https://creativecommons.org/licenses/by/4.0/
+

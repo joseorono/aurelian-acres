@@ -174,7 +174,7 @@ export function calculateActiveIncome(
 }
 
 export function playBuildingSound(buildingName: tilesKey) {
-  const minVolume = Math.min(soundService.globalVolume, 0.8);
+  const minVolume = Math.min(soundService.globalVolume, 0.5);
   switch (buildingName) {
     case 'slave':
       soundService.playSound(SoundNames.buySlave, minVolume);
@@ -182,6 +182,27 @@ export function playBuildingSound(buildingName: tilesKey) {
     case 'miner':
     case 'quarry':
       soundService.playSound(SoundNames.buyMiner, minVolume);
+      break;
+    case 'agricola':
+      soundService.playSound(SoundNames.buyFarmer, minVolume);
+      break;
+    case 'bakery':
+    case 'baker':
+      soundService.playSound(SoundNames.buyBaker, minVolume);
+      break;
+    case 'mercator':
+      soundService.playSound(SoundNames.buyMercator, minVolume);
+      break;
+    case 'smithy':
+    case 'blacksmith':
+      soundService.playSound(SoundNames.buySmith, minVolume);
+      break;
+    case 'legionary':
+      soundService.playSound(SoundNames.buyLegionary, minVolume);
+      break;
+    case 'priest':
+    case 'temple':
+      soundService.playSound(SoundNames.buyPriest, minVolume);
       break;
     default:
       break;
