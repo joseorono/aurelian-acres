@@ -130,6 +130,7 @@ body {
 
 #loaderLogo,
 .logoNav {
+  z-index: 10;
   width: 100%;
   height: auto;
 }
@@ -301,4 +302,34 @@ body::-webkit-scrollbar-track {
 .store__buyButton:disabled:hover,
 .store__buyButton[disabled] {
   @apply cursor-not-allowed bg-gray-500 text-gray-300;
+}
+
+/*
+==========================================
+    * SplashScreen
+==========================================
+*/
+
+.splashScreen {
+  position: relative;
+}
+
+.splashScreen__bg {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* The image used */
+  background-image: url('./assets/splashscreen.webp');
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
