@@ -90,13 +90,13 @@ body {
 */
 
 .bg-img-noise-scroll {
-  background-image: url('./assets/bg/noise-10-60-scroll.png');
+  background-image: url('./assets/bg/bgnoise-10-60-scroll.png');
   background-size: 100%;
   background-repeat: repeat;
 }
 
 .bg-img-noise-gray {
-  background-image: url('./assets/bg/noise-10-40-gray.webp');
+  background-image: url('./assets/bg/bgnoise-10-40-gray.webp');
   background-size: 100%;
   background-repeat: repeat;
 }
@@ -107,7 +107,7 @@ body {
 }
 
 .bg-blue-noise {
-  background-image: url('./assets/bg/noise-10-60-scroll.png');
+  background-image: url('./assets/bg/bgnoise-10-60-scroll.png');
   background-color: theme('colors.blue.800');
   background-size: 100%;
   background-repeat: repeat;
@@ -162,10 +162,10 @@ body {
   /* For the navbar to be always on top */
   z-index: 1000;
 
-  /* /assets/bg/navbar_bg.png repeating horizontally, pressed to the bottom, and old_dirt.png in the whole background*/
+  /* /assets/bg/navbarbg.png repeating horizontally, pressed to the bottom, and dirt_tile.png in the whole background*/
 
   /* Multiple background images */
-  background-image: url('/assets/bg/navbar_bg.png'), url('/assets/bg/old_dirt.png');
+  background-image: url('/assets/bg/navbarbg.png'), url('/assets/bg/dirt_tile.png');
   /* Position the first background image at the bottom, and let it repeat horizontally */
   background-position:
     bottom left,
@@ -271,7 +271,7 @@ body::-webkit-scrollbar-track {
 }
 
 .store__unitName {
-  @apply mb-1 text-lg font-bold;
+  @apply mb-1 text-2xl font-bold;
 }
 
 .store__unitDescription {
@@ -279,22 +279,20 @@ body::-webkit-scrollbar-track {
 }
 
 .store__currentCount {
-  @apply text-sm text-slate-600;
+  @apply text-slate-600;
 }
 
 .store__currentCount b {
-  @apply text-lg text-slate-700;
+  @apply text-slate-700;
 }
 
 .store__unitCost {
-  @apply pixel-rounded mt-1 bg-brown-800 px-4 py-1 text-base text-white;
+  @apply pixel-rounded mt-1 flex flex-col bg-brown-800 px-4 py-1 text-base text-white;
 }
 
 .store__buyButton {
-  /* */
-
-  @apply pixel-rounded ml-2 flex h-[100px] basis-1/4 cursor-pointer items-center justify-center rounded-lg bg-primary px-2 
-  py-1 text-2xl font-bold text-primary-foreground hover:bg-brown-950 hover:text-scroll-500;
+  @apply pixel-rounded flex h-[100px] basis-1/4 cursor-pointer items-center justify-center rounded-lg bg-primary px-2 
+  py-2 text-2xl font-bold text-primary-foreground hover:bg-brown-950 hover:text-scroll-500;
   border: 8px ridge theme('colors.scroll.900');
 }
 
