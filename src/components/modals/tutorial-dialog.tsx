@@ -1,12 +1,14 @@
 export default function TutorialDialog() {
   return (
     <>
-      <h1>Testing Tutorial Dialog</h1>
+      <h1>Welcome to Aurelian Acres!</h1>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium doloremque provident minima, commodi
-        veniam perspiciatis, ipsam quibusdam odio accusantium perferendis quasi nemo alias totam impedit vero molestiae
-        laboriosam exercitationem repudiandae.
+        You are a legate sent by the one an only Caesar! your mission is to lift a romanian civilization in this strange
+        land the way you were taught how. The roman way.
       </p>
+      <p>Click on the big coin to win resources.</p>
+      <p>Buy.</p>
+      <p>Click on the big coin to win resources.</p>
     </>
   );
 }
