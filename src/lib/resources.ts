@@ -198,11 +198,15 @@ export function playBuildingSound(buildingName: tilesKey) {
       soundService.playSound(SoundNames.buySmith, minVolume);
       break;
     case 'legionary':
+    case 'castra':
       soundService.playSound(SoundNames.buyLegionary, minVolume);
       break;
     case 'priest':
     case 'temple':
       soundService.playSound(SoundNames.buyPriest, minVolume);
+      break;
+    case 'forum':
+      soundService.playSound(SoundNames.buyForum, minVolume);
       break;
     default:
       break;

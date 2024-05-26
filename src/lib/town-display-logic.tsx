@@ -6,26 +6,49 @@ import { additionalTiles, buildingCount, tilesKey, townTilesMatrix, workerCount 
 import { getRandomElement, shuffleArray } from './utils';
 import { TOWN_DENSITY_BIAS } from '~/constants/defaults';
 
+//Buildings
+import temple from '@/assets/town-view-tiles/buildings/temple.png';
+import castra from '@/assets/town-view-tiles/buildings/castra.png';
+import fields from '@/assets/town-view-tiles/buildings/fields.png';
+import forum from '@/assets/town-view-tiles/buildings/forum.png';
+import quarry from '@/assets/town-view-tiles/buildings/quarry.png';
+import smithy from '@/assets/town-view-tiles/buildings/smithy.png';
+import bakery from '@/assets/town-view-tiles/buildings/bakery.png';
+
+//Workers
+import mercator from '@/assets/town-view-tiles/workers/mercator.png';
+import blacksmith from '@/assets/town-view-tiles/workers/blacksmith.png';
+import legionary from '@/assets/town-view-tiles/workers/legionary.png';
+import slave from '@/assets/town-view-tiles/workers/slave.png';
+import agricola from '@/assets/town-view-tiles/workers/agricola.png';
+import miner from '@/assets/town-view-tiles/workers/miner.png';
+import baker from '@/assets/town-view-tiles/workers/baker.png';
+import priest from '@/assets/town-view-tiles/workers/baker.png';
+
+//Decor
+import tree from '@/assets/town-view-tiles/decor/tree.png';
+import citizen from '@/assets/town-view-tiles/decor/citizen.png';
+
 // En el futuro ponemos paths a imagenes aqui y usamos imagenes dentro del componente
-export const spritesForTiles: Record<tilesKey, string | Array<string>> = {
-  slave: '👷',
-  agricola: '👨‍🌾',
-  miner: '⛏️',
-  baker: '👩‍',
-  fields: '🌾',
-  quarry: '🪨',
-  bakery: '🍞',
-  forum: '🏛️',
-  smithy: '🔥',
-  castra: '🗼',
-  temple: '⛪',
-  mercator: '👛',
-  blacksmith: '🌫️',
-  legionary: '🪖',
-  priest: '📿',
+export const spritesForTiles: Record<tilesKey, RenderableElement | Array<RenderableElement>> = {
+  slave: <img src={slave} alt="slave" />,
+  agricola: <img src={agricola} alt="agricola" />,
+  miner: <img src={miner} alt="miner" />,
+  baker: <img src={baker} alt="baker" />,
+  fields: <img src={fields} alt="fields" />,
+  quarry: <img src={quarry} alt="quarry" />,
+  bakery: <img src={bakery} alt="bakery" />,
+  forum: <img src={forum} alt="forum" />,
+  smithy: <img src={smithy} alt="smithy" />,
+  castra: <img src={castra} alt="castra" />,
+  temple: <img src={temple} alt="temple" />,
+  mercator: <img src={mercator} alt="mercator" />,
+  blacksmith: <img src={blacksmith} alt="blacksmith" />,
+  legionary: <img src={legionary} alt="legionary" />,
+  priest: <img src={priest} alt="priest" />,
   road: '🟫',
-  citizen: '👥',
-  tree: '🌲',
+  citizen: <img src={citizen} alt="citizen" />,
+  tree: <img src={tree} alt="tree" />,
 } as const;
 
 // ToDo: Unit-Test this. This populates the matrix with workers and buildings..
@@ -93,7 +116,6 @@ export function getShuffledArrayOfTiles(buildings: buildingCount, workers: worke
   return shuffleArray(resourcesArray);
 }
 
-// ToDo: Test this in-game
 export function generateTownDisplayMatrix(
   rows: number,
   columns: number,
@@ -182,3 +204,4 @@ export function generateTownDisplayMatrix(
 
   return matrix;
 }
+

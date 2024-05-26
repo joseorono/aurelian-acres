@@ -3,6 +3,8 @@ import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
+import { SoundNames, soundService } from '~/services/sound-service';
+import { auxSleepFor } from '~/lib/utils';
 
 export default function GameLoader() {
   // TODO: Implement a loading screen that when done, displays a big PLAY button
@@ -11,6 +13,14 @@ export default function GameLoader() {
   const [error, setError] = useState(null);
   // stupid name but should be true when everything is loading and user clicks Play
   const [ready, setReady] = useState(false);
+
+  const onSetReady = () => {
+    setReady(true);
+    soundService.asyncPlaySouund(SoundNames.fanfare).then(async () => {
+      await auxSleepFor(4000);
+      soundService.startMusic(SoundNames.backgroundMusic1);
+    });
+  };
 
   useEffect(() => {
     loaderService
@@ -41,7 +51,7 @@ export default function GameLoader() {
       return (
         <>
           <img id="loaderLogo" src="/assets/logo.png" />
-          <button onClick={() => setReady(true)} className="pixel-btn text-4xl text-white">
+          <button onClick={onSetReady} className="pixel-btn text-4xl text-white">
             Play!
           </button>
         </>
