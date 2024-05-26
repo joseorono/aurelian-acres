@@ -73,4 +73,39 @@ export const visualModifiersAtom = withImmer(
   }),
 );
 
+export const eraserAtom = atom(null, (_, set, __) => {
+  set(buildingsAtom, {
+    fields: 0,
+    quarry: 0,
+    bakery: 0,
+    forum: 0,
+    smithy: 0,
+    castra: 0,
+    temple: 0,
+  });
+  set(workersAtom, {
+    slave: 0,
+    agricola: 0,
+    miner: 0,
+    baker: 0,
+    mercator: 0,
+    blacksmith: 0,
+    legionary: 0,
+    priest: 0,
+  });
+  set(resourcesAtom, {
+    gold: 0,
+    grain: 0,
+    stone: 0,
+  });
+  set(visualModifiersAtom, {
+    rainingCoins: false,
+    isNight: false,
+    goldenOverlay: false,
+    isFlood: false,
+    bountifulHarvest: false,
+  });
+});
+
 export const eventsAtom = withImmer(atomWithStorage<eventData>('event', NOTHING_EVENT));
+

@@ -8,16 +8,11 @@ import CounterExample from '~/components/demo/counter-example';
 import StoreExample from '~/components/demo/store-demo';
 import ToasterDemo from '~/components/demo/toaster-demo';
 import { useSetAtom } from 'jotai';
-import { setContentAtom } from '~/store/atoms';
-import TailwindDemo from './demo/tailwind-demo';
-import SoundBar from './soundBar';
-import NameChangerDialog from './modals/player-name-changer-dialog';
+import { eraserAtom } from '~/store/atoms';
 
 export default function DebugArea() {
-  const setIsModalOpen = useSetAtom(setContentAtom);
   console.log('check if this re-renders when the modal opens/closes');
-
-  const dialogContent = <div>Hello this is your new content deal with it lol</div>;
+  const eraseAll = useSetAtom(eraserAtom);
 
   return (
     <>
@@ -77,7 +72,20 @@ export default function DebugArea() {
         <DialogDemo2 />
         <SoundsDemo />
       </div>
+      <div className="p-4">
+        <button
+          type="button"
+          onClick={() => {
+            eraseAll(null);
+            window.alert('bro you just erased all of your progress good job!!!');
+          }}
+          className="btn btn-warning"
+        >
+          [debug] ERASE EVERYTHING. <strong>NOW!!!</strong>
+        </button>
+      </div>
       <GenericLoader />
     </>
   );
 }
+
