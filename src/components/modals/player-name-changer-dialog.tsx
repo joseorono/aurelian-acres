@@ -25,7 +25,6 @@ export default function PlayerNameChangerDialog() {
   };
   return (
     <>
-      {/* This component is built using shadcn/ui&apos;s dialog and drawer component, which is built on top of Vaul. */}
       <label className="input input-bordered flex w-[300px] items-center gap-2 text-white">
         <input type="text" className="grow" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <button onClick={randomName}>Random</button>
@@ -38,3 +37,4 @@ export default function PlayerNameChangerDialog() {
     </>
   );
 }
+
