@@ -18,7 +18,7 @@ export default function GameLoader() {
     setReady(true);
     soundService.asyncPlaySouund(SoundNames.fanfare).then(async () => {
       await auxSleepFor(4000);
-      soundService.startMusic(SoundNames.backgroundMusic1);
+      soundService.startMusic(SoundNames.backgroundMusic2);
     });
   };
 
