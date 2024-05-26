@@ -54,6 +54,7 @@ class SoundService {
   constructor() {
     if (!SoundService.instance) {
       console.log('created new instance of sound service');
+      this.globalVolume = 1;
       this.audioLoaded = false;
       this.isPreloading = false;
       SoundService.instance = this;
