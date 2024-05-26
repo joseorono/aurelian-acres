@@ -11,7 +11,7 @@ interface INewspaperHeadlinesProp {
 const NewspaperHeadline: React.FC<INewspaperHeadlinesProp> = (props: INewspaperHeadlinesProp) => {
   return (
     <>
-      <div className="newsHeadline__wrapper mb-4 text-slate-700">
+      <div className="newsHeadline__wrapper mb-2 text-slate-700">
         <div className="p-2 text-center text-lg uppercase">{getRandomElement(NEWSPAPER_NAMES)}</div>
 
         {/* The Random title and separator */}
