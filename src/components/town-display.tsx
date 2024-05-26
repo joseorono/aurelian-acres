@@ -6,12 +6,11 @@ import { generateTownDisplayMatrix, getDisplayTileForKey } from '~/lib/town-disp
 import { DEFAULT_TOWNDISPLAY_COLUMNS, DEFAULT_TOWNDISPLAY_ROWS } from '~/constants/defaults';
 import { useGesture } from '@use-gesture/react';
 import { useRef } from 'react';
-import parchment from '@/assets/town-view-tiles/background/parchmentAncient.png';
+
 function TownDisplay() {
   const containerStyles = {
     cursor: 'grab',
     touchAction: 'none',
-    backgroundImage: `url(${parchment})`,
   };
 
   const workers = useAtomValue(workersAtom);
@@ -174,4 +173,3 @@ function TownDisplay() {
 }
 
 export default TownDisplay;
-

@@ -39,3 +39,7 @@
   /* Temporal, remove when you have a proper sprite */
   font-size: var(--townDSprite);
 }
+
+.townDisplay__wrapper {
+  background: url('/assets/town-view-tiles/background/parchmentAncient.png');
+}
