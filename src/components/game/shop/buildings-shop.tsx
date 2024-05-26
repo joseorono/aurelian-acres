@@ -56,13 +56,18 @@ export default function BuildingsShop() {
                 <h2 className="store__unitName">{buildingData.name}</h2>
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
-                <div className="store__unitCost">
-                  <b>Cost:</b> {getFormattedNumber(buildingData?.costGold)}🪙 /{' '}
-                  {getFormattedNumber(buildingData?.costGrain)}🌾 / {getFormattedNumber(buildingData?.costStone)}🪨{' '}
-                  <br></br>
-                  <b>Passive Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
-                  {getFormattedNumber(buildingData?.grainPerSecond)}🌾pS /{' '}
-                  {getFormattedNumber(buildingData?.stonePerSecond)}🪨pS
+                {/* Cost and Income */}
+                <div className="flex gap-5">
+                  <div className="store__unitCost">
+                    <b>Cost:</b> {getFormattedNumber(buildingData?.costGold)}🪙 /{' '}
+                    {getFormattedNumber(buildingData?.costGrain)}🌾 / {getFormattedNumber(buildingData?.costStone)}🪨{' '}
+                    <br></br>
+                  </div>
+                  <div className="store__unitCost mt-1">
+                    <b>Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
+                    {getFormattedNumber(buildingData?.grainPerSecond)}🌾pS /{' '}
+                    {getFormattedNumber(buildingData?.stonePerSecond)}🪨pS
+                  </div>
                 </div>
               </div>
               <button

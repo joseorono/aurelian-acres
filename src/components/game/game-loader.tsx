@@ -49,7 +49,7 @@ export default function GameLoader() {
     if (loading) {
       return (
         <>
-          <img id="loaderLogo" src="/assets/logo.png" className="z-1" />
+          <img id="loaderLogo" src="/assets/logo_aurelian.png" className="z-1" />
           <h1 className="text-4xl text-white">Loading...</h1>
           <LoopingProgressBar durationInMs={1000} />
         </>
@@ -61,7 +61,7 @@ export default function GameLoader() {
     if (!loading && !ready) {
       return (
         <>
-          <img id="loaderLogo" src="/assets/logo.png" className="z-1" />
+          <img id="loaderLogo" src="/assets/logo_aurelian.png" className="z-1" />
           <button
             onClick={onSetReady}
             className="pixel-xl-corners mx-auto w-11/12 max-w-[280px] bg-red-500 p-4 text-5xl text-white hover:bg-red-700"

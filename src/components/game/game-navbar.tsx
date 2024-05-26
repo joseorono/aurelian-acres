@@ -74,7 +74,7 @@ export default function GameNavbar() {
           </ul>
         </div>
         <a className="btn btn-ghost !m-0 !ml-4 h-auto !border-0 !p-0">
-          <img className="logoNav" src="/assets/logo.png" alt="Aurelian Acres" />
+          <img className="logoNav" src="/assets/logo_aurelian.png" alt="Aurelian Acres" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
