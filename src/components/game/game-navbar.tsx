@@ -43,13 +43,19 @@ export default function GameNavbar() {
               <a>Authors</a>
               <ul className="p-2">
                 <li>
-                  <a href="https://github.com/joseorono">JanJozefo</a>
+                  <a href="https://github.com/joseorono" target="_blank" rel="noopener noreferrer">
+                    JanJozefo
+                  </a>
                 </li>
                 <li>
-                  <a href="https://github.com/Charlemagnes">Charlemagnes</a>
+                  <a href="https://github.com/Charlemagnes" target="_blank" rel="noopener noreferrer">
+                    Charlemagnes
+                  </a>
                 </li>
                 <li>
-                  <a href="https://github.com/eangulom">Edd</a>
+                  <a href="https://github.com/eangulom" target="_blank" rel="noopener noreferrer">
+                    Edd
+                  </a>
                 </li>
               </ul>
             </li>
@@ -93,4 +99,3 @@ export default function GameNavbar() {
     </div>
   );
 }
-

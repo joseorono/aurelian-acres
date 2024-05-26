@@ -2,7 +2,7 @@
 
 ## Idle City-Builder Rome Game
 
-This is a project template that uses the React framework and Vite for bundling. It includes a Zustand store, hot-reloading for quick development workflow and scripts to generate production-ready builds.
+This is a project template that uses the React framework and Vite for bundling. It includes a Jotai store, hot-reloading for quick development workflow and scripts to generate production-ready builds.
 
 ### Versions
 
@@ -64,3 +64,4 @@ If you want to customize the build, such as adding plugin (i.e. for loading CSS 
 The Phaser logo and characters are &copy; 2011 - 2024 Phaser Studio Inc.
 
 All rights reserved.
+

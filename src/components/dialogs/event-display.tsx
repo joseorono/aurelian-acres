@@ -68,10 +68,26 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
   return (
     <div className="flex flex-auto flex-col justify-center bg-scroll p-4 text-gray-700">
       <NewspaperHeadline headline={event.name} />
-      <div className="break-all text-sm">{JSON.stringify(event)}</div>
+      <div className="break-words">
+        <p className="my-2">{event.description}</p>
+
+        {event.resourceMultiplier && (
+          <>
+            <div className="mx-auto mt-6 w-full max-w-[400px]">
+              {/*
+                    <h1 className="mb-4 text-lg text-red-700">Resources Multiplier:</h1>
+                    */}
+              <div className="bg-brown-800 pixel-rounded flex justify-around p-1 py-2 text-lg text-white">
+                <div>x{event.resourceMultiplier.gold} 🪙</div>
+                <div>x{event.resourceMultiplier.grain} 🌾</div>
+                <div>x{event.resourceMultiplier.stone} 🪨</div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
 
 export default EventDisplay;
-
