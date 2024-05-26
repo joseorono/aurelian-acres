@@ -258,3 +258,40 @@ body::-webkit-scrollbar-track {
   background-color: #282c34 !important;
   width: 5px;
 }
+
+/*
+==========================================
+    * Store Styles
+==========================================
+*/
+
+.store__entry {
+  @apply pixel-rounded m-2 rounded-lg border border-border bg-card p-2 text-card-foreground;
+}
+
+.store__unitName {
+  @apply mb-1 text-lg font-bold;
+}
+
+.store__unitDescription {
+  @apply mb-2 text-sm text-slate-600;
+}
+
+.store__currentCount {
+  @apply text-sm text-slate-600;
+}
+
+.store__currentCount b {
+  @apply text-lg text-slate-700;
+}
+
+.store__unitCost {
+  @apply pixel-rounded mt-1 bg-brown-800 px-4 py-1 text-base text-white;
+}
+
+.store__buyButton {
+  /* pixel-rounded ml-2 flex h-[100px] basis-1/4 items-center justify-center*/
+
+  @apply rounded-lg bg-primary px-2 py-1 text-2xl font-bold text-brown-800 text-primary-foreground;
+  border: 8px ridge theme('colors.scroll.900');
+}

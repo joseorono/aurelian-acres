@@ -50,10 +50,10 @@ export default function BuildingsShop() {
               <div className="flex-column basis-2/4">
                 <h2 className="store__unitName">{buildingData.name}</h2>
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
-                <p className="store__currentCount">current amount: {buildingCount}</p>
-                <p>
+                <p className="store__currentCount">Current amount: {buildingCount}</p>
+                <div className="store__unitCost">
                   <b>Cost:</b> {buildingCost?.costGold}🪙 / {buildingCost?.costGrain}🌾 / {buildingCost?.costStone}🪨
-                </p>
+                </div>
               </div>
               <button
                 className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"

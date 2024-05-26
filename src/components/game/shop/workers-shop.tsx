@@ -43,22 +43,22 @@ export default function WorkersShop() {
           const canAfford = canAffordWorker(workerData.id, resources);
           const maxCapacity = workerCount >= CONST_MAX_BUILDING_TYPE;
           return (
-            <div key={workerData.id} className={`store__entry worker-${workerData.name} flex flex-row p-2`}>
+            <div key={workerData.id} className={`store__entry card  worker-${workerData.name} flex flex-row p-2`}>
               <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
                 buildIcon
               </div>
               <div className="flex-column basis-2/4">
                 <h2 className="store__unitName">{workerData.name}</h2>
                 <h3 className="store__unitDescription">{workerData.description}</h3>
-                <p>
+                <p className="store__currentCount">
                   <b>Current amount: </b> {workerCount}
                 </p>
-                <p>
+                <div className="store__unitCost">
                   <b>Cost: </b> {workerCost?.costGold}🪙 / {workerCost?.costGrain}🌾 / {workerCost?.costStone}🪨
-                </p>
+                </div>
               </div>
               <button
-                className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
+                className="store__buyButton pixel-rounded ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
                 type="button"
                 disabled={maxCapacity || !canAfford}
                 onClick={() => handleBuy(workerKey, workerCount, 1, workerCost)}
