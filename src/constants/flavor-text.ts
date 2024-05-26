@@ -46,7 +46,6 @@ export const NEWSPAPER_NAMES: string[] = [
   'The Nova Roma Post',
   'The Forum Times',
   'Veni Vidi News',
-  'STOA',
   'Epicurean Times',
   'The Oeconomicus',
   'The Anatolian',
