@@ -3,6 +3,7 @@ import { useAtom, useSetAtom } from 'jotai';
 import { isModalOpenAtom, playerNameAtom } from '~/store/atoms';
 import { getRandomRomanName } from '~/lib/utils';
 import toast from 'react-hot-toast';
+import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function PlayerNameChangerDialog() {
   const [nameAtom, setNameAtom] = useAtom(playerNameAtom);
@@ -21,6 +22,8 @@ export default function PlayerNameChangerDialog() {
     }
     setNameAtom(name);
     toast.success('Legate has a new name!');
+    soundService.playSound(SoundNames.closeModal);
+
     setIsModalOpen(false);
   };
   return (

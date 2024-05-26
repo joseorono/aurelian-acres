@@ -3,13 +3,25 @@ import { sound } from '@pixi/sound';
 import { betweenZeroAndOne, getRandomlyVariedValue } from '~/lib/math';
 
 export enum SoundNames {
-  backgroundMusic = 'backgroundMusic',
+  backgroundMusic1 = 'backgroundMusic1',
+  backgroundMusic2 = 'backgroundMusic2',
+  fanfare = 'fanfare',
+  buyMiner = 'buyMiner',
+  buySlave = 'buySlave',
+  closeModal = 'closeModal',
+  click = 'click',
   coinClick = 'coinClick',
   upgrade = 'upgrade',
 }
 
 const soundFiles = {
-  [SoundNames.backgroundMusic]: 'assets/audio/halo.mp3',
+  [SoundNames.backgroundMusic1]: 'assets/audio/bgm1.mp3',
+  [SoundNames.backgroundMusic2]: 'assets/audio/bgm2.wav',
+  [SoundNames.fanfare]: 'assets/audio/fanfare.wav',
+  [SoundNames.buyMiner]: 'assets/audio/buyMiner.wav',
+  [SoundNames.buySlave]: 'assets/audio/buySlave.wav',
+  [SoundNames.closeModal]: 'assets/audio/closeModal.mp3',
+  [SoundNames.click]: 'assets/audio/click.mp3',
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
   [SoundNames.upgrade]: 'assets/audio/upgrade.mp3',
 };
