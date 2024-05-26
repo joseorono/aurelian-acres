@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { SoundNames, soundService } from '~/services/sound-service';
 
 import { TypeAnimation } from 'react-type-animation';
-import { auxSleepFor, cn } from '~/lib/utils';
+import { cn } from '~/lib/utils';
 import { TextSequence, TextSequenceElement } from '~/types/component-props';
 
 // Define the interface for the props
