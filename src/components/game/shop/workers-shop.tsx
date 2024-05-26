@@ -42,16 +42,11 @@ export default function WorkersShop() {
           const canAfford = canAffordWorker(workerData.id, resources);
           const maxCapacity = workerCount >= CONST_MAX_BUILDING_TYPE;
           return (
-            <div key={workerData.id} className={`store__entry card  worker-${workerData.name} flex flex-row p-2`}>
-              <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
-                <img
-                  src={`public/assets/town-view-tiles/workers/${workerData.name}.png`}
-                  alt={workerData.name}
-                  style={{ width: '100px', height: '100px' }}
-                  className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
-                />
-              </div>
-              <div className="flex-column basis-2/4">
+            <div
+              key={workerData.id}
+              className={`store__entry card worker-${workerData.name} flex flex-row justify-around gap-2 p-2`}
+            >
+              <div className="flex-column flex-auto basis-2/4">
                 <h2 className="store__unitName">{workerData.name}</h2>
                 <h3 className="store__unitDescription">{workerData.description}</h3>
                 <p className="store__currentCount">
@@ -94,22 +89,24 @@ export default function WorkersShop() {
                   </div>
                 </div>
               </div>
-              <button
-                className="store__buyButton"
-                type="button"
-                disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(workerKey, workerCount, 1, workerData)}
-              >
-                BUY
-              </button>
-              {/* <button
-                className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
-                type="button"
-                // disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(workerKey, workerCount, -1, workerInfo)}
-              >
-                (debug) SELL!?
-              </button> */}
+              <div className="flex flex-col gap-2">
+                <div className="flex h-[100px] items-center justify-center border-2 border-solid border-white">
+                  <img
+                    src={`public/assets/town-view-tiles/workers/${workerData.name}.png`}
+                    alt={workerData.name}
+                    style={{ width: '100px', height: '100px' }}
+                    className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
+                  />
+                </div>
+                <button
+                  className="store__buyButton"
+                  type="button"
+                  disabled={maxCapacity || !canAfford}
+                  onClick={() => handleBuy(workerKey, workerCount, 1, workerData)}
+                >
+                  BUY
+                </button>
+              </div>
             </div>
           );
         })}
