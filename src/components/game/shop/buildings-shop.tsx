@@ -78,14 +78,7 @@ export default function BuildingsShop() {
               >
                 BUY
               </button>
-              {/* <button
-                className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
-                type="button"
-                // disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(buildingKey, buildingCount, -1, buildingInfo)}
-              >
-                (debug) SELL!?
-              </button> */}
+
             </div>
           );
         })}
