@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
-import { canAffordWorker, getWorkerCost, playBuildingSound } from '~/lib/resources';
+import { canAffordWorker, getWorkerInfo, playBuildingSound } from '~/lib/resources';
 import { resourcesAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
 
@@ -38,7 +38,7 @@ export default function WorkersShop() {
       <div className="building-store-wrapper">
         {Object.entries(WORKERS).map(([workerName, workerData]) => {
           const workerKey = workerName as workerKeys;
-          const workerCost = getWorkerCost(workerData.id);
+          const workerInfo = getWorkerInfo(workerData.id);
           const workerCount = workersCount[workerKey];
           const canAfford = canAffordWorker(workerData.id, resources);
           const maxCapacity = workerCount >= CONST_MAX_BUILDING_TYPE;
@@ -54,14 +54,14 @@ export default function WorkersShop() {
                   <b>Current amount: </b> {workerCount}
                 </p>
                 <div className="store__unitCost">
-                  <b>Cost: </b> {workerCost?.costGold}🪙 / {workerCost?.costGrain}🌾 / {workerCost?.costStone}🪨
+                  <b>Cost: </b> {workerInfo?.costGold}🪙 / {workerInfo?.costGrain}🌾 / {workerInfo?.costStone}🪨
                 </div>
               </div>
               <button
                 className="store__buyButton"
                 type="button"
                 disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(workerKey, workerCount, 1, workerCost)}
+                onClick={() => handleBuy(workerKey, workerCount, 1, workerInfo)}
               >
                 BUY
               </button>
@@ -69,7 +69,7 @@ export default function WorkersShop() {
                 className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
                 type="button"
                 // disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(workerKey, workerCount, -1, workerCost)}
+                onClick={() => handleBuy(workerKey, workerCount, -1, workerInfo)}
               >
                 (debug) SELL!?
               </button> */}

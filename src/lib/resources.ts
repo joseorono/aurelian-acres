@@ -27,34 +27,40 @@ export function getWorkerById(id: number): workerData | null {
   return WORKERS_ARRAY.find((worker: workerData) => worker.id === id) ?? null;
 }
 
-export function getBuildingCost(id: number): priceData | null {
+export function getBuildingInfo(id: number): (priceData & passiveIncomeData) | null {
   const building = getBuildingById(id);
   if (!building) return null;
   return {
     costGold: building.costGold,
     costGrain: building.costGrain,
     costStone: building.costStone,
+    goldPerSecond: building.goldPerSecond,
+    stonePerSecond: building.stonePerSecond,
+    grainPerSecond: building.grainPerSecond,
   };
 }
 
-export function getWorkerCost(id: number): priceData | null {
+export function getWorkerInfo(id: number): (priceData & activeIncomeData) | null {
   const worker = getWorkerById(id);
   if (!worker) return null;
   return {
     costGold: worker.costGold,
     costGrain: worker.costGrain,
     costStone: worker.costStone,
+    goldPerClick: worker.goldPerClick,
+    stonePerClick: worker.stonePerClick,
+    grainPerClick: worker.grainPerClick,
   };
 }
 
 export function canAffordBuilding(id: number, res: playerResources): boolean {
-  const cost = getBuildingCost(id);
+  const cost = getBuildingInfo(id);
   if (!cost) return false;
   return res.gold >= cost.costGold && res.grain >= cost.costGrain && res.stone >= cost.costStone;
 }
 
 export function canAffordWorker(id: number, res: playerResources): boolean {
-  const cost = getWorkerCost(id);
+  const cost = getWorkerInfo(id);
   if (!cost) return false;
   return res.gold >= cost.costGold && res.grain >= cost.costGrain && res.stone >= cost.costStone;
 }

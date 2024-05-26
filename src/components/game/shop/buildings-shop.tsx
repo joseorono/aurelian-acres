@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import { BUILDINGS } from '~/constants/buildings';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
-import { canAffordBuilding, getBuildingCost, playBuildingSound } from '~/lib/resources';
+import { canAffordBuilding, getBuildingInfo, playBuildingSound } from '~/lib/resources';
 import { buildingsAtom, resourcesAtom } from '~/store/atoms';
 import { buildingKeys, priceData } from '~/types/game-data-types';
 
@@ -38,7 +38,7 @@ export default function BuildingsShop() {
       <div className="building-store-wrapper">
         {Object.entries(BUILDINGS).map(([buildingName, buildingData]) => {
           const buildingKey = buildingName as buildingKeys;
-          const buildingCost = getBuildingCost(buildingData.id);
+          const buildingInfo = getBuildingInfo(buildingData.id);
           const buildingCount = buildingsCount[buildingKey];
           const canAfford = canAffordBuilding(buildingData.id, resources);
           const maxCapacity = buildingCount >= CONST_MAX_BUILDING_TYPE;
@@ -52,14 +52,17 @@ export default function BuildingsShop() {
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
                 <div className="store__unitCost">
-                  <b>Cost:</b> {buildingCost?.costGold}🪙 / {buildingCost?.costGrain}🌾 / {buildingCost?.costStone}🪨
+                  <b>Cost:</b> {buildingInfo?.costGold}🪙 / {buildingInfo?.costGrain}🌾 / {buildingInfo?.costStone}🪨{' '}
+                  <br></br>
+                  <b>Passive Income:</b> {buildingInfo?.goldPerSecond}🪙pS / {buildingInfo?.grainPerSecond}🌾pS /{' '}
+                  {buildingInfo?.stonePerSecond}🪨pS
                 </div>
               </div>
               <button
                 className="store__buyButton"
                 type="button"
                 disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingCost)}
+                onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingInfo)}
               >
                 BUY
               </button>
@@ -67,7 +70,7 @@ export default function BuildingsShop() {
                 className="ml-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white"
                 type="button"
                 // disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(buildingKey, buildingCount, -1, buildingCost)}
+                onClick={() => handleBuy(buildingKey, buildingCount, -1, buildingInfo)}
               >
                 (debug) SELL!?
               </button> */}
