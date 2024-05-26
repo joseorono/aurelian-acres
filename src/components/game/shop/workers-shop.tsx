@@ -43,7 +43,7 @@ export default function WorkersShop() {
           const canAfford = canAffordWorker(workerData.id, resources);
           const maxCapacity = workerCount >= CONST_MAX_BUILDING_TYPE;
           return (
-            <div key={workerData.id} className={`worker-${workerData.name} flex flex-row p-2`}>
+            <div key={workerData.id} className={`store__entry worker-${workerData.name} flex flex-row p-2`}>
               <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
                 buildIcon
               </div>
@@ -80,4 +80,3 @@ export default function WorkersShop() {
     </>
   );
 }
-

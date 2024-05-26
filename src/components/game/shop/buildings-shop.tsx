@@ -43,7 +43,7 @@ export default function BuildingsShop() {
           const canAfford = canAffordBuilding(buildingData.id, resources);
           const maxCapacity = buildingCount >= CONST_MAX_BUILDING_TYPE;
           return (
-            <div key={buildingData.id} className={`building-${buildingData.name} flex flex-row p-2`}>
+            <div key={buildingData.id} className={`store__entry building-${buildingData.name} flex flex-row p-2`}>
               <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
                 buildIcon
               </div>
@@ -78,4 +78,3 @@ export default function BuildingsShop() {
     </>
   );
 }
-

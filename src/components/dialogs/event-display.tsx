@@ -3,7 +3,7 @@ import { GLOBAL_EVENTS, EVENT_PROBABILITY } from '~/constants/events';
 import { useEffect } from 'react';
 import { getRandomEvent } from '~/lib/events-logic';
 import { buildingCount, workerCount } from '~/types/game-data-types';
-import NewspaperHeadline from '../game/misc/newspaper-headline';
+import NewspaperHeadline from '~/components/game/misc/newspaper-headline';
 import { eventsAtom, buildingsAtom, resourcesAtom, workersAtom } from '~/store/atoms';
 import { useSetAtom, useAtom } from 'jotai';
 import toast from 'react-hot-toast';

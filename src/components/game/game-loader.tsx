@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
-import LoopingProgressBar from './misc/loopingProgressBar';
+import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
 
 export default function GameLoader() {
   // TODO: Implement a loading screen that when done, displays a big PLAY button
@@ -61,4 +61,3 @@ export default function GameLoader() {
     <GameScreen />
   );
 }
-

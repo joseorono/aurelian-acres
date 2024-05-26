@@ -1,4 +1,4 @@
-import LoopingProgressBar from '../misc/loopingProgressBar';
+import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
 
 export default function AutoBuySection() {
   return (

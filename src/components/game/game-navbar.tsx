@@ -2,7 +2,8 @@ import { useSetAtom } from 'jotai';
 import SoundBar from '~/components/soundBar';
 import GithubPixelIcon from '~/icons/GithubPixelIcon';
 import { setContentAtom } from '~/store/atoms';
-import CreditsDialog from '../modals/credits-dialog';
+import CreditsDialog from '~/components/modals/credits-dialog';
+import TutorialDialog from '~/components/modals/tutorial-dialog';
 
 export default function GameNavbar() {
   const setIsModalOpen = useSetAtom(setContentAtom);
@@ -15,6 +16,14 @@ export default function GameNavbar() {
       onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
     });
   };
+  function handleShowTutorial(): void {
+    setIsModalOpen({
+      title: 'Tutorial',
+      content: <TutorialDialog />,
+      onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
+    });
+  }
+
   return (
     <div className="h-navbar navbar min-h-0 bg-base-100 p-0">
       <div className="navbar-start">
@@ -33,6 +42,9 @@ export default function GameNavbar() {
           <ul tabIndex={0} className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
             <li>
               <a onClick={() => handleShowCredits()}>Credits</a>
+            </li>
+            <li>
+              <a onClick={() => handleShowTutorial()}>Tutorial</a>
             </li>
             <li>
               <a href="https://github.com/joseorono/idle-roman-game/">

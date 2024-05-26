@@ -8,13 +8,13 @@ import LightBulbPixelIcon from './icons/LightBulbPixelIcon';
 
 import { useEffect } from 'react';
 import MouseTracker from '~/components/effects/mouse-tracker';
-import DebugArea from './components/debug-area';
+import DebugArea from '~/components/debug-area';
 
-import ResponsiveNotice from './components/responsive-notice';
-import BackgroundWorker from './components/game/background-worker';
-import Modal from './components/Modal';
-import GameScreen from './components/game/game-screen';
-import GameLoader from './components/game/game-loader';
+import ResponsiveNotice from '~/components/responsive-notice';
+import BackgroundWorker from '~/components/game/background-worker';
+import Modal from '~/components/Modal';
+import GameScreen from '~/components/game/game-screen';
+import GameLoader from '~/components/game/game-loader';
 import { GAME_TICK_SECONDS } from './constants/defaults';
 
 function App() {
@@ -94,4 +94,3 @@ function App() {
 }
 
 export default App;
-
