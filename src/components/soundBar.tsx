@@ -2,8 +2,9 @@ import { useAtom } from 'jotai';
 import { isMutedAtom, volumeAtom } from '~/store/atoms';
 import { VolumeHigh, VolumeLow, VolumeMed, VolumeMute, VolumeNone } from '~/icons/sound/volume';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { soundService } from '~/services/sound-service';
+import { SoundNames, soundService } from '~/services/sound-service';
 import { useEffect } from 'react';
+import { auxSleepFor } from '~/lib/utils';
 export default function SoundBar() {
   const [isMuted, setIsMuted] = useAtom(isMutedAtom);
   const [volume, setVolume] = useAtom(volumeAtom);
@@ -19,6 +20,23 @@ export default function SoundBar() {
   useEffect(() => {
     soundService.setGlobalVolume(volume);
   }, [volume]);
+
+  useEffect(() => {
+    if (isMuted === true) {
+      soundService.muteAll();
+    } else {
+      soundService.unmuteAll();
+    }
+    soundService.setGlobalVolume(volume);
+    auxSleepFor(100).then(() => {
+      soundService.asyncPlaySouund(SoundNames.fanfare).then(async () => {
+        await auxSleepFor(4000);
+        soundService.startMusic(SoundNames.backgroundMusic2);
+      });
+    });
+    // async () => {
+    // };
+  }, []);
 
   const onVolumeChange = (val: number) => {
     setVolume(val / 100);

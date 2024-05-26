@@ -3,8 +3,6 @@ import { loaderService } from '~/services/loader-service';
 import '~/css/pixelated-button.css';
 import GameScreen from './game-screen';
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
-import { SoundNames, soundService } from '~/services/sound-service';
-import { auxSleepFor } from '~/lib/utils';
 import { useAtom, useSetAtom } from 'jotai';
 import { firstTimeAtom, setContentAtom } from '~/store/atoms';
 import TutorialDialog from '../modals/tutorial-dialog';
@@ -19,18 +17,14 @@ export default function GameLoader() {
 
   const onSetReady = () => {
     setReady(true);
-    soundService.asyncPlaySouund(SoundNames.fanfare).then(async () => {
-      if (isFirstTime === true) {
-        setIsFirstTime(false);
-        setIsModalOpen({
-          title: 'Tutorial',
-          content: <TutorialDialog />,
-          onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
-        });
-      }
-      await auxSleepFor(4000);
-      soundService.startMusic(SoundNames.backgroundMusic2);
-    });
+    if (isFirstTime === true) {
+      setIsFirstTime(false);
+      setIsModalOpen({
+        title: 'Tutorial',
+        content: <TutorialDialog />,
+        onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
+      });
+    }
   };
 
   useEffect(() => {
