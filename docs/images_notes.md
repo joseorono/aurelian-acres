@@ -43,3 +43,14 @@ Baker
 CC BY 3.0, Delapouite
 https://game-icons.net/1x1/delapouite/miner.html
 
+materials
+CC BY 4.0, BizmasterStudios
+https://opengameart.org/content/rpg-crafting-material-icons
+
+coin
+CC BY 4.0, BizmasterStudios
+https://opengameart.org/content/gold-cointoken
+
+crops
+CC BY 4.0, SCaydi
+https://opengameart.org/content/imaginary-crops
