@@ -13,7 +13,9 @@ import {
   workerCount,
   passiveIncomeData,
   workerKeys,
+  tilesKey,
 } from '~/types/game-data-types';
+import { SoundNames, soundService } from '~/services/sound-service';
 
 export function getBuildingById(id: number): buildingData | null {
   // Handle the case where the building is not found
@@ -169,5 +171,20 @@ export function calculateActiveIncome(
     grainPerClick: accumulatedGrainPerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.grainMultiplier,
     stonePerClick: accumulatedStonePerClick * CURRENT_MULTIPLIER * CURRENT_UPGRADE.stoneMultiplier,
   };
+}
+
+export function playBuildingSound(buildingName: tilesKey) {
+  const minVolume = Math.min(soundService.globalVolume, 0.8);
+  switch (buildingName) {
+    case 'slave':
+      soundService.playSound(SoundNames.buySlave, minVolume);
+      break;
+    case 'miner':
+    case 'quarry':
+      soundService.playSound(SoundNames.buyMiner, minVolume);
+      break;
+    default:
+      break;
+  }
 }
 

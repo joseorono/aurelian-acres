@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { BUILDINGS } from '~/constants/buildings';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
-import { canAffordBuilding, getBuildingCost } from '~/lib/resources';
+import { canAffordBuilding, getBuildingCost, playBuildingSound } from '~/lib/resources';
 import { buildingsAtom, resourcesAtom } from '~/store/atoms';
 import { buildingKeys, priceData } from '~/types/game-data-types';
 
@@ -26,6 +26,7 @@ export default function BuildingsShop() {
       stone: resources.stone - cost.costStone * amount,
       grain: resources.grain - cost.costGrain * amount,
     });
+    playBuildingSound(buildingName);
   };
 
   return (
@@ -73,3 +74,4 @@ export default function BuildingsShop() {
     </>
   );
 }
+

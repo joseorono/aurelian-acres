@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
-import { canAffordWorker, getWorkerCost } from '~/lib/resources';
+import { canAffordWorker, getWorkerCost, playBuildingSound } from '~/lib/resources';
 import { resourcesAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
 
@@ -26,6 +26,7 @@ export default function WorkersShop() {
       stone: resources.stone - cost.costStone * amount,
       grain: resources.grain - cost.costGrain * amount,
     });
+    playBuildingSound(workerName);
   };
 
   return (
@@ -73,3 +74,4 @@ export default function WorkersShop() {
     </>
   );
 }
+
