@@ -60,7 +60,9 @@ export default function BuildingsShop() {
                   <b>Cost:</b> {getFormattedNumber(buildingData?.costGold)}🪙 /{' '}
                   {getFormattedNumber(buildingData?.costGrain)}🌾 / {getFormattedNumber(buildingData?.costStone)}🪨{' '}
                   <br></br>
-                  <b>Passive Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
+                </div>
+                <div className="store__unitCost mt-1">
+                  <b>Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
                   {getFormattedNumber(buildingData?.grainPerSecond)}🌾pS /{' '}
                   {getFormattedNumber(buildingData?.stonePerSecond)}🪨pS
                 </div>
