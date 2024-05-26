@@ -44,15 +44,7 @@ export default function BuildingsShop() {
           const maxCapacity = buildingCount >= CONST_MAX_BUILDING_TYPE;
           return (
             <div key={buildingData.id} className={`store__entry building-${buildingData.name} flex flex-row p-2`}>
-              <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
-                <img
-                  src={`public/assets/town-view-tiles/buildings/${buildingData.name}.png`}
-                  alt={buildingData.name}
-                  style={{ width: '100px', height: '100px' }}
-                  className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
-                />
-              </div>
-              <div className="flex-column basis-2/4">
+              <div className="flex-column flex-auto  basis-2/4">
                 <h2 className="store__unitName">{buildingData.name}</h2>
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
@@ -93,14 +85,24 @@ export default function BuildingsShop() {
                   </div>
                 </div>
               </div>
-              <button
-                className="store__buyButton"
-                type="button"
-                disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingData)}
-              >
-                BUY
-              </button>
+              <div className="flex flex-col gap-2">
+                <div className="flex h-[100px] items-center justify-center border-2 border-solid border-white">
+                  <img
+                    src={`public/assets/town-view-tiles/buildings/${buildingData.name}.png`}
+                    alt={buildingData.name}
+                    style={{ width: '100px', height: '100px' }}
+                    className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
+                  />
+                </div>
+                <button
+                  className="store__buyButton"
+                  type="button"
+                  disabled={maxCapacity || !canAfford}
+                  onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingData)}
+                >
+                  BUY
+                </button>
+              </div>
             </div>
           );
         })}
