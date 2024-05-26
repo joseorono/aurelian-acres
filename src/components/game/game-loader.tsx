@@ -37,6 +37,7 @@ export default function GameLoader() {
     if (loading) {
       return (
         <>
+          <img id="loaderLogo" src="/assets/logo.png" />
           <h1 className="text-4xl text-white">Loading...</h1>
           <LoopingProgressBar durationInMs={1000} />
         </>
@@ -47,9 +48,12 @@ export default function GameLoader() {
     }
     if (!loading && !ready) {
       return (
-        <button onClick={() => setReady(true)} className="pixel-btn text-4xl text-white">
-          Play!
-        </button>
+        <>
+          <img id="loaderLogo" src="/assets/logo.png" />
+          <button onClick={() => setReady(true)} className="pixel-btn text-4xl text-white">
+            Play!
+          </button>
+        </>
       );
     }
     // i cant put MainGameArea inside innerView or the styles of the wrappers will break everything
@@ -66,4 +70,3 @@ export default function GameLoader() {
     <GameScreen />
   );
 }
-
