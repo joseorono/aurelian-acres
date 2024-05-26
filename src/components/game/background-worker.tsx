@@ -4,6 +4,7 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { GAME_TICK_SECONDS } from '~/constants/defaults';
 import { calculatePassiveIncome } from '~/lib/resources';
 import { resourcesAtom, buildingsAtom, playerUpgradeAtom, playerLevelAtom } from '~/store/atoms';
+import { getFormattedNumber } from '~/lib/utils';
 export default function BackgroundWorker() {
   // save the game tick as a state using useState
   // use the useEffect hook to update the game tick every 1000ms
@@ -33,17 +34,16 @@ export default function BackgroundWorker() {
     // Update the value of resources in every DOM element with labelForGold, labelForGrain, and labelForStone
     setResources((resourcesDraft) => {
       document.querySelectorAll('.labelForGold').forEach((el) => {
-        el.textContent = resourcesDraft.gold.toString();
+        el.textContent = getFormattedNumber(resourcesDraft.gold);
       });
       document.querySelectorAll('.labelForGrain').forEach((el) => {
-        el.textContent = resourcesDraft.grain.toString();
+        el.textContent = getFormattedNumber(resourcesDraft.grain);
       });
       document.querySelectorAll('.labelForStone').forEach((el) => {
-        el.textContent = resourcesDraft.stone.toString();
+        el.textContent = getFormattedNumber(resourcesDraft.stone);
       });
     });
   }, []);
 
   return <div className="hidden">{/* Useful Debug Info*/}</div>;
 }
-

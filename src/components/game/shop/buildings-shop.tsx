@@ -2,7 +2,8 @@ import { useAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import { BUILDINGS } from '~/constants/buildings';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
-import { canAffordBuilding, getBuildingInfo, playBuildingSound } from '~/lib/resources';
+import { canAffordBuilding, playBuildingSound } from '~/lib/resources';
+import { getFormattedNumber } from '~/lib/utils';
 import { buildingsAtom, resourcesAtom } from '~/store/atoms';
 import { buildingKeys, priceData } from '~/types/game-data-types';
 
@@ -38,31 +39,37 @@ export default function BuildingsShop() {
       <div className="building-store-wrapper">
         {Object.entries(BUILDINGS).map(([buildingName, buildingData]) => {
           const buildingKey = buildingName as buildingKeys;
-          const buildingInfo = getBuildingInfo(buildingData.id);
           const buildingCount = buildingsCount[buildingKey];
           const canAfford = canAffordBuilding(buildingData.id, resources);
           const maxCapacity = buildingCount >= CONST_MAX_BUILDING_TYPE;
           return (
             <div key={buildingData.id} className={`store__entry building-${buildingData.name} flex flex-row p-2`}>
               <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
-                buildIcon
+                <img
+                  src={`public/assets/town-view-tiles/buildings/${buildingData.name}.png`}
+                  alt={buildingData.name}
+                  style={{ width: '100px', height: '100px' }}
+                  className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
+                />
               </div>
               <div className="flex-column basis-2/4">
                 <h2 className="store__unitName">{buildingData.name}</h2>
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
                 <div className="store__unitCost">
-                  <b>Cost:</b> {buildingInfo?.costGold}🪙 / {buildingInfo?.costGrain}🌾 / {buildingInfo?.costStone}🪨{' '}
+                  <b>Cost:</b> {getFormattedNumber(buildingData?.costGold)}🪙 /{' '}
+                  {getFormattedNumber(buildingData?.costGrain)}🌾 / {getFormattedNumber(buildingData?.costStone)}🪨{' '}
                   <br></br>
-                  <b>Passive Income:</b> {buildingInfo?.goldPerSecond}🪙pS / {buildingInfo?.grainPerSecond}🌾pS /{' '}
-                  {buildingInfo?.stonePerSecond}🪨pS
+                  <b>Passive Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
+                  {getFormattedNumber(buildingData?.grainPerSecond)}🌾pS /{' '}
+                  {getFormattedNumber(buildingData?.stonePerSecond)}🪨pS
                 </div>
               </div>
               <button
                 className="store__buyButton"
                 type="button"
                 disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingInfo)}
+                onClick={() => handleBuy(buildingKey, buildingCount, 1, buildingData)}
               >
                 BUY
               </button>
