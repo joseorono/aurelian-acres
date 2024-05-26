@@ -8,7 +8,20 @@ export default function CreditsDialog() {
     <>
       <div className="justify-center">
         <h1>CREDITS</h1>
-        <h2>Made by Jose Oroño, Eduardo Angulo & Carlos Sierra</h2>
+        <h2>
+          Made by{' '}
+          <a href="https://github.com/joseorono" target="_blank">
+            Jose Oroño
+          </a>
+          ,{' '}
+          <a href="https://github.com/eangulom" target="_blank">
+            Eduardo Angulo
+          </a>{' '}
+          &{' '}
+          <a href="https://github.com/Charlemagnes" target="_blank">
+            Carlos Sierra
+          </a>
+        </h2>
         <hr className="m-2 border border-black" />
         <h1>ASSETS USED:</h1>
         <ul>
