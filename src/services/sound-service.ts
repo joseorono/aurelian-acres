@@ -19,14 +19,15 @@ export enum SoundNames {
   click = 'click',
   coinClick = 'coinClick',
   upgrade = 'upgrade',
+  buyFields = 'buyFields',
 }
 
 const soundFiles = {
   [SoundNames.backgroundMusic1]: 'assets/audio/bgm1.mp3',
-  [SoundNames.backgroundMusic2]: 'assets/audio/bgm2.wav',
-  [SoundNames.fanfare]: 'assets/audio/fanfare.wav',
-  [SoundNames.buyMiner]: 'assets/audio/buyMiner.wav',
-  [SoundNames.buySlave]: 'assets/audio/buySlave.wav',
+  [SoundNames.backgroundMusic2]: 'assets/audio/bgm2.mp3',
+  [SoundNames.fanfare]: 'assets/audio/fanfare.mp3',
+  [SoundNames.buyMiner]: 'assets/audio/buyMiner.mp3',
+  [SoundNames.buySlave]: 'assets/audio/buySlave.mp3',
   [SoundNames.buyFarmer]: 'assets/audio/buyFarmer.mp3',
   [SoundNames.buyBaker]: 'assets/audio/buyBaker.mp3',
   [SoundNames.buyMercator]: 'assets/audio/buyMercator.mp3',
@@ -38,6 +39,7 @@ const soundFiles = {
   [SoundNames.click]: 'assets/audio/click.mp3',
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
   [SoundNames.upgrade]: 'assets/audio/upgrade.mp3',
+  [SoundNames.buyFields]: 'assets/audio/buyFields.mp3',
 };
 
 class SoundService {
@@ -150,4 +152,3 @@ class SoundService {
 }
 
 export const soundService = new SoundService();
-
