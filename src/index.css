@@ -124,6 +124,8 @@ body {
 .h-game {
   height: calc(100vh - var(--height-navbar));
   height: calc(100svh - var(--height-navbar));
+  max-height: calc(100vh - var(--height-navbar));
+  max-height: calc(100svh - var(--height-navbar));
 }
 
 #loaderLogo,
@@ -214,4 +216,45 @@ body {
 
 .btn {
   @apply pixel-rounded mx-1 my-1 h-10 min-h-10 text-base font-bold;
+}
+
+/*
+====================
+  Custom Scrollbar
+====================
+*/
+
+/* Webkit Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  height: 12px; /* Height of the scrollbar (for horizontal scrollbars) */
+}
+
+::-webkit-scrollbar-track {
+  background: #efefef; /* Lighter color for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #5a3e2b; /* Dark color for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid #e8e0c3; /* Adds space around the thumb with the track's color */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #5a3e2b #fff; /* Thumb and track colors */
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #282c34 !important;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #282c34 !important;
+  width: 5px;
 }
