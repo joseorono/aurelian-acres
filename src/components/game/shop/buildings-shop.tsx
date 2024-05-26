@@ -75,9 +75,21 @@ export default function BuildingsShop() {
                     <br></br>
                   </div>
                   <div className="store__unitCost mt-1">
-                    <b>Income:</b> {getFormattedNumber(buildingData?.goldPerSecond)}🪙pS /{' '}
-                    {getFormattedNumber(buildingData?.grainPerSecond)}🌾pS /{' '}
-                    {getFormattedNumber(buildingData?.stonePerSecond)}🪨pS
+                    <b className="text-lg">Income:</b>
+                    <div className="flex flex-col">
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(buildingData?.goldPerSecond)}</span>
+                        <span className="icon">🪙</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(buildingData?.grainPerSecond)}</span>
+                        <span className="icon">🌾</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(buildingData?.stonePerSecond)}</span>
+                        <span className="icon">🪨</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,7 +101,6 @@ export default function BuildingsShop() {
               >
                 BUY
               </button>
-
             </div>
           );
         })}

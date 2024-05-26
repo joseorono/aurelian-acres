@@ -76,9 +76,21 @@ export default function WorkersShop() {
                     <br></br>
                   </div>
                   <div className="store__unitCost mt-1">
-                    <b className="text-lg">Income:</b> {getFormattedNumber(workerData?.goldPerClick)}🪙pS /{' '}
-                    {getFormattedNumber(workerData?.grainPerClick)}🌾pS /{' '}
-                    {getFormattedNumber(workerData?.stonePerClick)}🪨pS
+                    <b className="text-lg">Income:</b>
+                    <div className="flex flex-col">
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(workerData?.goldPerClick)}</span>
+                        <span className="icon">🪙</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(workerData?.grainPerClick)}</span>
+                        <span className="icon">🌾</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="qty">{getFormattedNumber(workerData?.stonePerClick)}</span>
+                        <span className="icon">🪨</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
