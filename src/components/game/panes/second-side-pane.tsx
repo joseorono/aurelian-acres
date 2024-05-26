@@ -12,7 +12,7 @@ export default function SecondSidePane({ className = '' }) {
   const isWorkersTab = currentTab === 'workers';
 
   const handleTabChange = (tab: ShopTab) => {
-    soundService.playSound(SoundNames.coinClick, 0.2, 0.1);
+    soundService.playSound(SoundNames.click, 0.2, 0.1);
     setTab(tab);
   };
 
@@ -47,3 +47,4 @@ export default function SecondSidePane({ className = '' }) {
     </div>
   );
 }
+

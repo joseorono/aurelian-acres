@@ -1,8 +1,14 @@
 import { useSetAtom } from 'jotai';
+import { SoundNames, soundService } from '~/services/sound-service';
 import { isModalOpenAtom } from '~/store/atoms';
 
 export default function CreditsDialog() {
   const setIsModalOpen = useSetAtom(isModalOpenAtom);
+
+  const handleClose = () => {
+    soundService.playSound(SoundNames.closeModal);
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -31,7 +37,7 @@ export default function CreditsDialog() {
         </ul>
       </div>
       <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
-        <button type="button" onClick={() => setIsModalOpen(false)}>
+        <button type="button" onClick={handleClose}>
           Close
         </button>
       </div>
