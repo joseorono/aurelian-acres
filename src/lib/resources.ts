@@ -176,6 +176,9 @@ export function calculateActiveIncome(
 export function playBuildingSound(buildingName: tilesKey) {
   const minVolume = Math.min(soundService.globalVolume, 0.5);
   switch (buildingName) {
+    case 'fields':
+      soundService.playSound(SoundNames.buyFields, minVolume);
+      break;
     case 'slave':
       soundService.playSound(SoundNames.buySlave, minVolume);
       break;
@@ -212,4 +215,3 @@ export function playBuildingSound(buildingName: tilesKey) {
       break;
   }
 }
-
