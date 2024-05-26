@@ -204,6 +204,9 @@ export function playBuildingSound(buildingName: tilesKey) {
     case 'temple':
       soundService.playSound(SoundNames.buyPriest, minVolume);
       break;
+    case 'forum':
+      soundService.playSound(SoundNames.buyForum, minVolume);
+      break;
     default:
       break;
   }

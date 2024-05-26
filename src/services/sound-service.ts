@@ -14,6 +14,7 @@ export enum SoundNames {
   buySmith = 'buySmith',
   buyLegionary = 'buyLegionary',
   buyPriest = 'buyPriest',
+  buyForum = 'buyForum',
   closeModal = 'closeModal',
   click = 'click',
   coinClick = 'coinClick',
@@ -32,6 +33,7 @@ const soundFiles = {
   [SoundNames.buySmith]: 'assets/audio/buySmith.mp3',
   [SoundNames.buyLegionary]: 'assets/audio/buyLegionary.mp3',
   [SoundNames.buyPriest]: 'assets/audio/buyPriest.mp3',
+  [SoundNames.buyForum]: 'assets/audio/buyForum.mp3',
   [SoundNames.closeModal]: 'assets/audio/closeModal.mp3',
   [SoundNames.click]: 'assets/audio/click.mp3',
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
@@ -100,6 +102,15 @@ class SoundService {
   }
 
   playSound(alias: SoundNames, volume: number = 1, variance: number = 0) {
+    volume = betweenZeroAndOne(volume, 'volume');
+    variance = betweenZeroAndOne(variance, 'variance');
+
+    sound.play(alias, {
+      volume: getRandomlyVariedValue(volume, variance),
+    });
+  }
+
+  async asyncPlaySouund(alias: SoundNames, volume: number = 1, variance: number = 0) {
     volume = betweenZeroAndOne(volume, 'volume');
     variance = betweenZeroAndOne(variance, 'variance');
 
