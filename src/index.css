@@ -126,12 +126,28 @@ body {
   height: calc(100svh - var(--height-navbar));
 }
 
+#loaderLogo,
+.logoNav {
+  width: 100%;
+  height: auto;
+}
+
 #loaderLogo {
   display: block;
   margin: 2rem auto;
   max-width: 400px;
-  width: 100%;
-  height: auto;
+}
+
+.logoNav {
+  max-width: 76px;
+  max-height: 100%;
+  /*width: max-content;*/
+}
+
+@media only screen and (min-width: 992px) {
+  .logoNav {
+    max-width: 128px;
+  }
 }
 
 .navbar {
