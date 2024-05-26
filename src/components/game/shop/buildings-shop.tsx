@@ -1,4 +1,5 @@
 import { useAtom } from 'jotai';
+import toast from 'react-hot-toast';
 import { BUILDINGS } from '~/constants/buildings';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { canAffordBuilding, getBuildingCost } from '~/lib/resources';
@@ -17,6 +18,9 @@ export default function BuildingsShop() {
       console.error('trying to buy building with 0 cost. Shouldnt be possible');
       return;
     }
+
+    toast.success(`Bought ${amount} ${buildingName}(s)`);
+
     //adding amount in case we implement buying in increments (ex 10 at a time)
     // increase building by amount
     setBuildingsCount({ ...buildingsCount, [buildingName]: buildingCount + amount });
@@ -43,11 +47,11 @@ export default function BuildingsShop() {
                 buildIcon
               </div>
               <div className="flex-column basis-2/4">
-                <h2>{buildingData.name}</h2>
-                <h3>{buildingData.description}</h3>
-                <p>current amount: {buildingCount}</p>
+                <h2 className="store__unitName">{buildingData.name}</h2>
+                <h3 className="store__unitDescription">{buildingData.description}</h3>
+                <p className="store__currentCount">current amount: {buildingCount}</p>
                 <p>
-                  cost: {buildingCost?.costGold}🪙 / {buildingCost?.costGrain}🌾 / {buildingCost?.costStone}🪨
+                  <b>Cost:</b> {buildingCost?.costGold}🪙 / {buildingCost?.costGrain}🌾 / {buildingCost?.costStone}🪨
                 </p>
               </div>
               <button

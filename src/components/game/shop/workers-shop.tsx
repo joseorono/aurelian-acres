@@ -1,4 +1,5 @@
 import { useAtom } from 'jotai';
+import toast from 'react-hot-toast';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
 import { canAffordWorker, getWorkerCost } from '~/lib/resources';
@@ -17,6 +18,9 @@ export default function WorkersShop() {
       console.error('trying to buy building with 0 cost. Shouldnt be possible');
       return;
     }
+
+    toast.success(`Bought ${amount} ${workerName}(s)!`);
+
     //adding amount in case we implement buying in increments (ex 10 at a time)
     // increase building by amount
     setworkersCount({ ...workersCount, [workerName]: workerCount + amount });
@@ -43,11 +47,13 @@ export default function WorkersShop() {
                 buildIcon
               </div>
               <div className="flex-column basis-2/4">
-                <h2>{workerData.name}</h2>
-                <h3>{workerData.description}</h3>
-                <p>current amount: {workerCount}</p>
+                <h2 className="store__unitName">{workerData.name}</h2>
+                <h3 className="store__unitDescription">{workerData.description}</h3>
                 <p>
-                  cost: {workerCost?.costGold}🪙 / {workerCost?.costGrain}🌾 / {workerCost?.costStone}🪨
+                  <b>Current amount: </b> {workerCount}
+                </p>
+                <p>
+                  <b>Cost: </b> {workerCost?.costGold}🪙 / {workerCost?.costGrain}🌾 / {workerCost?.costStone}🪨
                 </p>
               </div>
               <button
