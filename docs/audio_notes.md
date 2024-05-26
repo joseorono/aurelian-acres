@@ -2,7 +2,7 @@ Sound Selection Notes:
 
 > This file contains links some royalty-free, Open Source music and Audio Files we could use.
 
-# SONIDOS:
+# Sound Effects:
 
 Whip Crack, para cuando compres a un slave.
 Creative Commons 0, by JayRom01
@@ -41,17 +41,17 @@ Blacksmith Hammer
 CC Attribution 4.0, Kastenfrosch
 https://freesound.org/people/Kastenfrosch/sounds/521972/
 
-marching for legionary and castra
+Marching, for legionary and castra
 Marching 3.wav
 CC Attribution 4.0, WebbFilmsUK
 https://freesound.org/people/WebbFilmsUK/sounds/200322/
 
-amen for priests
+Amen for priests
 amen.wav
 CC Attribution 4.0, ERH
 https://freesound.org/people/ERH/sounds/29933/
 
-crowd for forum
+Crowd for forum
 Crowd.wav
 CC Attribution 4.0, Haykrich
 https://freesound.org/people/Haykrich/sounds/401560/
@@ -60,15 +60,16 @@ https://freesound.org/people/Haykrich/sounds/401560/
 
 # Fanfares (Sound to Play when the PLAY button is clicked, before game starts)
 
-Fanfares we could use, para cuando comience el juego
+Fanfare, for playing when a New Game starts
 https://freesound.org/people/zagi2/sounds/193934/
 
 ---
 
-# MUSICA:
+# MUSIC:
 
-Posible musica de fondo para el juego:
+Background Music:
 "An Arcadian sound, an ancient harpist, a mythological atmosphere."
+Attribution NonCommercial 4.0
 https://freesound.org/people/cormi/sounds/169035/
 
 Medieval March (mp3)
@@ -91,4 +92,3 @@ https://freesound.org/people/TechspiredMinds/sounds/728756/
 
 Licencias:
 https://creativecommons.org/licenses/by/4.0/
-
