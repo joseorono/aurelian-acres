@@ -2,10 +2,9 @@ import { useAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
-import { canAffordWorker, getWorkerInfo, playBuildingSound } from '~/lib/resources';
+import { canAffordWorker, playBuildingSound } from '~/lib/resources';
 import { resourcesAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
-
 export default function WorkersShop() {
   const [workersCount, setworkersCount] = useAtom(workersAtom);
   // this one is for testing, ideally this  atom should be passed through props
@@ -38,14 +37,18 @@ export default function WorkersShop() {
       <div className="building-store-wrapper">
         {Object.entries(WORKERS).map(([workerName, workerData]) => {
           const workerKey = workerName as workerKeys;
-          const workerInfo = getWorkerInfo(workerData.id);
           const workerCount = workersCount[workerKey];
           const canAfford = canAffordWorker(workerData.id, resources);
           const maxCapacity = workerCount >= CONST_MAX_BUILDING_TYPE;
           return (
             <div key={workerData.id} className={`store__entry card  worker-${workerData.name} flex flex-row p-2`}>
               <div className="mr-2 flex h-[100px] basis-1/4 items-center justify-center border-2 border-solid border-white">
-                buildIcon
+                <img
+                  src={`public/assets/town-view-tiles/workers/${workerData.name}.png`}
+                  alt={workerData.name}
+                  style={{ width: '100px', height: '100px' }}
+                  className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
+                />
               </div>
               <div className="flex-column basis-2/4">
                 <h2 className="store__unitName">{workerData.name}</h2>
@@ -54,14 +57,14 @@ export default function WorkersShop() {
                   <b>Current amount: </b> {workerCount}
                 </p>
                 <div className="store__unitCost">
-                  <b>Cost: </b> {workerInfo?.costGold}🪙 / {workerInfo?.costGrain}🌾 / {workerInfo?.costStone}🪨
+                  <b>Cost: </b> {workerData?.costGold}🪙 / {workerData?.costGrain}🌾 / {workerData?.costStone}🪨
                 </div>
               </div>
               <button
                 className="store__buyButton"
                 type="button"
                 disabled={maxCapacity || !canAfford}
-                onClick={() => handleBuy(workerKey, workerCount, 1, workerInfo)}
+                onClick={() => handleBuy(workerKey, workerCount, 1, workerData)}
               >
                 BUY
               </button>
