@@ -29,7 +29,7 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
   const addClasses = visualModifiersToClasses(props.modifiers);
   return (
     <img
-      src="/assets/bigger-coin.png"
+      src="/assets/big-coin.png"
       id="big-clicky-button"
       className={'mx-auto block w-full max-w-[60%] cursor-pointer' + addClasses}
       onMouseDown={() => {

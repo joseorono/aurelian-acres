@@ -32,9 +32,7 @@ export default defineConfig({
     },
     minify: 'terser',
     terserOptions: {
-      compress: {
-        passes: 2,
-      },
+      compress: false,
       mangle: true,
       format: {
         comments: false,
@@ -42,3 +40,4 @@ export default defineConfig({
     },
   },
 });
+
