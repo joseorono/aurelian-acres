@@ -20,7 +20,7 @@ export default function SecondSidePane({ className = '' }) {
     <div className={className}>
       <div className="SectionHeader ">Store</div>
 
-      <div className="store-wrapper">
+      <div className="store-wrapper overflow-auto">
         <div role="tablist" className="tabs tabs-bordered my-2">
           <a
             role="tab"
