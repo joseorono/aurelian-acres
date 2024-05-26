@@ -59,8 +59,19 @@ export default function BuildingsShop() {
                 {/* Cost and Income */}
                 <div className="flex gap-5">
                   <div className="store__unitCost">
-                    <b>Cost:</b> {getFormattedNumber(buildingData?.costGold)}🪙 /{' '}
-                    {getFormattedNumber(buildingData?.costGrain)}🌾 / {getFormattedNumber(buildingData?.costStone)}🪨{' '}
+                    <b className="text-lg">Cost:</b>
+                    <div className="flex justify-between gap-2">
+                      <span className="qty">{getFormattedNumber(buildingData?.costGold)}</span>
+                      <span className="icon">🪙</span>
+                    </div>
+                    <div className="flex justify-between gap-2">
+                      <span className="qty">{getFormattedNumber(buildingData?.costGrain)}</span>
+                      <span className="icon">🌾</span>
+                    </div>
+                    <div className="flex justify-between  gap-2">
+                      <span className="qty">{getFormattedNumber(buildingData?.costStone)}</span>
+                      <span className="icon">🪨</span>
+                    </div>
                     <br></br>
                   </div>
                   <div className="store__unitCost mt-1">
