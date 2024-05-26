@@ -5,18 +5,29 @@ import GameScreen from './game-screen';
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
 import { SoundNames, soundService } from '~/services/sound-service';
 import { auxSleepFor } from '~/lib/utils';
+import { useAtom, useSetAtom } from 'jotai';
+import { firstTimeAtom, setContentAtom } from '~/store/atoms';
+import TutorialDialog from '../modals/tutorial-dialog';
 
 export default function GameLoader() {
-  // TODO: Implement a loading screen that when done, displays a big PLAY button
-  // Clicking the game button will start the game, displaying the GameScreen component
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   // stupid name but should be true when everything is loading and user clicks Play
   const [ready, setReady] = useState(false);
+  const setIsModalOpen = useSetAtom(setContentAtom);
+  const [isFirstTime, setIsFirstTime] = useAtom(firstTimeAtom);
 
   const onSetReady = () => {
     setReady(true);
     soundService.asyncPlaySouund(SoundNames.fanfare).then(async () => {
+      if (isFirstTime === true) {
+        setIsFirstTime(false);
+        setIsModalOpen({
+          title: 'Tutorial',
+          content: <TutorialDialog />,
+          onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
+        });
+      }
       await auxSleepFor(4000);
       soundService.startMusic(SoundNames.backgroundMusic2);
     });

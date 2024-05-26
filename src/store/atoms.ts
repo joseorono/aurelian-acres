@@ -22,6 +22,7 @@ export const playerNameAtom = atomWithStorage<string>('playerName', getRandomRom
 export const townNameAtom = atomWithStorage<string>('townName', getRandomRomanTownName());
 export const playerLevelAtom = atomWithStorage<number>('playerLevel', 0);
 export const playerUpgradeAtom = atomWithStorage<UpgradeKeys>('playerUpgrade', 'default');
+export const firstTimeAtom = atomWithStorage<boolean>('firstTime', true);
 // atoms for the modal
 export const isModalOpenAtom = atom<boolean>(false);
 export const modalContentAtom = atom<IModal>({ title: '', subtitle: '', content: null, onClose: () => {} });
@@ -105,7 +106,7 @@ export const eraserAtom = atom(null, (_, set, __) => {
     isFlood: false,
     bountifulHarvest: false,
   });
+  set(firstTimeAtom, true);
 });
 
 export const eventsAtom = withImmer(atomWithStorage<eventData>('event', NOTHING_EVENT));
-
