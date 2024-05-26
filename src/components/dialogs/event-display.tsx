@@ -6,6 +6,7 @@ import { buildingCount, workerCount } from '~/types/game-data-types';
 import NewspaperHeadline from '../game/misc/newspaper-headline';
 import { eventsAtom, buildingsAtom, resourcesAtom, workersAtom } from '~/store/atoms';
 import { useSetAtom, useAtom } from 'jotai';
+import toast from 'react-hot-toast';
 
 interface IPropsEventDisplay {
   className?: string;
@@ -56,6 +57,8 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
             }
           });
         }
+
+        toast.custom(newEvent.name);
         setEvent(newEvent);
       }
     }, GAME_TICK_MS);
@@ -77,7 +80,7 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
               {/*
                     <h1 className="mb-4 text-lg text-red-700">Resources Multiplier:</h1>
                     */}
-              <div className="bg-brown-800 pixel-rounded flex justify-around p-1 py-2 text-lg text-white">
+              <div className="pixel-rounded flex justify-around bg-brown-800 p-1 py-2 text-lg text-white">
                 <div>x{event.resourceMultiplier.gold} 🪙</div>
                 <div>x{event.resourceMultiplier.grain} 🌾</div>
                 <div>x{event.resourceMultiplier.stone} 🪨</div>
