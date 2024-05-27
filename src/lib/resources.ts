@@ -90,7 +90,7 @@ export function getBestAffordableBuilding(res: playerResources, buildings: build
   for (let i = BUILDINGS_COUNT - 1; i >= 0; i--) {
     if (
       canAffordBuilding(BUILDINGS_ARRAY[i].id, res) &&
-      buildings[BUILDINGS_ARRAY[i].name as keyof buildingCount] < CONST_MAX_BUILDING_TYPE
+      buildings[BUILDINGS_ARRAY[i].name.toLowerCase() as keyof buildingCount] < CONST_MAX_BUILDING_TYPE
     ) {
       return BUILDINGS_ARRAY[i];
     }
