@@ -25,7 +25,7 @@ export default function SecondSidePane({ className = '' }) {
       <div className="SectionHeader ">Store</div>
 
       <div className="store-wrapper overflow-auto">
-        <div role="tablist" className="tabs tabs-bordered my-2">
+        <div role="tablist" className="tabs tabs-bordered sticky top-0 z-50 mb-2 bg-[#3e4f59] pt-2">
           <a
             role="tab"
             onMouseDown={() => handleTabChange('workers')}
@@ -41,7 +41,7 @@ export default function SecondSidePane({ className = '' }) {
             Buildings
           </a>
         </div>
-        <div className={isWorkersTab ? '!hidden' : ''}>
+        <div className={`${isWorkersTab ? '!hidden' : ''}`}>
           <BuildingsShop />
         </div>
         <div className={isWorkersTab ? '' : '!hidden'}>

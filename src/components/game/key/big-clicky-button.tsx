@@ -6,7 +6,6 @@ import { calculateActiveIncome } from '~/lib/resources';
 import { SoundNames, soundService } from '~/services/sound-service';
 import { workersAtom, playerUpgradeAtom, playerLevelAtom, resourcesAtom } from '~/store/atoms';
 import { clickerVisualModifiers } from '~/types/game-data-types';
-
 function visualModifiersToClasses(modifiers: clickerVisualModifiers): string {
   return `
     big-clicky-button 
@@ -32,6 +31,8 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
       src="/assets/biggest-coin.png"
       id="big-clicky-button"
       className={'mx-auto block w-full max-w-[60%] cursor-pointer' + addClasses}
+      onDrag={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
       onMouseDown={() => {
         soundService.playSound(SoundNames.coinClick, 0.6, 0.7);
         setResource((resourcesDraft) => {
@@ -46,4 +47,3 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     />
   );
 }
-
