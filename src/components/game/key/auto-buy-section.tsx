@@ -12,7 +12,7 @@ export default function AutoBuySection() {
   const bestAffordableBuilding = getBestAffordableBuilding(resources, buildings);
   const bestAffordableWorker = getBestAffordableWorker(resources, workers);
   return (
-    <div className="flex  flex-row  bg-slate-800">
+    <div className="flex  select-none  flex-row bg-slate-800">
       <div id="availableWorker" className="flex flex-auto basis-1/2 flex-col bg-red-800">
         {bestAffordableWorker ? (
           <div
