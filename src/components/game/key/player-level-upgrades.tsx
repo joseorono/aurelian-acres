@@ -18,9 +18,9 @@ export default function PlayerLevelUpgrades() {
       return;
     }
 
+    soundService.playSound(SoundNames.upgrade, soundService.globalVolume * 0.7);
     setPlayerLevel(playerLevel + 1);
     setResources({ ...resources, gold: resources.gold - 100 });
-    soundService.playSound(SoundNames.upgrade, soundService.globalVolume * 0.7);
   };
 
   return (
