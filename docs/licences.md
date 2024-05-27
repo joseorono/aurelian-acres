@@ -1,10 +1,36 @@
-Sound Selection Notes:
+# Licences and Credits
 
-> This file contains links some royalty-free, Open Source music and Audio Files we could use.
+## Visual Assets - Licences and Credits
 
-# Sound Effects:
+- Navbar background (navbarbg.png) and dirt_tile.png edited from 16\*16 Block Textures by ARoachIFoundOnMyPillow. Creative Commons 0. [Source](https://opengameart.org/content/1616-block-textures).
 
-Whip Crack, para cuando compres a un slave.
+### Buildings and town display background:
+
+- [Cartography Pack by KenneyNL](https://kenney.nl/assets/cartography-pack) CC0
+
+### Workers:
+
+- [Legionary by Lorc](https://game-icons.net/1x1/lorc/crested-helmet.html) CC BY 3.0
+- [Slave by Lorc](https://game-icons.net/1x1/lorc/slavery-whip.html) CC BY 3.0
+- [Merchant by Lorc](https://game-icons.net/1x1/lorc/cash.html) CC BY 3.0 -[Blacksmith by Delapouite](https://game-icons.net/1x1/delapouite/blacksmith.html) CC BY 3.0
+- [Priest by Delapouite](https://game-icons.net/1x1/delapouite/sun-priest.html) CC BY 3.0
+- (Citizen by Delapouite)[https://game-icons.net/1x1/delapouite/person.html] CC BY 3.0
+- [Baker](https://game-icons.net/1x1/delapouite/miner.html) CC BY 3.0, Delapouite
+
+### Misc
+
+- [materials by BizmasterStudios](https://opengameart.org/content/rpg-crafting-material-icons) CC BY 4.0
+- [coin, BizmasterStudios](https://opengameart.org/content/gold-cointoken) CC BY 4.0
+- [Crops by Scaydi](https://opengameart.org/content/imaginary-crops): CC BY 4.0
+- Abstract background with a vintage paper design [Image by kjpargeter](https://www.freepik.com/free-vector/abstract-background-with-vintage-paper-design_18073291.htm)
+
+---
+
+## Audio Assets - Licences and Credits:
+
+### Sound Effects:
+
+Whip Crack, used when buy a slave.
 Creative Commons 0, by JayRom01
 https://freesound.org/people/JayRom01/sounds/615761/
 
@@ -71,39 +97,23 @@ game over sound
 CC Attribution 4.0, Robinhood76
 https://freesound.org/people/Robinhood76/sounds/123435/
 
----
-
-# Fanfares (Sound to Play when the PLAY button is clicked, before game starts)
+### Fanfares (Sound to Play when the PLAY button is clicked, before game starts)
 
 Fanfare, for playing when a New Game starts
 https://freesound.org/people/zagi2/sounds/193934/
 
----
-
-# MUSIC:
+### MUSIC:
 
 Background Music:
 "An Arcadian sound, an ancient harpist, a mythological atmosphere."
 Attribution NonCommercial 4.0
 https://freesound.org/people/cormi/sounds/169035/
 
-Medieval March (mp3)
-Creative Commons 0, by G-14
-https://freesound.org/people/G-14/sounds/646460/
+### LINKS TO LICENCES:
 
-## DE ESTA PAGINA ME GUSTAN VARIAS:
-
-Southern Gothic
-"Southern Gothic" Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
-
----
-
-# LINKS TO LICENCES:
-
-Attribution 4.0
-https://freesound.org/people/TechspiredMinds/sounds/728756/
-
-Licencias:
+CC BY 4.0 Deed
+https://creativecommons.org/licenses/by/4.0/deed.en
 https://creativecommons.org/licenses/by/4.0/
+
+CC0 1.0 Deed
+https://creativecommons.org/publicdomain/zero/1.0/
