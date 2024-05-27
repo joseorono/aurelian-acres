@@ -4,8 +4,6 @@ import { useAtom } from 'jotai';
 import { getBestAffordableBuilding, getBestAffordableWorker, handleBuy } from '~/lib/resources';
 import { resourcesAtom, workersAtom, buildingsAtom } from '~/store/atoms';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
-import { buildingCount, workerCount } from '~/types/game-data-types';
-import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 
 export default function AutoBuySection() {
   const [resources, setResources] = useAtom(resourcesAtom);
@@ -14,9 +12,9 @@ export default function AutoBuySection() {
   const bestAffordableBuilding = getBestAffordableBuilding(resources, buildings);
   const bestAffordableWorker = getBestAffordableWorker(resources, workers);
   return (
-    <div className="flex bg-slate-800">
-      <div id="availableWorker" className="flex flex-auto flex-col bg-red-800">
-        {bestAffordableWorker && workers[bestAffordableWorker.name as keyof workerCount] < CONST_MAX_BUILDING_TYPE ? (
+    <div className="flex  flex-row  bg-slate-800">
+      <div id="availableWorker" className="flex flex-auto basis-1/2 flex-col bg-red-800">
+        {bestAffordableWorker ? (
           <div
             className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4"
             onClick={() =>
@@ -43,13 +41,12 @@ export default function AutoBuySection() {
             className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4 text-lg"
             onClick={() => {}}
           >
-            <div>Can't Afford any Workers yet</div>
+            <div>Can't afford any workers</div>
           </div>
         )}
       </div>
-      <div id="availableBuilding" className="flex flex-auto flex-col bg-blue-800">
-        {bestAffordableBuilding &&
-        buildings[bestAffordableBuilding.name as keyof buildingCount] < CONST_MAX_BUILDING_TYPE ? (
+      <div id="availableBuilding" className="flex flex-auto basis-1/2 flex-col bg-blue-800">
+        {bestAffordableBuilding ? (
           <div
             className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-primary-foreground"
             onClick={() =>
@@ -76,7 +73,7 @@ export default function AutoBuySection() {
             className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-lg text-primary-foreground"
             onClick={() => {}}
           >
-            <div>Can't Afford any Buildings yet</div>
+            <div>Can't afford any buildings</div>
             {/* <div>Building Cost: {bestAffordableBuilding.}</div> */}
           </div>
         )}
