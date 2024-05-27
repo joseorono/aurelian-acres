@@ -49,7 +49,7 @@ function App() {
     */}
       <GameLoader />
 
-      <DebugArea />
+      {/* <DebugArea /> */}
       <Toaster
         gutter={12}
         toastOptions={{
