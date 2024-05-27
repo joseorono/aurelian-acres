@@ -13,14 +13,12 @@ export default function GameNavbar() {
     setIsModalOpen({
       title: 'Credits',
       content: <CreditsDialog />,
-      onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
     });
   };
   function handleShowTutorial(): void {
     setIsModalOpen({
       title: 'Tutorial',
       content: <TutorialDialog />,
-      onClose: (val) => console.log(`modal closed. Here's the value we cooked up => ${val}`),
     });
   }
 
@@ -86,6 +84,9 @@ export default function GameNavbar() {
           </li>
           <li>
             <a onClick={() => handleShowCredits()}>Credits</a>
+          </li>
+          <li>
+            <a onClick={() => handleShowTutorial()}>Tutorial</a>
           </li>
           <li>
             <details>
