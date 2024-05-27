@@ -18,6 +18,7 @@ import {
   tilesKey,
 } from '~/types/game-data-types';
 import { SoundNames, soundService } from '~/services/sound-service';
+import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 
 export function getBuildingById(id: number): buildingData | null {
   // Handle the case where the building is not found
@@ -67,7 +68,7 @@ export function canAffordWorker(id: number, res: playerResources): boolean {
   return res.gold >= cost.costGold && res.grain >= cost.costGrain && res.stone >= cost.costStone;
 }
 
-export function getBestAffordableBuilding(res: playerResources): buildingData | null {
+export function getBestAffordableBuilding(res: playerResources, buildings: buildingCount): buildingData | null {
   // This function assumes that the BUILDINGS array is sorted by profitability in ascending order
 
   // Is the player broke???
@@ -87,7 +88,10 @@ export function getBestAffordableBuilding(res: playerResources): buildingData | 
   // Use for loop to go through the buildings array backwards and check if the player can afford the building
   // Return the first building that the player can afford
   for (let i = BUILDINGS_COUNT - 1; i >= 0; i--) {
-    if (canAffordBuilding(BUILDINGS_ARRAY[i].id, res)) {
+    if (
+      canAffordBuilding(BUILDINGS_ARRAY[i].id, res) &&
+      buildings[BUILDINGS_ARRAY[i].name as keyof buildingCount] < CONST_MAX_BUILDING_TYPE
+    ) {
       return BUILDINGS_ARRAY[i];
     }
   }
@@ -96,7 +100,7 @@ export function getBestAffordableBuilding(res: playerResources): buildingData | 
   return null;
 }
 
-export function getBestAffordableWorker(res: playerResources): workerData | null {
+export function getBestAffordableWorker(res: playerResources, workers: workerCount): workerData | null {
   // This function assumes that the BUILDINGS array is sorted by profitability in ascending order
 
   // Is the player broke???
@@ -116,7 +120,10 @@ export function getBestAffordableWorker(res: playerResources): workerData | null
   // Use for loop to go through the buildings array backwards and check if the player can afford the building
   // Return the first building that the player can afford
   for (let i = WORKERS_COUNT - 1; i >= 0; i--) {
-    if (canAffordWorker(WORKERS_ARRAY[i].id, res)) {
+    if (
+      canAffordWorker(WORKERS_ARRAY[i].id, res) &&
+      workers[WORKERS_ARRAY[i].name as keyof workerCount] < CONST_MAX_BUILDING_TYPE
+    ) {
       return WORKERS_ARRAY[i];
     }
   }

@@ -11,8 +11,8 @@ export default function AutoBuySection() {
   const [resources, setResources] = useAtom(resourcesAtom);
   const [workers, setWorkers] = useAtom(workersAtom);
   const [buildings, setBuildings] = useAtom(buildingsAtom);
-  const bestAffordableBuilding = getBestAffordableBuilding(resources);
-  const bestAffordableWorker = getBestAffordableWorker(resources);
+  const bestAffordableBuilding = getBestAffordableBuilding(resources, buildings);
+  const bestAffordableWorker = getBestAffordableWorker(resources, workers);
   return (
     <div className="flex bg-slate-800">
       <div id="availableWorker" className="flex flex-auto flex-col bg-red-800">
