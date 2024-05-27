@@ -17,7 +17,7 @@ export default function GameNavbar() {
   };
   function handleShowTutorial(): void {
     setIsModalOpen({
-      title: 'Tutorial',
+      title: 'Welcome to Aurelian Acres!',
       content: <TutorialDialog />,
     });
   }
