@@ -10,22 +10,19 @@ export default function ResourceIndicator() {
           <div className="pixel-rounded resource-display flex  min-w-[130px] max-w-full flex-auto items-center p-2">
             <span className="labelForGold mr-2 flex-auto self-end text-right">0</span>
             <span>
-              {/* <img src={coin} alt="coin" width={32} height={32} /> */}
               <Coin size={32} />
             </span>
           </div>
           <div className="pixel-rounded resource-display flex  min-w-[130px] max-w-full flex-auto items-center p-2">
             <span className="labelForGrain mr-2 flex-auto self-end text-right">0</span>
             <span>
-              {/* <img src={stone} alt="stone" width={32} height={32} /> */}
-              <Stone size={32} />
+              <Wheat size={32} />
             </span>
           </div>
           <div className="pixel-rounded resource-display flex  max-w-full flex-auto items-center p-2">
             <span className="labelForStone mr-2 flex-auto self-end text-right">0</span>
             <span>
-              {/* <img src={wheat} alt="wheat" width={32} height={32} /> */}
-              <Wheat size={32} />
+              <Stone size={32} />
             </span>
           </div>
         </div>
