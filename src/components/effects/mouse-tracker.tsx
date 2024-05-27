@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export default function MouseTracker() {
   useEffect(() => {
-    console.log('MouseTracker mounted');
+    // console.log('MouseTracker mounted');
 
     const mouseTracker = document.querySelector('.mouseTracker');
 
@@ -12,13 +12,13 @@ export default function MouseTracker() {
     }
 
     const handleTrackMouse = (e: MouseEvent) => {
-      console.log('Mouse Moved');
+      // console.log('Mouse Moved');
 
       mouseTracker?.setAttribute('style', 'top: ' + (e.pageY - 40) + 'px; left:' + (e.pageX - 40) + 'px;');
     };
 
     const playAnimOnClick = () => {
-      console.log('Playing Click animation');
+      // console.log('Playing Click animation');
       if (mouseTracker == null) {
         console.warn('MouseTracker not found!');
       }
