@@ -5,7 +5,7 @@ export const assetList: string[] = [
   '/assets/bg/bgnoise-10-60-scroll.png',
   '/assets/bg/bgnoise-bg-10-40-gray.webp',
   '/assets/bg/dirt_tile.png',
-  '/assets/bg/modal_bg.jpg',
+  '/assets/bg/modal_bg_pixel.webp',
   '/assets/bg/navbarbg.png',
   '/assets/resources/coin.png',
   '/assets/resources/stone.png',
