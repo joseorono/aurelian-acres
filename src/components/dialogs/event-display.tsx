@@ -7,6 +7,7 @@ import NewspaperHeadline from '~/components/game/misc/newspaper-headline';
 import { eventsAtom, buildingsAtom, resourcesAtom, workersAtom } from '~/store/atoms';
 import { useSetAtom, useAtom } from 'jotai';
 import toast from 'react-hot-toast';
+import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
 interface IPropsEventDisplay {
   className?: string;
@@ -81,9 +82,17 @@ const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
                     <h1 className="mb-4 text-lg text-red-700">Resources Multiplier:</h1>
                     */}
               <div className="pixel-rounded flex justify-around bg-brown-800 p-1 py-2 text-lg text-white">
-                <div>x{event.resourceMultiplier.gold} 🪙</div>
-                <div>x{event.resourceMultiplier.grain} 🌾</div>
-                <div>x{event.resourceMultiplier.stone} 🪨</div>
+                <div className="flex flex-row items-center justify-center gap-1">
+                  <span className="self-end">x{event.resourceMultiplier.gold}</span> <Coin />
+                </div>
+                <div className="flex flex-row items-center justify-center gap-1">
+                  <span className="self-end"> x{event.resourceMultiplier.grain}</span>
+                  <Wheat />
+                </div>
+                <div className="flex flex-row items-center justify-center gap-1">
+                  <span className="self-end">x{event.resourceMultiplier.stone}</span>
+                  <Stone />
+                </div>
               </div>
             </div>
           </>
