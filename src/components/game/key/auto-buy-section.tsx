@@ -3,6 +3,9 @@ import { useAtom } from 'jotai';
 
 import { getBestAffordableBuilding, getBestAffordableWorker, handleBuy } from '~/lib/resources';
 import { resourcesAtom, workersAtom, buildingsAtom } from '~/store/atoms';
+import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
+import { buildingCount, workerCount } from '~/types/game-data-types';
+import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 
 export default function AutoBuySection() {
   const [resources, setResources] = useAtom(resourcesAtom);
@@ -13,7 +16,7 @@ export default function AutoBuySection() {
   return (
     <div className="flex bg-slate-800">
       <div id="availableWorker" className="flex flex-auto flex-col bg-red-800">
-        {bestAffordableWorker ? (
+        {bestAffordableWorker && workers[bestAffordableWorker.name as keyof workerCount] < CONST_MAX_BUILDING_TYPE ? (
           <div
             className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4"
             onClick={() =>
@@ -30,8 +33,9 @@ export default function AutoBuySection() {
           >
             <div>Best Worker: {bestAffordableWorker?.name}</div>
             <div>
-              Cost: {bestAffordableWorker.costGold} 🪙 {bestAffordableWorker.costGrain} 🌾
-              {bestAffordableWorker.costStone} 🪨
+              Cost: {bestAffordableWorker.costGold} <Coin className="inline" />
+              {bestAffordableWorker.costGrain} <Wheat className="inline" />
+              {bestAffordableWorker.costStone} <Stone className="inline" />
             </div>
           </div>
         ) : (
@@ -44,7 +48,8 @@ export default function AutoBuySection() {
         )}
       </div>
       <div id="availableBuilding" className="flex flex-auto flex-col bg-blue-800">
-        {bestAffordableBuilding ? (
+        {bestAffordableBuilding &&
+        buildings[bestAffordableBuilding.name as keyof buildingCount] < CONST_MAX_BUILDING_TYPE ? (
           <div
             className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-primary-foreground"
             onClick={() =>
@@ -61,8 +66,9 @@ export default function AutoBuySection() {
           >
             <div>Best Building: {bestAffordableBuilding?.name}</div>
             <div>
-              Cost: {bestAffordableBuilding.costGold} 🪙 {bestAffordableBuilding.costGrain} 🌾
-              {bestAffordableBuilding.costStone} 🪨
+              Cost: {bestAffordableBuilding.costGold} <Coin className="inline" /> {bestAffordableBuilding.costGrain}{' '}
+              <Wheat className="inline" />
+              {bestAffordableBuilding.costStone} <Stone className="inline" />
             </div>
           </div>
         ) : (
