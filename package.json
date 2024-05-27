@@ -35,7 +35,9 @@
     "prepare": "husky install",
     "visualize-bundle": "vite-bundle-visualizer & vite-bundle-visualizer -t sunburst & vite-bundle-visualizer -t network",
     "check-updates": "ncu",
-    "update-deps": "ncu -u && npm install"
+    "update-deps": "ncu -u && npm install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@pixi/react": "^7.1.2",
@@ -82,6 +84,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "gh-pages": "^6.1.1",
     "npm-check-updates": "^16.14.20",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
@@ -97,3 +100,4 @@
     "vitest": "^1.6.0"
   }
 }
+
