@@ -66,7 +66,7 @@ export const LEVELS: Array<playerLevelData> = [
     costStone: 750,
   },
   {
-    baseMultiplier: 1.9,
+    baseMultiplier: 2,
     costGold: 1000,
     costGrain: 700,
     costStone: 850,
