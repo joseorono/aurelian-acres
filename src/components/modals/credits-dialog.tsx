@@ -1,14 +1,10 @@
-import { useSetAtom } from 'jotai';
-import { SoundNames, soundService } from '~/services/sound-service';
-import { isModalOpenAtom } from '~/store/atoms';
-
 export default function CreditsDialog() {
-  const setIsModalOpen = useSetAtom(isModalOpenAtom);
+  // const setIsModalOpen = useSetAtom(isModalOpenAtom);
 
-  const handleClose = () => {
-    soundService.playSound(SoundNames.closeModal);
-    setIsModalOpen(false);
-  };
+  // const handleClose = () => {
+  //   soundService.playSound(SoundNames.closeModal);
+  //   setIsModalOpen(false);
+  // };
 
   return (
     <>

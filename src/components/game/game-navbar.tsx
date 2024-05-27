@@ -13,7 +13,7 @@ export default function GameNavbar() {
     setIsModalOpen({
       title: 'Credits',
       content: <CreditsDialog />,
-      containerClasses: 'h-[50svh] w-[30svw]',
+      containerClasses: 'h-[50svh] max-w-[30svw]',
     });
   };
   function handleShowTutorial(): void {
