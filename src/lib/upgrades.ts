@@ -3,7 +3,7 @@ import { playerResources } from '~/types/game-data-types';
 
 export function canAffordNextLevel(currentLevel: number, res: playerResources): boolean {
   // Exit early
-  if (currentLevel + 1 > LEVELS_COUNT) {
+  if (currentLevel + 1 >= LEVELS_COUNT) {
     return false;
   }
 
