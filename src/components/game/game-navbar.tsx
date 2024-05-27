@@ -80,7 +80,7 @@ export default function GameNavbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a href="https://github.com/joseorono/idle-roman-game/">
+            <a href="https://github.com/joseorono/idle-roman-game/" target="_blank">
               <GithubPixelIcon />
             </a>
           </li>
@@ -92,13 +92,19 @@ export default function GameNavbar() {
               <summary>Creators</summary>
               <ul className="p-2">
                 <li>
-                  <a href="https://github.com/joseorono">JanJozefo</a>
+                  <a href="https://github.com/joseorono" target="_blank">
+                    JanJozefo
+                  </a>
                 </li>
                 <li>
-                  <a href="https://github.com/Charlemagnes">Charlemagnes</a>
+                  <a href="https://github.com/Charlemagnes" target="_blank">
+                    Charlemagnes
+                  </a>
                 </li>
                 <li>
-                  <a href="https://github.com/eangulom">Edd</a>
+                  <a href="https://github.com/eangulom" target="_blank">
+                    Edd
+                  </a>
                 </li>
               </ul>
             </details>
