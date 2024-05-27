@@ -50,7 +50,7 @@ export default function BuildingsShop() {
                 <h3 className="store__unitDescription">{buildingData.description}</h3>
                 <p className="store__currentCount">Current amount: {buildingCount}</p>
                 {/* Cost and Income */}
-                <div className="flex gap-5">
+                <div className="flex gap-2">
                   <div className="store__unitCost">
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">

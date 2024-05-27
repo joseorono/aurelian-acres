@@ -40,10 +40,10 @@ export default function AutoBuySection() {
           </div>
         ) : (
           <div
-            className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4"
+            className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4 text-lg"
             onClick={() => {}}
           >
-            <div>Best Worker: none</div>
+            <div>Can't Afford any Workers yet</div>
           </div>
         )}
       </div>
@@ -73,10 +73,10 @@ export default function AutoBuySection() {
           </div>
         ) : (
           <div
-            className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-primary-foreground"
+            className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-lg text-primary-foreground"
             onClick={() => {}}
           >
-            <div>Best Building: none</div>
+            <div>Can't Afford any Buildings yet</div>
             {/* <div>Building Cost: {bestAffordableBuilding.}</div> */}
           </div>
         )}

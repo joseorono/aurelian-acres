@@ -55,7 +55,7 @@ export default function WorkersShop() {
                   <b>Current amount: </b> {workerCount}
                 </p>
                 {/* Cost and Income */}
-                <div className="flex gap-5">
+                <div className="flex gap-2">
                   <div className="store__unitCost">
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">
