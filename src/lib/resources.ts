@@ -195,11 +195,11 @@ export function playBuildingSound(buildingName: string) {
       soundService.playSound(SoundNames.buyMiner, minVolume);
       break;
     case 'agricola':
-      soundService.playSound(SoundNames.buyFarmer, minVolume);
+      soundService.playSound(SoundNames.buyFarmer, minVolume + 0.1);
       break;
     case 'bakery':
     case 'baker':
-      soundService.playSound(SoundNames.buyBaker, minVolume);
+      soundService.playSound(SoundNames.buyBaker, minVolume + 0.1);
       break;
     case 'mercator':
       soundService.playSound(SoundNames.buyMercator, minVolume);
@@ -214,7 +214,7 @@ export function playBuildingSound(buildingName: string) {
       break;
     case 'priest':
     case 'temple':
-      soundService.playSound(SoundNames.buyPriest, minVolume);
+      soundService.playSound(SoundNames.buyPriest, minVolume + 0.2);
       break;
     case 'forum':
       soundService.playSound(SoundNames.buyForum, minVolume);
