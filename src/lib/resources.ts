@@ -122,7 +122,7 @@ export function getBestAffordableWorker(res: playerResources, workers: workerCou
   for (let i = WORKERS_COUNT - 1; i >= 0; i--) {
     if (
       canAffordWorker(WORKERS_ARRAY[i].id, res) &&
-      workers[WORKERS_ARRAY[i].name as keyof workerCount] < CONST_MAX_BUILDING_TYPE
+      workers[WORKERS_ARRAY[i].name.toLowerCase() as keyof workerCount] < CONST_MAX_BUILDING_TYPE
     ) {
       return WORKERS_ARRAY[i];
     }
