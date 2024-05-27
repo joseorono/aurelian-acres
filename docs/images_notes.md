@@ -1,15 +1,17 @@
 Sound Selection Notes:
 
-> This file contains links some royalty-free, Open Source music and Audio Files we could use.
+# Licences and Credits
 
-# Buildings and town display background:
+- Navbar background (navbarbg.png) and dirt_tile.png edited from 16\*16 Block Textures by ARoachIFoundOnMyPillow. Creative Commons 0. [Source](https://opengameart.org/content/1616-block-textures).
+
+## Buildings and town display background:
 
 Cartography Pack
 
 CC0, by KenneyNL
 https://kenney.nl/assets/cartography-pack
 
-# Workers:
+## Workers:
 
 Legionary
 CC BY 3.0, by Lorc
@@ -54,3 +56,7 @@ https://opengameart.org/content/gold-cointoken
 crops
 CC BY 4.0, SCaydi
 https://opengameart.org/content/imaginary-crops
+
+# Special Thanks
+
+Huge thanks to our friend Aquiles for testing the game and giving us many pointers to improve it.
