@@ -110,20 +110,14 @@ function TownDisplay() {
   useGesture(
     {
       onDrag: ({ event, offset: [x, y] }) => {
-        console.log('dragging');
-        // event.preventDefault();
-
-        console.log('Drag: ', x, y);
         wrapperRef.current?.scroll(x, y);
       },
       onWheel: ({ event, direction: [x, y] }) => {
-        console.log('Wheel: ', x, y);
         currentZoom = calcZoom(y);
         // @ts-ignore
         document.querySelector('.townDisplay').style.transform = 'scale(' + currentZoom + ')';
       },
       onPinch: ({ event, offset: [d] }) => {
-        console.log('Pinch: ', d);
         currentZoom = Math.min(Math.max(0.5, d), 2);
         // @ts-ignore
         document.querySelector('.townDisplay').style.transform = 'scale(' + currentZoom + ')';
@@ -132,17 +126,21 @@ function TownDisplay() {
     {
       target: containerRef,
       drag: {
-        bounds: {
-          // Offset wont ever go past these values
-          // scrollWidth/Height should be the max possible scroll
-          // in an overflowed element
-          left: 0,
-          top: 0,
-          right: containerRef.current?.scrollWidth,
-          bottom: containerRef.current?.scrollHeight,
-        },
+        // this shit doesnt work at all im so sad
+        // bounds: {
+        //   // Offset wont ever go past these values
+        //   // scrollWidth/Height should be the max possible scroll
+        //   // in an overflowed element
+        //   left: 0,
+        //   top: 0,
+        //   right: wrapperRef.current?.scrollWidth,
+        //   bottom: wrapperRef.current?.scrollHeight,
+        // },
       },
-      pinch: { eventOptions: { passive: true }, scaleBounds: { min: 0.5, max: 2 } },
+      wheel: {
+        eventOptions: { passive: false },
+      },
+      pinch: { eventOptions: { passive: false }, scaleBounds: { min: 0.5, max: 2 } },
     },
   );
 
@@ -150,10 +148,9 @@ function TownDisplay() {
     <>
       <div
         ref={wrapperRef}
-        style={containerStyles}
         className="townDisplay__wrapper relative h-[50svh] max-h-[480px] min-h-[200px] w-full overflow-auto bg-cover"
       >
-        <div className="townDisplay w-full overflow-visible" ref={containerRef}>
+        <div className="townDisplay w-full overflow-visible" ref={containerRef} style={containerStyles}>
           {
             // Render the matrix
             matrix.map((row, rowIndex) => (
