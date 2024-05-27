@@ -92,7 +92,7 @@ export default function WorkersShop() {
               <div className="flex flex-col gap-2">
                 <div className="flex h-[100px] items-center justify-center border-2 border-solid border-white">
                   <img
-                    src={`public/assets/town-view-tiles/workers/${workerData.name}.png`}
+                    src={`/assets/town-view-tiles/workers/${workerData.name}.png`}
                     alt={workerData.name}
                     style={{ width: '100px', height: '100px' }}
                     className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}

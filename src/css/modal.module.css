@@ -1,5 +1,5 @@
 .modalContent {
-  background-image: url('../public/assets/bg/modal_bg.jpg');
+  background-image: url('/assets/bg/modal_bg.jpg');
   background-repeat: repeat;
   background-position: left;
   background-size: cover;

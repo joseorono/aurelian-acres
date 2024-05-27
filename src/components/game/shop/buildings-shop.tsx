@@ -88,7 +88,7 @@ export default function BuildingsShop() {
               <div className="flex flex-col gap-2">
                 <div className="flex h-[100px] items-center justify-center border-2 border-solid border-white">
                   <img
-                    src={`public/assets/town-view-tiles/buildings/${buildingData.name}.png`}
+                    src={`/assets/town-view-tiles/buildings/${buildingData.name}.png`}
                     alt={buildingData.name}
                     style={{ width: '100px', height: '100px' }}
                     className={'mx-auto my-auto max-h-[60%] max-w-[60%]'}
