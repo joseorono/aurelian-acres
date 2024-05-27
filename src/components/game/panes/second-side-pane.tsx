@@ -2,6 +2,7 @@ import { useState } from 'react';
 import BuildingsShop from '../shop/buildings-shop';
 import WorkersShop from '../shop/workers-shop';
 import { SoundNames, soundService } from '~/services/sound-service';
+import PlayerLevelUpgrades from '../key/player-level-upgrades';
 
 const VALID_SHOP_TABS = ['workers', 'buildings'] as const;
 type ShopTab = (typeof VALID_SHOP_TABS)[number];
@@ -18,6 +19,9 @@ export default function SecondSidePane({ className = '' }) {
 
   return (
     <div className={className}>
+      <div className="SectionHeader ">Upgrades</div>
+      <PlayerLevelUpgrades />
+
       <div className="SectionHeader ">Store</div>
 
       <div className="store-wrapper overflow-auto">
@@ -47,4 +51,3 @@ export default function SecondSidePane({ className = '' }) {
     </div>
   );
 }
-

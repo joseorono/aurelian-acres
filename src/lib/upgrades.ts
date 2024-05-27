@@ -1,7 +1,7 @@
 import { LEVELS, LEVELS_COUNT } from '~/constants/upgrades';
 import { playerResources } from '~/types/game-data-types';
 
-function canAffordNextLevel(currentLevel: number, res: playerResources): boolean {
+export function canAffordNextLevel(currentLevel: number, res: playerResources): boolean {
   // Exit early
   if (currentLevel + 1 > LEVELS_COUNT) {
     return false;
