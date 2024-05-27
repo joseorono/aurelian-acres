@@ -36,7 +36,6 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
       onMouseDown={() => {
         soundService.playSound(SoundNames.coinClick, 0.6, 0.7);
         setResource((resourcesDraft) => {
-          console.log(resourcesDraft.gold);
           Object.assign(resourcesDraft, {
             gold: resourcesDraft.gold + activeIncome.goldPerClick,
             grain: resourcesDraft.grain + activeIncome.grainPerClick,
