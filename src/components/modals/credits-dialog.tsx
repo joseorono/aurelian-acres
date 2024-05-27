@@ -12,7 +12,7 @@ export default function CreditsDialog() {
 
   return (
     <>
-      <div className="text-large justify-center">
+      <div className="text-large flex h-[50svh] flex-col justify-center gap-2 overflow-y-auto">
         <h1 className="text-3xl">CREDITS</h1>
 
         <>
