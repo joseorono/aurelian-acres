@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import { BUILDINGS, BUILDINGS_ARRAY, BUILDINGS_COUNT } from '~/constants/buildings';
 import { WORKERS, WORKERS_ARRAY, WORKERS_COUNT } from '~/constants/workers';
 import { LEVELS, UPGRADES } from '~/constants/upgrades';
@@ -65,7 +67,7 @@ export function canAffordWorker(id: number, res: playerResources): boolean {
   return res.gold >= cost.costGold && res.grain >= cost.costGrain && res.stone >= cost.costStone;
 }
 
-export function getBestAffordableBuilding(res: playerResources): number | null {
+export function getBestAffordableBuilding(res: playerResources): buildingData | null {
   // This function assumes that the BUILDINGS array is sorted by profitability in ascending order
 
   // Is the player broke???
@@ -86,7 +88,8 @@ export function getBestAffordableBuilding(res: playerResources): number | null {
   // Return the first building that the player can afford
   for (let i = BUILDINGS_COUNT - 1; i >= 0; i--) {
     if (canAffordBuilding(BUILDINGS_ARRAY[i].id, res)) {
-      return BUILDINGS_ARRAY[i].id;
+      BUILDINGS_ARRAY[i].name = BUILDINGS_ARRAY[i].name.toLowerCase();
+      return BUILDINGS_ARRAY[i];
     }
   }
 
@@ -94,7 +97,7 @@ export function getBestAffordableBuilding(res: playerResources): number | null {
   return null;
 }
 
-export function getBestAffordableWorker(res: playerResources): number | null {
+export function getBestAffordableWorker(res: playerResources): workerData | null {
   // This function assumes that the BUILDINGS array is sorted by profitability in ascending order
 
   // Is the player broke???
@@ -115,7 +118,8 @@ export function getBestAffordableWorker(res: playerResources): number | null {
   // Return the first building that the player can afford
   for (let i = WORKERS_COUNT - 1; i >= 0; i--) {
     if (canAffordWorker(WORKERS_ARRAY[i].id, res)) {
-      return WORKERS_ARRAY[i].id;
+      WORKERS_ARRAY[i].name = WORKERS_ARRAY[i].name.toLowerCase();
+      return WORKERS_ARRAY[i];
     }
   }
 
@@ -179,7 +183,7 @@ export function calculateActiveIncome(
   };
 }
 
-export function playBuildingSound(buildingName: tilesKey) {
+export function playBuildingSound(buildingName: string) {
   const minVolume = Math.min(soundService.globalVolume, 0.5);
   switch (buildingName) {
     case 'fields':
@@ -220,4 +224,42 @@ export function playBuildingSound(buildingName: tilesKey) {
     default:
       break;
   }
+}
+
+export function handleBuy(
+  purchaseName: string,
+  workerOrbuildingCount: buildingCount | workerCount,
+  amountToPurchase: number,
+  cost: priceData,
+  setPurchaseCount: Function,
+  setResources: Function,
+  resources: playerResources,
+): void {
+  console.log('handle buy');
+
+  if (cost === null) {
+    console.error('trying to buy building with 0 cost. Shouldnt be possible');
+    return;
+  }
+
+  toast.success(`Bought ${amountToPurchase} ${purchaseName}(s)`);
+
+  //adding amount in case we implement buying in increments (ex 10 at a time)
+  // increase building by amount
+  setPurchaseCount({
+    ...workerOrbuildingCount,
+    [purchaseName]: workerOrbuildingCount[purchaseName as keyof (buildingCount | workerCount)] + amountToPurchase,
+  });
+
+  // setPurchaseCount((purchaseDraft) => {
+  //   purchaseDraft[purchaseName as keyof (buildingCount | workerCount)] += amountToPurchase;
+  // });
+
+  // decrease resources by cost * amount
+  setResources({
+    gold: resources.gold - cost.costGold * amountToPurchase,
+    stone: resources.stone - cost.costStone * amountToPurchase,
+    grain: resources.grain - cost.costGrain * amountToPurchase,
+  });
+  playBuildingSound(purchaseName);
 }
