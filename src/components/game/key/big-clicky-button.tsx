@@ -30,7 +30,7 @@ export default function BigClickyButton(props: { modifiers: clickerVisualModifie
     <img
       src="/assets/biggest-coin.png"
       id="big-clicky-button"
-      className={'mx-auto block w-full max-w-[60%] cursor-pointer select-auto' + addClasses}
+      className={'mx-auto block w-full max-w-[60%] cursor-pointer select-auto ' + addClasses}
       onDrag={(e) => e.preventDefault()}
       onDragStart={(e) => e.preventDefault()}
       onMouseDown={() => {
