@@ -231,6 +231,28 @@ export function playBuildingSound(buildingName: string) {
   }
 }
 
+export function hasAllShopItems(buildings: buildingCount, workers: workerCount): boolean {
+  for (const key in buildings) {
+    if (buildings[key as keyof buildingCount] < CONST_MAX_BUILDING_TYPE) {
+      return false;
+    }
+  }
+
+  for (const key in workers) {
+    if (workers[key as keyof workerCount] < CONST_MAX_BUILDING_TYPE) {
+      return false;
+    }
+  }
+
+  return true;
+
+  /* We can do this without iteration? */
+  /*
+    return Object.values(buildings).every((building) => building >= CONST_MAX_BUILDING_TYPE) &&
+        Object.values(workers).every((worker) => worker >= CONST_MAX_BUILDING_TYPE);
+    */
+}
+
 export function handleBuy(
   purchaseName: string,
   workerOrbuildingCount: buildingCount | workerCount,
