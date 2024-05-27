@@ -80,7 +80,7 @@ body {
 }
 .clickerArea {
   @apply flex flex-auto items-center justify-center bg-gray-300;
-  background: no-repeat center/cover url('./assets/splashscreen.webp');
+  background: no-repeat center/cover url('/assets/splashscreen.webp');
 }
 
 /*
@@ -90,13 +90,13 @@ body {
 */
 
 .bg-img-noise-scroll {
-  background-image: url('./assets/bg/bgnoise-10-60-scroll.png');
+  background-image: url('/assets/bg/bgnoise-10-60-scroll.png');
   background-size: 100%;
   background-repeat: repeat;
 }
 
 .bg-img-noise-gray {
-  background-image: url('./assets/bg/bgnoise-10-40-gray.webp');
+  background-image: url('/assets/bg/bgnoise-10-40-gray.webp');
   background-size: 100%;
   background-repeat: repeat;
 }
@@ -107,7 +107,7 @@ body {
 }
 
 .bg-blue-noise {
-  background-image: url('./assets/bg/bgnoise-10-60-scroll.png');
+  background-image: url('/assets/bg/bgnoise-10-60-scroll.png');
   background-color: theme('colors.blue.800');
   background-size: 100%;
   background-repeat: repeat;
@@ -320,7 +320,7 @@ body::-webkit-scrollbar-track {
   top: 0;
   left: 0;
   /* The image used */
-  background-image: url('./assets/splashscreen.webp');
+  background-image: url('/assets/splashscreen.webp');
 
   /* Add the blur effect */
   filter: blur(8px);
