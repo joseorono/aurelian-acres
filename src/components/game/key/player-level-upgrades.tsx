@@ -1,5 +1,7 @@
+import { soundAsset } from '@pixi/sound';
 import { useAtom, useAtomValue } from 'jotai';
 import { canAffordNextLevel } from '~/lib/upgrades';
+import { SoundNames, soundService } from '~/services/sound-service';
 import { playerLevelAtom, resourcesAtom } from '~/store/atoms';
 
 export default function PlayerLevelUpgrades() {
@@ -17,6 +19,7 @@ export default function PlayerLevelUpgrades() {
 
     setPlayerLevel(playerLevel + 1);
     setResources({ ...resources, gold: resources.gold - 100 });
+    soundService.playSound(SoundNames.upgrade);
   };
 
   return (
