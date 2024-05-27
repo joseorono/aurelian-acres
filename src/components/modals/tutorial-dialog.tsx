@@ -3,12 +3,14 @@ export default function TutorialDialog() {
     <>
       <h1>Welcome to Aurelian Acres!</h1>
       <p>
-        You are a legate sent by the one an only Caesar! your mission is to lift a romanian civilization in this strange
-        land the way you were taught how. The <i>roman</i> way.
+        You are a legate sent by the one an only Marcus Aurelius! You have been entrusted to raise this land up from
+        barbarism. Make this a worthy province of the roman empire.
       </p>
-      <p>Click on the big coin to gain resources.</p>
-      <p>Buy workers to increase resources per click</p>
-      <p>Buy buildings to increase resources per second</p>
+      <p>
+        Click on the big coin to gain resources. Initially you will only gain gold by clicking, but as you keep
+        expanding, your coin will provide more resources.
+      </p>
+      <p>Workers provide more resources per click you make, while buildings will provide more resources passively. </p>
     </>
   );
 }
