@@ -2,21 +2,21 @@ import { useAtom, useAtomValue } from 'jotai';
 import {
   Credenza,
   CredenzaBody,
-  CredenzaClose,
   CredenzaContent,
   CredenzaDescription,
-  CredenzaFooter,
   CredenzaHeader,
   CredenzaTitle,
 } from '~/components/ui/credenza';
 import { isModalOpenAtom, modalContentAtom } from '~/store/atoms';
 import styles from '~/css/modal.module.css';
+import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function Modal() {
   const [isModalOpen, setIsModalOpen] = useAtom(isModalOpenAtom);
   const modalContent = useAtomValue(modalContentAtom);
 
   const closeModal = (value: any | null) => {
+    soundService.playSound(SoundNames.closeModal, soundService.globalVolume * 0.25);
     setIsModalOpen(false);
     if (modalContent.onClose) {
       modalContent.onClose(value);
@@ -26,8 +26,8 @@ export default function Modal() {
     <>
       <Credenza open={isModalOpen} onOpenChange={() => closeModal(null)}>
         <CredenzaContent
-          onEscapeKeyDown={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
-          onInteractOutside={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
+          onEscapeKeyDown={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (_) => {}}
+          onInteractOutside={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (_) => {}}
           className={`${styles.modalContent} ${modalContent.containerClasses}`}
         >
           {modalContent.title && (
