@@ -32,7 +32,6 @@
     "dev-expose-host": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "prepare": "husky install",
     "visualize-bundle": "vite-bundle-visualizer & vite-bundle-visualizer -t sunburst & vite-bundle-visualizer -t network",
     "check-updates": "ncu",
     "update-deps": "ncu -u && npm install"
