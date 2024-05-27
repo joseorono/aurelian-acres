@@ -5,7 +5,8 @@
 
 .townDisplay__wrapper,
 .townDisplay,
-.townDisplay img {
+.townDisplay img,
+#big-clicky-button {
   user-drag: none;
 }
 
