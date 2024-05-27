@@ -88,7 +88,6 @@ export function getBestAffordableBuilding(res: playerResources): buildingData | 
   // Return the first building that the player can afford
   for (let i = BUILDINGS_COUNT - 1; i >= 0; i--) {
     if (canAffordBuilding(BUILDINGS_ARRAY[i].id, res)) {
-      BUILDINGS_ARRAY[i].name = BUILDINGS_ARRAY[i].name.toLowerCase();
       return BUILDINGS_ARRAY[i];
     }
   }
@@ -118,7 +117,6 @@ export function getBestAffordableWorker(res: playerResources): workerData | null
   // Return the first building that the player can afford
   for (let i = WORKERS_COUNT - 1; i >= 0; i--) {
     if (canAffordWorker(WORKERS_ARRAY[i].id, res)) {
-      WORKERS_ARRAY[i].name = WORKERS_ARRAY[i].name.toLowerCase();
       return WORKERS_ARRAY[i];
     }
   }

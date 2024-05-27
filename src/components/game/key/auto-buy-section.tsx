@@ -18,7 +18,7 @@ export default function AutoBuySection() {
             className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4"
             onClick={() =>
               handleBuy(
-                bestAffordableWorker.name,
+                bestAffordableWorker.name.toLowerCase(),
                 workers,
                 1,
                 bestAffordableWorker,
@@ -49,7 +49,7 @@ export default function AutoBuySection() {
             className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-primary-foreground"
             onClick={() =>
               handleBuy(
-                bestAffordableBuilding.name,
+                bestAffordableBuilding.name.toLowerCase(),
                 buildings,
                 1,
                 bestAffordableBuilding,
