@@ -12,7 +12,7 @@ export default function CreditsDialog() {
 
   return (
     <>
-      <div className="justify-center">
+      <div className="text-large justify-center">
         <h1>CREDITS</h1>
         <h2>
           Made by{' '}

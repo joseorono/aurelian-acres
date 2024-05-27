@@ -61,6 +61,16 @@ Rustling Grass 4.wav
 CC Attribution 4.0, morganpurkis
 https://freesound.org/people/morganpurkis/sounds/396016/
 
+level up sound
+Medieval Fanfare.aiff
+tobyk
+https://freesound.org/people/tobyk/sounds/26198/
+
+game over sound
+02362 fanfare announce a.wav
+CC Attribution 4.0, Robinhood76
+https://freesound.org/people/Robinhood76/sounds/123435/
+
 ---
 
 # Fanfares (Sound to Play when the PLAY button is clicked, before game starts)

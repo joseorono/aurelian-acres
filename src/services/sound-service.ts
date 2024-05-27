@@ -20,6 +20,8 @@ export enum SoundNames {
   coinClick = 'coinClick',
   upgrade = 'upgrade',
   buyFields = 'buyFields',
+  levelUp = 'levelUp',
+  gameOver = 'gameOver',
 }
 
 const soundFiles = {
@@ -40,6 +42,8 @@ const soundFiles = {
   [SoundNames.coinClick]: 'assets/audio/coin.mp3',
   [SoundNames.upgrade]: 'assets/audio/upgrade.mp3',
   [SoundNames.buyFields]: 'assets/audio/buyFields.mp3',
+  [SoundNames.levelUp]: 'assets/audio/levelUp.mp3',
+  [SoundNames.gameOver]: 'assets/audio/gameOver.mp3',
 };
 
 class SoundService {
