@@ -29,7 +29,7 @@ export const spritesForTiles: Record<tilesKey, RenderableElement | Array<Rendera
 } as const;
 
 // ToDo: Unit-Test this. This populates the matrix with workers and buildings..
-export function getRandomFillerTile(chanceOfEmpty: number = 0.6): Nullable<additionalTiles> {
+export function getRandomFillerTile(chanceOfEmpty: number = 0.5): Nullable<additionalTiles> {
   // chanceOfEmpty is super low bc we dont have many buildings in the tests
   // By default, there's an 80% chance of an empty tile
   // I won't be adding roads until we implement pathfinding/random walk or some sorta walkable-map generation algorithm
