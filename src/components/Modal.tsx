@@ -28,13 +28,15 @@ export default function Modal() {
         <CredenzaContent
           onEscapeKeyDown={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
           onInteractOutside={modalContent.backgroundDismiss === false ? (e) => e.preventDefault() : (e) => {}}
-          className={styles.modalContent}
+          className={`${styles.modalContent} ${modalContent.containerClasses}`}
         >
-          <CredenzaHeader>
-            <CredenzaTitle>{modalContent.title}</CredenzaTitle>
-            {modalContent.subtitle && <CredenzaDescription>{modalContent.subtitle}</CredenzaDescription>}
-          </CredenzaHeader>
-          <CredenzaBody>
+          {modalContent.title && (
+            <CredenzaHeader>
+              <CredenzaTitle>{modalContent.title}</CredenzaTitle>
+              {modalContent.subtitle && <CredenzaDescription>{modalContent.subtitle}</CredenzaDescription>}
+            </CredenzaHeader>
+          )}
+          <CredenzaBody className="overflow-auto ">
             {/* This component is built using shadcn/ui&apos;s dialog and drawer component, which is built on top of Vaul. */}
             {modalContent.content}
           </CredenzaBody>
