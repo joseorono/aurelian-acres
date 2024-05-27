@@ -1,17 +1,22 @@
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import { CONST_MAX_BUILDING_TYPE } from '~/constants/defaults';
 import { WORKERS } from '~/constants/workers';
-import { canAffordWorker, playBuildingSound } from '~/lib/resources';
+import { canAffordWorker, hasAllShopItems, playBuildingSound } from '~/lib/resources';
 import { getFormattedNumber } from '~/lib/utils';
-import { resourcesAtom, workersAtom } from '~/store/atoms';
+import { buildingsAtom, isModalOpenAtom, resourcesAtom, setContentAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
+import { useEffect } from 'react';
+import CongratsDialog from '~/components/modals/congrats-dialog';
+import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function WorkersShop() {
   const [workersCount, setworkersCount] = useAtom(workersAtom);
+  const buildingsCount = useAtomValue(buildingsAtom);
   // this one is for testing, ideally this  atom should be passed through props
   const [resources, setResources] = useAtom(resourcesAtom);
+  const openModal = useSetAtom(setContentAtom);
 
   const handleBuy = (workerName: workerKeys, workerCount: number, amount: number, cost: priceData | null) => {
     console.log('handle buy');
@@ -34,6 +39,16 @@ export default function WorkersShop() {
     });
     playBuildingSound(workerName);
   };
+
+  useEffect(() => {
+    if (hasAllShopItems(buildingsCount, workersCount)) {
+      soundService.playSound(SoundNames.gameOver);
+      openModal({
+        title: 'Congratulations',
+        content: <CongratsDialog />,
+      });
+    }
+  }, [buildingsCount, workersCount]);
 
   return (
     <>
