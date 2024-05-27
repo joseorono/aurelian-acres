@@ -59,19 +59,19 @@ export default function WorkersShop() {
                   <div className="store__unitCost">
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">
-                      <span className="qty">{getFormattedNumber(workerData?.costGold)}</span>
+                      <span className="qty self-end">{getFormattedNumber(workerData?.costGold)}</span>
                       <span className="icon">
                         <Coin />
                       </span>
                     </div>
                     <div className="flex justify-between gap-2">
-                      <span className="qty">{getFormattedNumber(workerData?.costGrain)}</span>
+                      <span className="qty self-end">{getFormattedNumber(workerData?.costGrain)}</span>
                       <span className="icon">
                         <Wheat />
                       </span>
                     </div>
                     <div className="flex justify-between  gap-2">
-                      <span className="qty">{getFormattedNumber(workerData?.costStone)}</span>
+                      <span className="qty self-end">{getFormattedNumber(workerData?.costStone)}</span>
                       <span className="icon">
                         <Stone />
                       </span>
@@ -82,19 +82,19 @@ export default function WorkersShop() {
                     <b className="text-lg">Income:</b>
                     <div className="flex flex-col">
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(workerData?.goldPerClick)}</span>
+                        <span className="qty self-end">{getFormattedNumber(workerData?.goldPerClick)}</span>
                         <span className="icon">
                           <Coin />
                         </span>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(workerData?.grainPerClick)}</span>
+                        <span className="qty self-end">{getFormattedNumber(workerData?.grainPerClick)}</span>
                         <span className="icon">
                           <Wheat />
                         </span>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(workerData?.stonePerClick)}</span>
+                        <span className="qty self-end">{getFormattedNumber(workerData?.stonePerClick)}</span>
                         <span className="icon">
                           <Stone />
                         </span>
