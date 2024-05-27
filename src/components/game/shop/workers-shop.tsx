@@ -6,6 +6,8 @@ import { canAffordWorker, playBuildingSound } from '~/lib/resources';
 import { getFormattedNumber } from '~/lib/utils';
 import { resourcesAtom, workersAtom } from '~/store/atoms';
 import { priceData, workerKeys } from '~/types/game-data-types';
+import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
+
 export default function WorkersShop() {
   const [workersCount, setworkersCount] = useAtom(workersAtom);
   // this one is for testing, ideally this  atom should be passed through props
@@ -58,15 +60,21 @@ export default function WorkersShop() {
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">
                       <span className="qty">{getFormattedNumber(workerData?.costGold)}</span>
-                      <span className="icon">🪙</span>
+                      <span className="icon">
+                        <Coin />
+                      </span>
                     </div>
                     <div className="flex justify-between gap-2">
                       <span className="qty">{getFormattedNumber(workerData?.costGrain)}</span>
-                      <span className="icon">🌾</span>
+                      <span className="icon">
+                        <Wheat />
+                      </span>
                     </div>
                     <div className="flex justify-between  gap-2">
                       <span className="qty">{getFormattedNumber(workerData?.costStone)}</span>
-                      <span className="icon">🪨</span>
+                      <span className="icon">
+                        <Stone />
+                      </span>
                     </div>
                     <br></br>
                   </div>
@@ -75,15 +83,21 @@ export default function WorkersShop() {
                     <div className="flex flex-col">
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(workerData?.goldPerClick)}</span>
-                        <span className="icon">🪙</span>
+                        <span className="icon">
+                          <Coin />
+                        </span>
                       </div>
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(workerData?.grainPerClick)}</span>
-                        <span className="icon">🌾</span>
+                        <span className="icon">
+                          <Wheat />
+                        </span>
                       </div>
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(workerData?.stonePerClick)}</span>
-                        <span className="icon">🪨</span>
+                        <span className="icon">
+                          <Stone />
+                        </span>
                       </div>
                     </div>
                   </div>

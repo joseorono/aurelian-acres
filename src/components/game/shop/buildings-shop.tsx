@@ -6,6 +6,7 @@ import { canAffordBuilding, playBuildingSound } from '~/lib/resources';
 import { getFormattedNumber } from '~/lib/utils';
 import { buildingsAtom, resourcesAtom } from '~/store/atoms';
 import { buildingKeys, priceData } from '~/types/game-data-types';
+import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
 export default function BuildingsShop() {
   const [buildingsCount, setBuildingsCount] = useAtom(buildingsAtom);
@@ -54,15 +55,21 @@ export default function BuildingsShop() {
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">
                       <span className="qty">{getFormattedNumber(buildingData?.costGold)}</span>
-                      <span className="icon">🪙</span>
+                      <span className="icon">
+                        <Coin />
+                      </span>
                     </div>
                     <div className="flex justify-between gap-2">
                       <span className="qty">{getFormattedNumber(buildingData?.costGrain)}</span>
-                      <span className="icon">🌾</span>
+                      <span className="icon">
+                        <Wheat />
+                      </span>
                     </div>
                     <div className="flex justify-between  gap-2">
                       <span className="qty">{getFormattedNumber(buildingData?.costStone)}</span>
-                      <span className="icon">🪨</span>
+                      <span className="icon">
+                        <Stone />
+                      </span>
                     </div>
                     <br></br>
                   </div>
@@ -71,15 +78,21 @@ export default function BuildingsShop() {
                     <div className="flex flex-col">
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(buildingData?.goldPerSecond)}</span>
-                        <span className="icon">🪙</span>
+                        <span className="icon">
+                          <Coin />
+                        </span>
                       </div>
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(buildingData?.grainPerSecond)}</span>
-                        <span className="icon">🌾</span>
+                        <span className="icon">
+                          <Wheat />
+                        </span>
                       </div>
                       <div className="flex justify-between gap-2">
                         <span className="qty">{getFormattedNumber(buildingData?.stonePerSecond)}</span>
-                        <span className="icon">🪨</span>
+                        <span className="icon">
+                          <Stone />
+                        </span>
                       </div>
                     </div>
                   </div>
