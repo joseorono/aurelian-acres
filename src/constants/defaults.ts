@@ -1,7 +1,7 @@
 // Aca ponemos los valores por defecto de las variables que vamos a usar en la aplicacion
 /*
 
-Incluyen los valores iniciales de los recursos (0), los valores iniciales de los recursos por segundo (0), 
+Incluyen los valores iniciales de los recursos (0), los valores iniciales de los recursos por segundo (0),
 y los valores iniciales de los costos de los recursos (0)
 
 Valores por default para las opciones como el volumen y si reproducir o no la musica.
@@ -66,7 +66,7 @@ export const CONST_MAX_BUILDING_TYPE = 20;
 // Used for probability calculations. Must be float between 0 and 1.
 // super low bc we dont have many buildings in the tests
 export const TOWN_DENSITY_BIAS = 0.4;
-export const GAME_TICK_SECONDS: number = 1; // We could change this for performance/stress testing later
+export const GAME_TICK_SECONDS: number = 0.5; // Faster ticks improve counter update responsiveness
 export const GAME_TICK_MS: number = GAME_TICK_SECONDS * 1000; // We could change this for performance/stress testing later
 // For show and variation. Just a random number of citizens to start with and vary
 export const BASE_CITIZEN_COUNT: number = randIntInRange(21, 29);

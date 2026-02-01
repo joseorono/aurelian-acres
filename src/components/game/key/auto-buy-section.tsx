@@ -1,7 +1,7 @@
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
 import { useAtom } from 'jotai';
 
-import { getBestAffordableBuilding, getBestAffordableWorker, handleBuy } from '~/lib/resources';
+import { getBestAffordableBuilding, getBestAffordableWorker, handleBuy, hasBuildings } from '~/lib/resources';
 import { resourcesAtom, workersAtom, buildingsAtom } from '~/store/atoms';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
@@ -11,6 +11,7 @@ export default function AutoBuySection() {
   const [buildings, setBuildings] = useAtom(buildingsAtom);
   const bestAffordableBuilding = getBestAffordableBuilding(resources, buildings);
   const bestAffordableWorker = getBestAffordableWorker(resources, workers);
+  const playerHasBuildings = hasBuildings(buildings);
   return (
     <div className="flex  select-none  flex-row bg-slate-800">
       <div id="availableWorker" className="flex flex-auto basis-1/2 flex-col bg-red-800">
@@ -77,7 +78,7 @@ export default function AutoBuySection() {
             {/* <div>Building Cost: {bestAffordableBuilding.}</div> */}
           </div>
         )}
-        <LoopingProgressBar durationInMs={1000} />
+        {playerHasBuildings && <LoopingProgressBar durationInMs={1000} />}
       </div>
     </div>
   );

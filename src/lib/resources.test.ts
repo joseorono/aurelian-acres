@@ -46,6 +46,15 @@ const maxBuildings: buildingCount = {
   temple: 20,
   bakery: 20,
 };
+test('hasBuildings returns false when all building counts are 0', () => {
+  expect(resources.hasBuildings(lowBuildings)).toBe(false);
+});
+
+test('hasBuildings returns true when at least one building count is > 0', () => {
+  expect(resources.hasBuildings(maxBuildings)).toBe(true);
+  expect(resources.hasBuildings({ ...lowBuildings, fields: 1 })).toBe(true);
+});
+
 test('getBuildingById returns the correct building', () => {
   BUILDINGS_ARRAY.forEach((building) => {
     let result = resources.getBuildingById(building.id);
