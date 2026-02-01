@@ -4,4 +4,4 @@
 type Nullable<T> = T | null;
 
 // Anything that can be rendered in a React component
-type RenderableElement = JSX.Element | string | null;
+type RenderableElement = import('react').JSX.Element | string | null;
