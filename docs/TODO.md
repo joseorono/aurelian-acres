@@ -16,7 +16,7 @@
 - [ ] Change the icons of the partment to be dark bown using fill on the CSS
 - [ ] Lessen the noise effect in the background of interface elements
 - [ ] Only start charging the resource meter when the player has made their first building purchase
-
+- [ ] Add current income to the resource display/clicker area
 ### Gameplay & events
 
 - [ ] Implement a golden cookie-like system
