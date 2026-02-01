@@ -231,6 +231,16 @@ export function playBuildingSound(buildingName: string) {
   }
 }
 
+/**
+ * Checks whether the player owns at least one building.
+ *
+ * @param buildings - Map of building ids to the quantity owned.
+ * @returns True if any building count is greater than zero.
+ */
+export function hasBuildings(buildings: buildingCount): boolean {
+  return Object.values(buildings).some((count) => count > 0);
+}
+
 export function hasAllShopItems(buildings: buildingCount, workers: workerCount): boolean {
   for (const key in buildings) {
     if (buildings[key as keyof buildingCount] < CONST_MAX_BUILDING_TYPE) {
