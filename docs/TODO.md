@@ -14,7 +14,7 @@
 - [ ] Look into making the  buttons softer so they don't clash with the rest of the UI
 - [ ] Add an attention grabbed to the level up button when it's available
 - [ ] Change the icons of the partment to be dark bown using fill on the CSS
-- [ ] Lessen the noise effect in the clickerArea\
+- [ ] Lessen the noise effect in the background of interface elements
 - [ ] Only start charging the resource meter when the player has made their first building purchase
 
 ### Gameplay & events
