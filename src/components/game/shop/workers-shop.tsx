@@ -93,7 +93,7 @@ export default function WorkersShop() {
                     </div>
                     <br></br>
                   </div>
-                  <div className="store__unitCost mt-1">
+                  {/* <div className="store__unitCost mt-1">
                     <b className="text-lg">Income:</b>
                     <div className="flex flex-col">
                       <div className="flex justify-between gap-2">
@@ -115,8 +115,8 @@ export default function WorkersShop() {
                         </span>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </div>*/}
+                </div> 
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex h-[100px] items-center justify-center border-2 border-solid border-white">

@@ -73,7 +73,7 @@ export default function BuildingsShop() {
                     </div>
                     <br></br>
                   </div>
-                  <div className="store__unitCost mt-1">
+                  {/* <div className="store__unitCost mt-1">
                     <b className="text-lg">Income:</b>
                     <div className="flex flex-col">
                       <div className="flex justify-between gap-2">
@@ -93,9 +93,9 @@ export default function BuildingsShop() {
                         <span className="icon">
                           <Stone />
                         </span>
-                      </div>
+                      </div> 
                     </div>
-                  </div>
+                  </div>*/}
                 </div>
               </div>
               <div className="flex flex-col gap-2">
