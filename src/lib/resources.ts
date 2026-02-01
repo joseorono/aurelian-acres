@@ -241,6 +241,24 @@ export function hasBuildings(buildings: buildingCount): boolean {
   return Object.values(buildings).some((count) => count > 0);
 }
 
+export function allBuildingsMaxed(buildings: buildingCount): boolean {
+  for (const key in buildings) {
+    if (buildings[key as keyof buildingCount] < CONST_MAX_BUILDING_TYPE) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function allWorkersMaxed(workers: workerCount): boolean {
+  for (const key in workers) {
+    if (workers[key as keyof workerCount] < CONST_MAX_BUILDING_TYPE) {
+      return false;
+    }
+  }
+  return true;
+}
+
 export function hasAllShopItems(buildings: buildingCount, workers: workerCount): boolean {
   for (const key in buildings) {
     if (buildings[key as keyof buildingCount] < CONST_MAX_BUILDING_TYPE) {
