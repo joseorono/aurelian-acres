@@ -59,6 +59,14 @@ src/
 - **ESLint** with React, TypeScript, hooks, and a11y plugins
 - Use `cn()` from `~/lib/utils` for conditional class merging (clsx + tailwind-merge)
 
+- Favor composition (render props, children) over inheritance.
+- Use refs only for direct DOM access.
+- Use guard clauses (early returns) for error handling.
+-
+## Styling
+
+- You can use Tailwind for simple things but for pixel art and other more complex things use CSS in the /css directory and import it in index.css.
+
 ## Component Patterns
 
 - Functional components only, with hooks
