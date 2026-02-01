@@ -2,18 +2,19 @@ import { useAtom, useAtomValue } from 'jotai';
 import {
   Credenza,
   CredenzaBody,
-  CredenzaContent,
-  CredenzaDescription,
-  CredenzaHeader,
-  CredenzaTitle,
+  CredenzaContent,CredenzaDescription,CredenzaHeader,CredenzaTitle,
 } from '~/components/ui/credenza';
 import { isModalOpenAtom, modalContentAtom } from '~/store/atoms';
 import styles from '~/css/modal.module.css';
 import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function Modal() {
-  const [isModalOpen, setIsModalOpen] = useAtom(isModalOpenAtom);
-  const modalContent = useAtomValue(modalContentAtom);
+  const [isModalOpen, setIsModalOpen] =
+   useAtom(isModalOpenAtom);
+
+
+
+   const modalContent = useAtomValue(modalContentAtom);
 
   const closeModal = (value: any | null) => {
     soundService.playSound(SoundNames.closeModal, soundService.globalVolume * 0.25);
