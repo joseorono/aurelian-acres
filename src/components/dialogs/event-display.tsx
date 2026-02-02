@@ -14,6 +14,8 @@ interface IPropsEventDisplay {
 }
 
 const EventDisplay = ({ className = '' }: IPropsEventDisplay) => {
+  // Event system subscribed to multiple volatile atoms
+  'use no memo';
   // If no event is passed, get a random
   const [event, setEvent] = useAtom(eventsAtom);
 

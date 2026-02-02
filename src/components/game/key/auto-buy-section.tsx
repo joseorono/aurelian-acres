@@ -13,6 +13,8 @@ import { resourcesAtom, workersAtom, buildingsAtom } from '~/store/atoms';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
 export default function AutoBuySection() {
+  // Recomputes getBestAffordable* from resources every tick
+  'use no memo';
   const [resources, setResources] = useAtom(resourcesAtom);
   const [workers, setWorkers] = useAtom(workersAtom);
   const [buildings, setBuildings] = useAtom(buildingsAtom);

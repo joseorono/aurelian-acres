@@ -6,6 +6,8 @@ import { calculatePassiveIncome } from '~/lib/resources';
 import { resourcesAtom, buildingsAtom, playerUpgradeAtom, playerLevelAtom } from '~/store/atoms';
 import { getFormattedNumber } from '~/lib/utils';
 export default function BackgroundWorker() {
+  // Game tick driver with direct DOM manipulation
+  'use no memo';
   // save the game tick as a state using useState
   // use the useEffect hook to update the game tick every 1000ms
   // use the setInterval function to update the game tick every 1000ms

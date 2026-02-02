@@ -8,6 +8,8 @@ import { useGesture } from '@use-gesture/react';
 import { useRef } from 'react';
 
 function TownDisplay() {
+  // Regenerates tile matrix every render; gesture handlers + DOM manipulation
+  'use no memo';
   const containerStyles = {
     cursor: 'grab',
     touchAction: 'none',

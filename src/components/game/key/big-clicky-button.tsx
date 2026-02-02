@@ -6,6 +6,9 @@ import { calculateActiveIncome } from '~/lib/resources';
 import { SoundNames, soundService } from '~/services/sound-service';
 import { workersAtom, playerUpgradeAtom, playerLevelAtom, resourcesAtom } from '~/store/atoms';
 import { clickerVisualModifiers } from '~/types/game-data-types';
+// Subscribes to resources/workers/upgrades atoms that change every tick; re-renders on every click
+'use no memo';
+
 function visualModifiersToClasses(modifiers: clickerVisualModifiers): string {
   return `
     big-clicky-button 
