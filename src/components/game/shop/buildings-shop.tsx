@@ -44,58 +44,60 @@ export default function BuildingsShop() {
           const canAfford = canAffordBuilding(buildingData.id, resources);
           const maxCapacity = buildingCount >= CONST_MAX_BUILDING_TYPE;
           return (
-            <div key={buildingData.id} className={`store__entry building-${buildingData.name} flex flex-row p-2`}>
-              <div className="flex-column flex-auto  basis-2/4">
-                <h2 className="store__unitName">{buildingData.name}</h2>
-                <h3 className="store__unitDescription">{buildingData.description}</h3>
-                <p className="store__currentCount">Current amount: {buildingCount}</p>
-                {/* Cost and Income */}
-                <div className="flex gap-2">
-                  <div className="store__unitCost">
+            <div key={buildingData.id} className={`store__entry building-${buildingData.name} flex flex-row justify-between gap-2 p-2`}>
+              <div className="flex flex-col flex-auto gap-2">
+                <div>
+                  <h2 className="store__unitName">{buildingData.name}</h2>
+                  <h3 className="store__unitDescription">{buildingData.description}</h3>
+                  <p className="store__currentCount">
+                    <b>Current amount:</b> {buildingCount}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="store__unitCost w-1/2">
                     <b className="text-lg">Cost:</b>
                     <div className="flex justify-between gap-2">
-                      <span className="qty">{getFormattedNumber(buildingData?.costGold)}</span>
-                      <span className="icon">
+                      <span className="qty  self-center">{getFormattedNumber(buildingData?.costGold)}</span>
+                      <span className="icon w-4 h-4">
                         <Coin />
                       </span>
                     </div>
                     <div className="flex justify-between gap-2">
-                      <span className="qty">{getFormattedNumber(buildingData?.costGrain)}</span>
-                      <span className="icon">
+                      <span className="qty  self-center">{getFormattedNumber(buildingData?.costGrain)}</span>
+                      <span className="icon w-4 h-4">
                         <Wheat />
                       </span>
                     </div>
                     <div className="flex justify-between  gap-2">
-                      <span className="qty">{getFormattedNumber(buildingData?.costStone)}</span>
-                      <span className="icon">
+                      <span className="qty  self-center">{getFormattedNumber(buildingData?.costStone)}</span>
+                      <span className="icon w-4 h-4">
                         <Stone />
                       </span>
                     </div>
-                    <br></br>
                   </div>
-                  {/* <div className="store__unitCost mt-1">
+                  <div className="store__unitCost w-1/2">
                     <b className="text-lg">Income:</b>
-                    <div className="flex flex-col">
+                    <div className="flex flex-row gap-2">
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(buildingData?.goldPerSecond)}</span>
-                        <span className="icon">
+                        <span className="qty  self-center">{getFormattedNumber(buildingData?.goldPerSecond)}</span>
+                        <span className="icon w-4 h-4">
                           <Coin />
                         </span>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(buildingData?.grainPerSecond)}</span>
-                        <span className="icon">
+                        <span className="qty  self-center">{getFormattedNumber(buildingData?.grainPerSecond)}</span>
+                        <span className="icon w-4 h-4">
                           <Wheat />
                         </span>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <span className="qty">{getFormattedNumber(buildingData?.stonePerSecond)}</span>
-                        <span className="icon">
+                        <span className="qty  self-center">{getFormattedNumber(buildingData?.stonePerSecond)}</span>
+                        <span className="icon w-4 h-4">
                           <Stone />
                         </span>
-                      </div> 
+                      </div>
                     </div>
-                  </div>*/}
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-2">

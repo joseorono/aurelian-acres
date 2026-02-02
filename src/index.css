@@ -287,13 +287,13 @@ body::-webkit-scrollbar-track {
 }
 
 .store__unitCost {
-  @apply pixel-rounded mt-1 flex flex-col bg-brown-800 px-4 py-1 text-base text-white;
+  @apply pixel-rounded mt-1 flex flex-row items-center justify-items-center gap-2 bg-brown-800 px-2 py-1 text-sm text-white;
 }
 
 .store__buyButton {
-  @apply pixel-rounded flex h-[100px] basis-1/4 cursor-pointer items-center justify-center rounded-lg bg-primary px-2 
-  py-2 text-2xl font-bold text-primary-foreground hover:bg-brown-950 hover:text-scroll-500;
-  border: 8px ridge theme('colors.scroll.900');
+  @apply pixel-rounded flex h-16 basis-1/4 cursor-pointer items-center justify-center rounded-lg bg-primary px-2 
+  py-1 text-lg font-bold text-primary-foreground hover:bg-brown-950 hover:text-scroll-500;
+  border: 4px ridge theme('colors.scroll.900');
 }
 
 .store__buyButton:disabled,
