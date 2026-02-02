@@ -4,6 +4,8 @@ import { FLAVOR_TEXT_HEADLINES } from '~/constants/flavor-text';
 import Marquee from 'react-fast-marquee';
 
 function HeadlinesMarquee() {
+  // Calls shuffleArray() every render, output always differs
+  'use no memo';
   let arrHeadlines = shuffleArray(FLAVOR_TEXT_HEADLINES);
   //console.log(arrHeadlines);
   return (

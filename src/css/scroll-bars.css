@@ -1,0 +1,39 @@
+/*
+==========================================
+    Town Display Scrollbar
+    Styled to match the ancient Roman
+    parchment / scroll map aesthetic.
+==========================================
+*/
+
+.townDisplay__wrapper {
+  /* Firefox */
+  scrollbar-width: auto;
+  scrollbar-color: #5a3e2b #d7caa0; /* brown-900  scroll-900 */
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+.townDisplay__wrapper::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.townDisplay__wrapper::-webkit-scrollbar-track {
+  background: #d7caa0; /* scroll-900 */
+  border: 2px ridge #c4b48a;
+}
+
+.townDisplay__wrapper::-webkit-scrollbar-thumb {
+  background: #5a3e2b; /* brown-900 */
+  border: 2px ridge #7a562e; /* brown-700 */
+  border-radius: 2px;
+}
+
+.townDisplay__wrapper::-webkit-scrollbar-thumb:hover {
+  background: #66472d; /* brown-800 */
+}
+
+.townDisplay__wrapper::-webkit-scrollbar-corner {
+  background: #d7caa0; /* scroll-900 */
+  border: 2px ridge #c4b48a;
+}

@@ -1,11 +1,20 @@
 import LoopingProgressBar from '~/components/game/misc/loopingProgressBar';
 import { useAtom } from 'jotai';
 
-import { getBestAffordableBuilding, getBestAffordableWorker, handleBuy, hasBuildings } from '~/lib/resources';
+import {
+  allBuildingsMaxed,
+  allWorkersMaxed,
+  getBestAffordableBuilding,
+  getBestAffordableWorker,
+  handleBuy,
+  hasBuildings,
+} from '~/lib/resources';
 import { resourcesAtom, workersAtom, buildingsAtom } from '~/store/atoms';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
 export default function AutoBuySection() {
+  // Recomputes getBestAffordable* from resources every tick
+  'use no memo';
   const [resources, setResources] = useAtom(resourcesAtom);
   const [workers, setWorkers] = useAtom(workersAtom);
   const [buildings, setBuildings] = useAtom(buildingsAtom);
@@ -42,7 +51,7 @@ export default function AutoBuySection() {
             className="border-1 flex-auto cursor-pointer border-slate-600 bg-gradient-to-b from-red-600 to-red-900 p-4 text-lg"
             onClick={() => {}}
           >
-            <div>Can't afford any workers</div>
+            <div>{allWorkersMaxed(workers) ? 'All workers maxed out!' : "Can't afford any workers"}</div>
           </div>
         )}
       </div>
@@ -74,7 +83,7 @@ export default function AutoBuySection() {
             className="flex-auto cursor-pointer bg-gradient-to-b from-blue-600 to-blue-800 p-4 text-lg text-primary-foreground"
             onClick={() => {}}
           >
-            <div>Can't afford any buildings</div>
+            <div>{allBuildingsMaxed(buildings) ? 'All buildings maxed out!' : "Can't afford any buildings"}</div>
             {/* <div>Building Cost: {bestAffordableBuilding.}</div> */}
           </div>
         )}

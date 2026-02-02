@@ -12,6 +12,8 @@ import CongratsDialog from '~/components/modals/congrats-dialog';
 import { SoundNames, soundService } from '~/services/sound-service';
 
 export default function WorkersShop() {
+  // Calls canAffordWorker() against resources every tick
+  'use no memo';
   const [workersCount, setworkersCount] = useAtom(workersAtom);
   const buildingsCount = useAtomValue(buildingsAtom);
   // this one is for testing, ideally this  atom should be passed through props

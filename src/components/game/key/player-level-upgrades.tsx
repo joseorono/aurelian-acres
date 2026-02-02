@@ -6,6 +6,8 @@ import { SoundNames, soundService } from '~/services/sound-service';
 import { playerLevelAtom, resourcesAtom } from '~/store/atoms';
 
 export default function PlayerLevelUpgrades() {
+  // Checks canAffordNextLevel() against resources every tick
+  'use no memo';
   const [playerLevel, setPlayerLevel] = useAtom(playerLevelAtom);
   const [resources, setResources] = useAtom(resourcesAtom);
 

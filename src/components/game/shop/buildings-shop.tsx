@@ -9,6 +9,8 @@ import { buildingKeys, priceData } from '~/types/game-data-types';
 import { Coin, Stone, Wheat } from '~/icons/resourceIcons';
 
 export default function BuildingsShop() {
+  // Calls canAffordBuilding() against resources every tick
+  'use no memo';
   const [buildingsCount, setBuildingsCount] = useAtom(buildingsAtom);
   // this one is for testing, ideally this  atom should be passed through props
   const [resources, setResources] = useAtom(resourcesAtom);

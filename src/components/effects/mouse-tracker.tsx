@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 
 export default function MouseTracker() {
+  // Purely imperative DOM manipulation via event listeners
+  'use no memo';
   useEffect(() => {
     // console.log('MouseTracker mounted');
 
