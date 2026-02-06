@@ -6,7 +6,9 @@
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
       "Bash(npm run test-cli:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(findstr:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

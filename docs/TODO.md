@@ -14,7 +14,7 @@
 - [ ] Add a sound trigger when in-game events occur
 - [ ] Use pixelated font from the newer project
 - [ ] Change building and worker items to something more fitting
-- [ ] Make initial shop tab the buildings tab instead of the workers tab
+- [x] Make initial shop tab the buildings tab instead of the workers tab
 - [ ] Look into modifying the styles of the buttons and other components to look more like a 16-bit videogame.
 - [ ] Add an attention grabber to the level up button when it's available
 - [ ] Change the icons of the department to be dark brown using fill on the CSS
