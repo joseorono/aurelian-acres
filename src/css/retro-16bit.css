@@ -1,0 +1,568 @@
+/*
+==========================================
+  16-Bit Retro Game Styling
+
+  Inspired by SNES/Genesis era UI design:
+  - Discrete pixel shadows (not smooth gradients)
+  - Clear highlight/shadow bevels
+  - Bold, chunky borders
+  - Crisp color transitions
+==========================================
+*/
+
+/* ===== CSS Variables for 16-bit Theme ===== */
+:root {
+  /* Highlight/Shadow colors for beveled effects */
+  --retro-highlight: #ffffff;
+  --retro-highlight-dim: #d4d4d4;
+  --retro-shadow: #1a1a1a;
+  --retro-shadow-dim: #4a4a4a;
+
+  /* Button color stops */
+  --retro-btn-red: #c41e3a;
+  --retro-btn-red-light: #e8445a;
+  --retro-btn-red-dark: #8b1528;
+
+  --retro-btn-gold: #daa520;
+  --retro-btn-gold-light: #ffd700;
+  --retro-btn-gold-dark: #996515;
+
+  --retro-btn-blue: #2563eb;
+  --retro-btn-blue-light: #60a5fa;
+  --retro-btn-blue-dark: #1d4ed8;
+
+  --retro-btn-green: #16a34a;
+  --retro-btn-green-light: #4ade80;
+  --retro-btn-green-dark: #15803d;
+
+  /* Border pixel size */
+  --retro-border-px: 3px;
+}
+
+/*
+==========================================
+  16-Bit Button Base Styles
+
+  Creates a beveled 3D button effect with
+  discrete pixel borders like classic games
+==========================================
+*/
+
+.retro-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: none;
+  background: var(--retro-btn-red);
+  color: white;
+  font-family: 'Minimal5x7', sans-serif;
+  text-shadow:
+    1px 1px 0 var(--retro-shadow),
+    2px 2px 0 var(--retro-shadow-dim);
+  transition: none; /* No smooth transitions - instant like old games */
+
+  /* 16-bit style discrete pixel bevel */
+  box-shadow:
+    /* Top highlight - bright white line */
+    inset 0 var(--retro-border-px) 0 0 var(--retro-highlight),
+    /* Left highlight */
+    inset var(--retro-border-px) 0 0 0 var(--retro-highlight),
+    /* Bottom shadow - dark line */
+    inset 0 calc(var(--retro-border-px) * -1) 0 0 var(--retro-shadow),
+    /* Right shadow */
+    inset calc(var(--retro-border-px) * -1) 0 0 0 var(--retro-shadow),
+    /* Outer drop shadow */
+    var(--retro-border-px) var(--retro-border-px) 0 0 var(--retro-shadow);
+}
+
+.retro-btn:hover {
+  background: var(--retro-btn-red-light);
+  /* Slightly brighter on hover */
+  filter: brightness(1.1);
+}
+
+.retro-btn:active,
+.retro-btn.pressed {
+  /* Invert the bevel to look pressed */
+  box-shadow:
+    inset 0 var(--retro-border-px) 0 0 var(--retro-shadow),
+    inset var(--retro-border-px) 0 0 0 var(--retro-shadow),
+    inset 0 calc(var(--retro-border-px) * -1) 0 0 var(--retro-highlight-dim),
+    inset calc(var(--retro-border-px) * -1) 0 0 0 var(--retro-highlight-dim);
+  /* Move down to simulate press */
+  transform: translate(2px, 2px);
+  background: var(--retro-btn-red-dark);
+}
+
+.retro-btn:disabled {
+  background: #666666;
+  color: #999999;
+  cursor: not-allowed;
+  filter: none;
+  box-shadow:
+    inset 0 var(--retro-border-px) 0 0 #888888,
+    inset var(--retro-border-px) 0 0 0 #888888,
+    inset 0 calc(var(--retro-border-px) * -1) 0 0 #444444,
+    inset calc(var(--retro-border-px) * -1) 0 0 0 #444444;
+}
+
+/* Button Color Variants */
+.retro-btn--gold {
+  background: var(--retro-btn-gold);
+  color: #1a1a1a;
+  text-shadow:
+    1px 1px 0 var(--retro-btn-gold-light),
+    -1px -1px 0 var(--retro-btn-gold-dark);
+}
+.retro-btn--gold:hover {
+  background: var(--retro-btn-gold-light);
+}
+.retro-btn--gold:active {
+  background: var(--retro-btn-gold-dark);
+}
+
+.retro-btn--blue {
+  background: var(--retro-btn-blue);
+}
+.retro-btn--blue:hover {
+  background: var(--retro-btn-blue-light);
+}
+.retro-btn--blue:active {
+  background: var(--retro-btn-blue-dark);
+}
+
+.retro-btn--green {
+  background: var(--retro-btn-green);
+}
+.retro-btn--green:hover {
+  background: var(--retro-btn-green-light);
+}
+.retro-btn--green:active {
+  background: var(--retro-btn-green-dark);
+}
+
+/* Button Sizes */
+.retro-btn--sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.retro-btn--lg {
+  padding: 12px 24px;
+  font-size: 20px;
+}
+
+/*
+==========================================
+  16-Bit Panel / Box Styles
+
+  For dialog boxes, menus, and UI panels
+==========================================
+*/
+
+.retro-panel {
+  position: relative;
+  background: #e8e0c3;
+  color: #1a1a1a;
+  padding: 12px;
+
+  /* Outset bevel - raised panel */
+  box-shadow:
+    inset 0 3px 0 0 #ffffff,
+    inset 3px 0 0 0 #ffffff,
+    inset 0 -3px 0 0 #8b7355,
+    inset -3px 0 0 0 #8b7355,
+    /* Double border effect */
+    inset 0 6px 0 0 #f5f0e0,
+    inset 6px 0 0 0 #f5f0e0,
+    inset 0 -6px 0 0 #5a4a3a,
+    inset -6px 0 0 0 #5a4a3a,
+    /* Outer shadow */
+    3px 3px 0 0 #1a1a1a;
+}
+
+.retro-panel--inset {
+  /* Inset bevel - recessed panel */
+  box-shadow:
+    inset 0 3px 0 0 #5a4a3a,
+    inset 3px 0 0 0 #5a4a3a,
+    inset 0 -3px 0 0 #ffffff,
+    inset -3px 0 0 0 #ffffff;
+  background: #d4cbb0;
+}
+
+.retro-panel--dark {
+  background: #282c34;
+  color: #f5f5f5;
+  box-shadow:
+    inset 0 3px 0 0 #4a5568,
+    inset 3px 0 0 0 #4a5568,
+    inset 0 -3px 0 0 #0a0a0a,
+    inset -3px 0 0 0 #0a0a0a,
+    3px 3px 0 0 #0a0a0a;
+}
+
+/*
+==========================================
+  16-Bit Border Styles
+==========================================
+*/
+
+.retro-border {
+  border: 3px solid #1a1a1a;
+  box-shadow:
+    inset 0 0 0 3px #ffffff,
+    inset 0 0 0 6px #8b7355;
+}
+
+.retro-border--double {
+  border: 3px solid #1a1a1a;
+  outline: 3px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+/*
+==========================================
+  16-Bit Text Effects
+==========================================
+*/
+
+.retro-text {
+  font-family: 'Minimal5x7', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.retro-text--shadow {
+  text-shadow:
+    2px 2px 0 #1a1a1a,
+    3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.retro-text--outline {
+  text-shadow:
+    -1px -1px 0 #1a1a1a,
+    1px -1px 0 #1a1a1a,
+    -1px 1px 0 #1a1a1a,
+    1px 1px 0 #1a1a1a,
+    2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.retro-text--glow {
+  text-shadow:
+    0 0 4px currentColor,
+    0 0 8px currentColor,
+    2px 2px 0 #1a1a1a;
+}
+
+/*
+==========================================
+  16-Bit Header / Title Bar
+==========================================
+*/
+
+.retro-header {
+  background: linear-gradient(180deg,
+    #4a90d9 0%,
+    #2563eb 50%,
+    #1d4ed8 100%
+  );
+  color: white;
+  padding: 8px 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #0a0a4a;
+  box-shadow:
+    inset 0 2px 0 0 #60a5fa,
+    inset 0 -2px 0 0 #1e3a8a,
+    0 3px 0 0 #1a1a1a;
+}
+
+.retro-header--red {
+  background: linear-gradient(180deg,
+    #ef4444 0%,
+    #c41e3a 50%,
+    #8b1528 100%
+  );
+  box-shadow:
+    inset 0 2px 0 0 #fca5a5,
+    inset 0 -2px 0 0 #7f1d1d,
+    0 3px 0 0 #1a1a1a;
+}
+
+.retro-header--gold {
+  background: linear-gradient(180deg,
+    #fcd34d 0%,
+    #daa520 50%,
+    #996515 100%
+  );
+  color: #1a1a1a;
+  text-shadow: 1px 1px 0 #fef3c7;
+  box-shadow:
+    inset 0 2px 0 0 #fef08a,
+    inset 0 -2px 0 0 #78350f,
+    0 3px 0 0 #1a1a1a;
+}
+
+/*
+==========================================
+  16-Bit Progress Bar
+==========================================
+*/
+
+.retro-progress {
+  height: 16px;
+  background: #1a1a1a;
+  box-shadow:
+    inset 2px 2px 0 0 #0a0a0a,
+    inset -2px -2px 0 0 #4a4a4a;
+  overflow: hidden;
+  position: relative;
+}
+
+.retro-progress__bar {
+  height: 100%;
+  background: linear-gradient(180deg,
+    #4ade80 0%,
+    #16a34a 50%,
+    #15803d 100%
+  );
+  box-shadow:
+    inset 0 2px 0 0 #86efac,
+    inset 0 -2px 0 0 #166534;
+  transition: width 0.1s steps(10); /* Stepped animation for retro feel */
+}
+
+.retro-progress__bar--danger {
+  background: linear-gradient(180deg,
+    #f87171 0%,
+    #dc2626 50%,
+    #991b1b 100%
+  );
+  box-shadow:
+    inset 0 2px 0 0 #fca5a5,
+    inset 0 -2px 0 0 #7f1d1d;
+}
+
+.retro-progress__bar--gold {
+  background: linear-gradient(180deg,
+    #fde047 0%,
+    #eab308 50%,
+    #a16207 100%
+  );
+  box-shadow:
+    inset 0 2px 0 0 #fef08a,
+    inset 0 -2px 0 0 #713f12;
+}
+
+/*
+==========================================
+  16-Bit Divider / Separator
+==========================================
+*/
+
+.retro-divider {
+  height: 6px;
+  background: transparent;
+  border: none;
+  box-shadow:
+    inset 0 3px 0 0 #5a4a3a,
+    inset 0 -3px 0 0 #ffffff;
+  margin: 12px 0;
+}
+
+.retro-divider--vertical {
+  width: 6px;
+  height: auto;
+  box-shadow:
+    inset 3px 0 0 0 #5a4a3a,
+    inset -3px 0 0 0 #ffffff;
+  margin: 0 12px;
+}
+
+/*
+==========================================
+  16-Bit Input Fields
+==========================================
+*/
+
+.retro-input {
+  background: #1a1a1a;
+  color: #4ade80;
+  border: none;
+  padding: 8px 12px;
+  font-family: 'Minimal5x7', monospace;
+  font-size: 16px;
+  box-shadow:
+    inset 2px 2px 0 0 #0a0a0a,
+    inset -2px -2px 0 0 #4a4a4a;
+}
+
+.retro-input:focus {
+  outline: none;
+  box-shadow:
+    inset 2px 2px 0 0 #0a0a0a,
+    inset -2px -2px 0 0 #4a4a4a,
+    0 0 0 3px #60a5fa;
+}
+
+.retro-input::placeholder {
+  color: #6b7280;
+}
+
+/*
+==========================================
+  16-Bit Card / Item Box
+==========================================
+*/
+
+.retro-card {
+  background: #f5f0e0;
+  padding: 8px;
+  box-shadow:
+    /* Outer black border */
+    0 0 0 3px #1a1a1a,
+    /* Inner highlight */
+    inset 3px 3px 0 0 #ffffff,
+    /* Inner shadow */
+    inset -3px -3px 0 0 #a89070;
+}
+
+.retro-card__header {
+  background: #8b1528;
+  color: white;
+  padding: 4px 8px;
+  margin: -8px -8px 8px -8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #0a0a0a;
+  box-shadow:
+    inset 0 2px 0 0 #c41e3a,
+    inset 0 -2px 0 0 #5a0a15;
+}
+
+/*
+==========================================
+  Scanline Overlay Effect (Optional)
+
+  Add class to a container for CRT effect
+==========================================
+*/
+
+.retro-scanlines {
+  position: relative;
+}
+
+.retro-scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 1000;
+}
+
+/*
+==========================================
+  Pixel-Perfect Icon Container
+==========================================
+*/
+
+.retro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/*
+==========================================
+  16-Bit Tooltip
+==========================================
+*/
+
+.retro-tooltip {
+  position: absolute;
+  background: #1a1a1a;
+  color: #f5f5f5;
+  padding: 8px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 9999;
+  box-shadow:
+    3px 3px 0 0 #0a0a0a,
+    inset 0 0 0 2px #4a4a4a;
+}
+
+.retro-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #1a1a1a;
+}
+
+/*
+==========================================
+  Animations - Stepped for Retro Feel
+==========================================
+*/
+
+@keyframes retro-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes retro-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes retro-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.retro-blink {
+  animation: retro-blink 1s steps(1) infinite;
+}
+
+.retro-pulse {
+  animation: retro-pulse 0.5s steps(2) infinite;
+}
+
+.retro-bounce {
+  animation: retro-bounce 0.5s steps(3) infinite;
+}
+
+/*
+==========================================
+  Utility: Force Pixel Rendering
+==========================================
+*/
+
+.pixel-perfect {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
