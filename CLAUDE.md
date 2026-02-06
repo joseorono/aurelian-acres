@@ -119,3 +119,10 @@ src/
 - Audio must go through the existing SoundService pattern
 - The `main` branch is the PR target; development happens on feature branches off `dev-v2`
 - Do not handle version control, we'll commit and push our changes ourselves.
+
+## Testing
+
+We can use the Playwright MCP to test the game.
+Remember to press Play.
+
+The game normally runs at http://localhost:5173
