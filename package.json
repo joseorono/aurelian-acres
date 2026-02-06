@@ -39,6 +39,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@fontsource/press-start-2p": "^5.2.7",
     "@pixi/react": "^7.1.2",
     "@pixi/sound": "^6.0.1",
     "@radix-ui/react-dialog": "^1.1.1",

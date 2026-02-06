@@ -7,20 +7,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Minimal3x5';
-  src: url('/fonts/Minimal3x5.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Minimal5x5Monospaced';
-  src: url('/fonts/Minimal5x5Monospaced.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Minimal5x7';
-  src: url('/fonts/Minimal5x7.ttf') format('truetype');
-}
 
 @layer base {
   :root {
@@ -70,9 +56,8 @@
 }
 
 html {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 1px; /* Set them apart a bit for legibility */
+  font-size: 8px;
+  font-weight: 400;
 }
 
 body {
